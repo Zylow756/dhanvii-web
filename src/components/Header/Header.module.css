@@ -1,0 +1,18 @@
+.banner-container {
+    /*display: block;
+    width: 100%;
+    height: auto;*/
+    height: 400px;
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
