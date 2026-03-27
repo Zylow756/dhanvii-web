@@ -1,5 +1,13 @@
 import Home from './pages/Home';
 import About from './pages/About';
+import Contact from "./pages/Contact";
+import Courses from "./pages/Courses";
+import Login from "./pages/Login";
+
+// Gallery Pages
+import FuncGallery from "./pages/gallery/FuncGallery";
+import CongGallery from "./pages/gallery/CongGallery";
+import InstitGallery from "./pages/gallery/InstitGallery";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -7,16 +15,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-      </Routes>
-      /*<div>
-      <Nav />
-      <div style={{ padding: "20px" }}>
-        <h1>Welcome to Zylow</h1>
-        <p>Scroll down to see sticky effect...</p>
-        <div style={{ height: "1500px" }}></div>
-      </div>
-    </div>*/
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/login" element={<Login />} />
 
+        {/*  Gallery Routes */}
+        <Route path="/func-gallery" element={<FuncGallery />} />
+        <Route path="/cong-gallery" element={<CongGallery />} />
+        <Route path="/instit-gallery" element={<InstitGallery />} />
+      </Routes>
   );
 }
 

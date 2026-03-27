@@ -1,7 +1,7 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
-import banner from '../assets/images/banner.jpg';
 import styles from './Home.module.css'; 
+import banner from '../assets/images/banner.jpg';
 
 const Home = () => {
     return (
