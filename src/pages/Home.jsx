@@ -1,5 +1,6 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
+import StudentReview from '../components/StudentReview/StudentReview';
 import styles from './Home.module.css'; 
 import banner from '../assets/images/banner.jpg';
 
@@ -32,6 +33,7 @@ const Home = () => {
                         </form>
                     </div>
                 </div>
+                <StudentReview />
                 <Footer />
             </div>
         

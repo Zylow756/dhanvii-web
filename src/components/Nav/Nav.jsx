@@ -61,6 +61,7 @@ const Nav = () => {
             )}
           </li>
           <li><Link to="/courses">Courses</Link></li>
+          <li><Link to="/career">Career</Link></li>
           <li><span onClick={() => setShowLogin(true)} className={styles.loginBtn}>
             Login
           </span></li>
