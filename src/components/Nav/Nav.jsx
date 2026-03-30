@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
 import styles from './Nav.module.css';
 import logo from '../../assets/images/logo.jpeg';
-
+import { useEffect } from "react";
 import React, { useState } from "react";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [open, setOpen] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
+  useEffect(() => {
+    if (showLogin) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showLogin]);
 
   return (
     <nav className={styles.navbar}>
@@ -35,7 +44,7 @@ const Nav = () => {
 
         {/* Navigation Links */}
         <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
-          <li><Link to="/home">Home</Link></li>
+          <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
 
@@ -52,9 +61,33 @@ const Nav = () => {
             )}
           </li>
           <li><Link to="/courses">Courses</Link></li>
-          <li><Link to="/login">Login</Link></li>
-        </ul>
+          <li><span onClick={() => setShowLogin(true)} className={styles.loginBtn}>
+            Login
+          </span></li>
+        </ul>{showLogin && (
+          <div className={styles.loginOverlay} onClick={() => setShowLogin(false)}>
 
+            <div
+              className={styles.loginPopup}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span
+                className={styles.closeBtn}
+                onClick={() => setShowLogin(false)}
+              >
+                ✖
+              </span>
+
+              <h2>Login</h2>
+
+              <input type="text" placeholder="Email or Phone" />
+              <input type="password" placeholder="Password" />
+
+              <button className={styles.loginSubmit}>Login</button>
+
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
