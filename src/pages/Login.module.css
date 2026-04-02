@@ -1,0 +1,62 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.popup input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 10px;
+  background: #4c0803;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -5px;
+  margin-bottom: 8px;
+}

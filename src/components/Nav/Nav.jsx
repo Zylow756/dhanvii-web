@@ -1,23 +1,16 @@
 import { Link } from "react-router-dom";
 import styles from './Nav.module.css';
 import logo from '../../assets/images/logo.jpeg';
-import { useEffect } from "react";
 import React, { useState } from "react";
+import Login from "../../pages/Login";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
 
-  useEffect(() => {
-    if (showLogin) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [showLogin]);
-
   return (
+  <>
     <nav className={styles.navbar}>
       <div className={styles['nav-container']}>
 
@@ -26,7 +19,7 @@ const Nav = () => {
           <img src={logo} alt="logo" />
         </div>
 
-        {/* Hamburger Menu (Mobile) */}
+        {/* Hamburger Menu */}
         <div
           className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -60,13 +53,18 @@ const Nav = () => {
               </ul>
             )}
           </li>
-          <li><Link to="/courses">Courses</Link></li>
-          <li><Link to="/login">Login</Link></li>
-        </ul>
 
+          <li><Link to="/courses">Courses</Link></li>
+          <li><Link to="/career">Career</Link></li>
+<li>
+        <span onClick={() => setShowLogin(true)}>Login</span></li>
+        </ul>
       </div>
     </nav>
-  );
+
+    {showLogin && <Login onClose={() => setShowLogin(false)} />}
+  </>
+);
 };
 
 export default Nav;
