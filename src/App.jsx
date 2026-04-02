@@ -3,6 +3,7 @@ import About from './pages/About';
 import Contact from "./pages/Contact";
 import Courses from "./pages/Courses";
 import Career from "./pages/Career";
+import Admin from "./pages/Admin";
 
 // Gallery Pages
 import FuncGallery from "./pages/gallery/FuncGallery";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/career" element={<Career />} />
+        <Route path="/admin" element={<Admin />} />
 
         {/*  Gallery Routes */}
         <Route path="/func-gallery" element={<FuncGallery />} />

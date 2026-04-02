@@ -42,4 +42,10 @@ const FormSchema = new mongoose.Schema({
   ],
 });
 
-export default mongoose.model("Form", FormSchema);
+const placementSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  qualification: String,
+}, { timestamps: true }); // 👈 MUST ADD
+
+export default mongoose.model("Form", FormSchema,placementSchema);

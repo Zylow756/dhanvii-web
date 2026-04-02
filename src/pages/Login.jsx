@@ -65,11 +65,11 @@ const Login = ({ onClose }) => {
           alert("Login successful...");// optional: store login state
           localStorage.setItem("isLoggedIn", true);
 
-          onClose();
-
           // redirect to home/dashboard
-          navigate("/career"); // OR "/dashboard"
+          navigate("/admin"); // OR "/dashboard"
           //console.log(data);
+
+          onClose();
         }
 
       } catch (err) {

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Career.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Career() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     address: "",
@@ -19,32 +22,32 @@ export default function Career() {
 
   const [errors, setErrors] = useState({});
 
-const validateForm = () => {
-  let newErrors = {};
+  const validateForm = () => {
+    let newErrors = {};
 
-  // Required fields
-  if (!form.name) newErrors.name = "Name is required";
-  if (!form.mobile) newErrors.mobile = "Mobile number is required";
+    // Required fields
+    if (!form.name) newErrors.name = "Name is required";
+    if (!form.mobile) newErrors.mobile = "Mobile number is required";
 
-  // Phone validation (10 digit)
-  const phoneRegex = /^[0-9]{10}$/;
-  if (form.mobile && !phoneRegex.test(form.mobile)) {
-    newErrors.mobile = "Enter valid 10-digit number";
-  }
-
-  // Percentage validation (0–100)
-  form.academic.forEach((item, index) => {
-    if (item.percentage) {
-      const percent = Number(item.percentage);
-      if (percent < 0 || percent > 100) {
-        newErrors[`percentage_${index}`] = "Must be between 0-100";
-      }
+    // Phone validation (10 digit)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (form.mobile && !phoneRegex.test(form.mobile)) {
+      newErrors.mobile = "Enter valid 10-digit number";
     }
-  });
 
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+    // Percentage validation (0–100)
+    form.academic.forEach((item, index) => {
+      if (item.percentage) {
+        const percent = Number(item.percentage);
+        if (percent < 0 || percent > 100) {
+          newErrors[`percentage_${index}`] = "Must be between 0-100";
+        }
+      }
+    });
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -75,33 +78,38 @@ const validateForm = () => {
   };*/
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!validateForm()) {
-    alert("Please fix errors");
-    return;
-  }
+    if (!validateForm()) {
+      alert("Please fix errors");
+      return;
+    }
 
-  try {
-    const res = await fetch("http://localhost:5000/api/form", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("http://localhost:5000/api/placement/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-    const data = await res.json();
-    alert(data.message);
-  } catch (error) {
-    console.error(error);
-    alert("Errors in saving data");
-  }
-};
+      const data = await res.json();
+      console.log("Response:", data);
+      alert(data.message || "Form submitted successfully ");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (err) {
+      console.error("ERROR:", err.message);
+      alert(err.message);
+    }
+
+  };
 
   return (
     <div className="form-container">
-      <h1 className="form-title">DHANVII PLACEMENT</h1>
+      <h1 className="form-title">DHANVII PLACEMENT FORM</h1>
 
       <form onSubmit={handleSubmit}>
         {/* Basic Details */}
@@ -139,10 +147,10 @@ const validateForm = () => {
           <tbody>
             {form.family.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.relation} onChange={(e)=>handleTableChange("family", i, "relation", e.target.value)} /></td>
-                <td><input className="table-input" value={row.name} onChange={(e)=>handleTableChange("family", i, "name", e.target.value)} /></td>
-                <td><input className="table-input" value={row.education} onChange={(e)=>handleTableChange("family", i, "education", e.target.value)} /></td>
-                <td><input className="table-input" value={row.working} onChange={(e)=>handleTableChange("family", i, "working", e.target.value)} /></td>
+                <td><input className="table-input" value={row.relation} onChange={(e) => handleTableChange("family", i, "relation", e.target.value)} /></td>
+                <td><input className="table-input" value={row.name} onChange={(e) => handleTableChange("family", i, "name", e.target.value)} /></td>
+                <td><input className="table-input" value={row.education} onChange={(e) => handleTableChange("family", i, "education", e.target.value)} /></td>
+                <td><input className="table-input" value={row.working} onChange={(e) => handleTableChange("family", i, "working", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>
@@ -163,11 +171,11 @@ const validateForm = () => {
           <tbody>
             {form.academic.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.qualification} onChange={(e)=>handleTableChange("academic", i, "qualification", e.target.value)} /></td>
-                <td><input className="table-input" value={row.stream} onChange={(e)=>handleTableChange("academic", i, "stream", e.target.value)} /></td>
-                <td><input className="table-input" value={row.board} onChange={(e)=>handleTableChange("academic", i, "board", e.target.value)} /></td>
-                <td><input className="table-input" value={row.year} onChange={(e)=>handleTableChange("academic", i, "year", e.target.value)} /></td>
-                <td><input className="table-input" value={row.percentage} onChange={(e)=>handleTableChange("academic", i, "percentage", e.target.value)} /></td>
+                <td><input className="table-input" value={row.qualification} onChange={(e) => handleTableChange("academic", i, "qualification", e.target.value)} /></td>
+                <td><input className="table-input" value={row.stream} onChange={(e) => handleTableChange("academic", i, "stream", e.target.value)} /></td>
+                <td><input className="table-input" value={row.board} onChange={(e) => handleTableChange("academic", i, "board", e.target.value)} /></td>
+                <td><input className="table-input" value={row.year} onChange={(e) => handleTableChange("academic", i, "year", e.target.value)} /></td>
+                <td><input className="table-input" value={row.percentage} onChange={(e) => handleTableChange("academic", i, "percentage", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>
@@ -189,12 +197,12 @@ const validateForm = () => {
           <tbody>
             {form.experience.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.company} onChange={(e)=>handleTableChange("experience", i, "company", e.target.value)} /></td>
-                <td><input className="table-input" value={row.post} onChange={(e)=>handleTableChange("experience", i, "post", e.target.value)} /></td>
-                <td><input className="table-input" value={row.type} onChange={(e)=>handleTableChange("experience", i, "type", e.target.value)} /></td>
-                <td><input type="date" className="table-input" value={row.from} onChange={(e)=>handleTableChange("experience", i, "from", e.target.value)} /></td>
-                <td><input type="date" className="table-input" value={row.to} onChange={(e)=>handleTableChange("experience", i, "to", e.target.value)} /></td>
-                <td><input className="table-input" value={row.salary} onChange={(e)=>handleTableChange("experience", i, "salary", e.target.value)} /></td>
+                <td><input className="table-input" value={row.company} onChange={(e) => handleTableChange("experience", i, "company", e.target.value)} /></td>
+                <td><input className="table-input" value={row.post} onChange={(e) => handleTableChange("experience", i, "post", e.target.value)} /></td>
+                <td><input className="table-input" value={row.type} onChange={(e) => handleTableChange("experience", i, "type", e.target.value)} /></td>
+                <td><input type="date" className="table-input" value={row.from} onChange={(e) => handleTableChange("experience", i, "from", e.target.value)} /></td>
+                <td><input type="date" className="table-input" value={row.to} onChange={(e) => handleTableChange("experience", i, "to", e.target.value)} /></td>
+                <td><input className="table-input" value={row.salary} onChange={(e) => handleTableChange("experience", i, "salary", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>

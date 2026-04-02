@@ -12,12 +12,24 @@ router.post("/add", async (req, res) => {
 
 console.log("Saved Successfully ");
     res.json({ message: "Placement data saved" });
+    res.status(201).json({
+  success: true,
+  message: "Placement data saved successfully"
+});
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: err.message });
-    /*res.status(500).json({
-  message: err.message || "Error saving data",
-});*/
+  }
+});
+
+// Get all placement data
+router.get("/", async (req, res) => {
+  try {
+    const data = await Placement.find().sort({ createdAt: -1 });
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
 });
 
