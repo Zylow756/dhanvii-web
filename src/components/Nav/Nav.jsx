@@ -10,61 +10,62 @@ const Nav = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
-  <>
-    <nav className={styles.navbar}>
-      <div className={styles['nav-container']}>
+    <>
+      <nav className={styles.navbar}>
+        <div className={styles['nav-container']}>
 
-        {/* Logo */}
-        <div className={styles['logo']}>
-          <img src={logo} alt="logo" />
-        </div>
+          {/* Logo */}
+          <div className={styles['logo']}>
+            <img src={logo} alt="logo" />
+          </div>
 
-        {/* Hamburger Menu */}
-        <div
-          className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </div>
-
-        {/* Overlay */}
-        {menuOpen && (
+          {/* Hamburger Menu */}
           <div
-            className={styles['overlay']}
-            onClick={() => setMenuOpen(false)}
-          ></div>
-        )}
+            className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </div>
 
-        {/* Navigation Links */}
-        <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          {/* Overlay */}
+          {menuOpen && (
+            <div
+              className={styles['overlay']}
+              onClick={() => setMenuOpen(false)}
+            ></div>
+          )}
 
-          {/* Dropdown */}
-          <li className={styles.dropdown}>
-            <span onClick={() => setOpen(!open)}>Gallery ▾</span>
+          {/* Navigation Links */}
+          <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/courses">Training</Link></li>
+            <li><Link to="/placement">Placement</Link></li>
 
-            {open && (
-              <ul className={styles["dropdown-menu"]}>
-                <li><Link to="/func-gallery">Functions</Link></li>
-                <li><Link to="/cong-gallery">Congratulations</Link></li>
-                <li><Link to="/instit-gallery">Institute</Link></li>
-              </ul>
-            )}
-          </li>
+            {/* Dropdown */}
+            <li className={styles.dropdown}>
+              <span onClick={() => setOpen(!open)}>Gallery ▾</span>
 
-          <li><Link to="/courses">Courses</Link></li>
-          <li><Link to="/career">Career</Link></li>
-<li>
-        <span onClick={() => setShowLogin(true)}>Login</span></li>
-        </ul>
-      </div>
-    </nav>
+              {open && (
+                <ul className={styles["dropdown-menu"]}>
+                  <li><Link to="/func-gallery">Functions</Link></li>
+                  <li><Link to="/instit-gallery">Institute</Link></li>
+                </ul>
+              )}
+            </li>
 
-    {showLogin && <Login onClose={() => setShowLogin(false)} />}
-  </>
-);
+            <li><Link to="/career">Career</Link></li>
+            <li>
+              <span onClick={() => setShowLogin(true)}>Login</span></li>
+          </ul>
+        </div>
+      </nav>
+
+      {showLogin && <Login onClose={() => setShowLogin(false)} />}
+    </>
+  );
 };
 
 export default Nav;

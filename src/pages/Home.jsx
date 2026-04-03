@@ -1,9 +1,9 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import StudentReview from '../components/StudentReview/StudentReview';
-import styles from './Home.module.css';
-import banner from '../assets/images/banner.jpg';
+import styles from '../assets/css/Home.module.css';
 import { useState } from "react";
+import RandomAd from '../components/RandomAd/RandomAd'
 
 const Home = () => {
 
@@ -45,9 +45,11 @@ const Home = () => {
   return (
     <div className={styles['root']}>
       <Nav />
-      <div className={styles['banner-container']}>
-        <img src={banner} alt="Banner" className={styles['banner-img']} />
-      </div>
+      <header className={styles['box-contain']}>
+      <h1>Best Accounting Institute in Kota</h1>
+      {/*<p>Learn GST,Tally Prime & Income Tax with Practical Training</p>*/}
+      </header>
+      <RandomAd />
       <div className={styles['enquiry-form']}>
         <div className={styles['contact-form-container']}>
           <h2>Enquiry Form For Demo Classes</h2>

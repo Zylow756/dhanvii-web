@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Login.module.css";
+import styles from "../assets/css/Login.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ onClose }) => {
@@ -66,8 +66,8 @@ const Login = ({ onClose }) => {
           localStorage.setItem("isLoggedIn", true);
 
           // redirect to home/dashboard
-          navigate("/admin"); // OR "/dashboard"
-          //console.log(data);
+          navigate("/admin"); 
+          
 
           onClose();
         }

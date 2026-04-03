@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Nav from '../../components/Nav/Nav';
-import Footer from '../../components/Footer/Footer';
-import styles from "./Gallery.module.css";
-import image2 from '../../assets/images/image2.jpeg';
-import image3 from '../../assets/images/image3.jpeg';
-import image4 from '../../assets/images/image4.jpeg';
+import Nav from '../components/Nav/Nav';
+import Footer from '../components/Footer/Footer';
+import styles from "./gallery/Gallery.module.css";
+import image2 from '../assets/images/image2.jpeg';
+import image3 from '../assets/images/image3.jpeg';
+import image4 from '../assets/images/image4.jpeg';
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const images = [

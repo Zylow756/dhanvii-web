@@ -1,6 +1,6 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
-import styles from './Courses.module.css';
+import styles from '../assets/css/Courses.module.css';
 import { useState } from "react";
 
 const Courses = () => {
@@ -23,8 +23,9 @@ const Courses = () => {
     {
       title: "Tally Prime",
       duration: "Duration: 3 Months",
-      desc: "Special Fundamental & Financial Accounting - Introduction.",
+      desc: "",
       content: [
+        "Special Fundamental & Financial Accounting - Introduction",
         "Transactions Vouchers",
         "Inventory Information & Features",
         "Statuary & Taxations GST",
@@ -77,7 +78,7 @@ const Courses = () => {
   return (
     <div className={styles.root}>
       <Nav />
-      <h1 className={styles.heading}>Our Courses</h1>
+      <h1 className={styles.heading}>Our Courses / Training</h1>
 
       <div className={styles.grid}>
         {courses.map((course, index) => (
@@ -97,7 +98,7 @@ const Courses = () => {
               className={styles.btn}
               onClick={() => toggle(index)}
             >
-              {openIndex === index ? "Hide Details −" : "View Details +"}
+              {openIndex === index ? "Hide Model −" : "View Model +"}
             </button>
 
             {/* Expand Content */}

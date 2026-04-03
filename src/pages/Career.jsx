@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Career.module.css";
+import styles from '../assets/css/Career.module.css';
 import { useNavigate } from "react-router-dom";
 
 export default function Career() {
@@ -16,7 +16,8 @@ export default function Career() {
     expectedSalary: "",
     jobLocation: "",
     family: Array(3).fill({ relation: "", name: "", education: "", working: "" }),
-    academic: Array(5).fill({ qualification: "", stream: "", board: "", year: "", percentage: "" }),
+    academic: Array(3).fill({ qualification: "", stream: "", board: "", year: "", percentage: "" }),
+    professional: Array(3).fill({ course: "", institute: "", duration: "", remark: ""}),
     experience: Array(3).fill({ company: "", post: "", type: "", from: "", to: "", salary: "" })
   });
 
@@ -108,34 +109,41 @@ export default function Career() {
   };
 
   return (
-    <div className="form-container">
-      <h1 className="form-title">DHANVII PLACEMENT FORM</h1>
-
+    <div className={styles["form-container"]}>
+      <h1 className={styles["form-title"]}>DHANVII PLACEMENT FORM</h1>
       <form onSubmit={handleSubmit}>
         {/* Basic Details */}
-        <div className="form-grid">
-          <input name="name" placeholder="Name" onChange={handleChange} className="form-input" />
-          {errors.name && <p className="error">{errors.name}</p>}
-          <input name="mobile" placeholder="Mobile No" onChange={handleChange} className="form-input" />
-          {errors.mobile && <p className="error">{errors.mobile}</p>}
-          <input name="address" placeholder="Address" onChange={handleChange} className="form-input full-width" />
-          <input type="date" name="dob" onChange={handleChange} className="form-input" />
+        <div className={styles["form-grid"]}>
+          <input name="name" placeholder="Name" onChange={handleChange} className={styles["form-input"]} />
+          {errors.name && <p className={styles["error"]}>{errors.name}</p>}
+          <input name="mobile" placeholder="Mobile No" onChange={handleChange} className={styles["form-input"]} />
+          {errors.mobile && <p className={styles["error"]}>{errors.mobile}</p>}
+          <input name="address" placeholder="Address" onChange={handleChange} className={styles["form-input full-width"]} />
+          <input type="date" name="dob" onChange={handleChange} className={styles["form-input"]} />
 
-          <select name="gender" onChange={handleChange} className="form-select">
+          <select name="gender" onChange={handleChange} className={styles["form-select"]}>
             <option value="">Select Gender</option>
             <option>Male</option>
             <option>Female</option>
           </select>
 
-          <input name="language" placeholder="Language" onChange={handleChange} className="form-input" />
-          <input name="jobTitle" placeholder="Job Title" onChange={handleChange} className="form-input" />
-          <input name="expectedSalary" placeholder="Expected Salary" onChange={handleChange} className="form-input" />
-          <input name="jobLocation" placeholder="Job Location" onChange={handleChange} className="form-input" />
+          <input name="language" placeholder="Language" onChange={handleChange} className={styles["form-input"]} />
+          <select name="jobTitle" onChange={handleChange} className={styles["form-select"]}>
+            <option value="">Job Title</option>
+            <option>Front Office</option>
+            <option>Computer</option>
+            <option>Marketing</option>
+            <option>Account's</option>
+            <option>Telecaller</option>
+            <option>Counseller</option>
+          </select>
+          <input name="expectedSalary" placeholder="Expected Salary" onChange={handleChange} className={styles["form-input"]} />
+          <input name="jobLocation" placeholder="Job Location" onChange={handleChange} className={styles["form-input"]} />
         </div>
 
         {/* Family Details */}
-        <h2 className="section-title">Family Details</h2>
-        <table className="form-table">
+        <h2 className={styles["section-title"]}>Family Details</h2>
+        <table className={styles["form-table"]}>
           <thead>
             <tr>
               <th>Relation</th>
@@ -147,18 +155,18 @@ export default function Career() {
           <tbody>
             {form.family.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.relation} onChange={(e) => handleTableChange("family", i, "relation", e.target.value)} /></td>
-                <td><input className="table-input" value={row.name} onChange={(e) => handleTableChange("family", i, "name", e.target.value)} /></td>
-                <td><input className="table-input" value={row.education} onChange={(e) => handleTableChange("family", i, "education", e.target.value)} /></td>
-                <td><input className="table-input" value={row.working} onChange={(e) => handleTableChange("family", i, "working", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.relation} onChange={(e) => handleTableChange("family", i, "relation", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.name} onChange={(e) => handleTableChange("family", i, "name", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.education} onChange={(e) => handleTableChange("family", i, "education", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.working} onChange={(e) => handleTableChange("family", i, "working", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>
         </table>
 
         {/* Academic */}
-        <h2 className="section-title">Academic Qualification</h2>
-        <table className="form-table">
+        <h2 className={styles["section-title"]}>Academic Qualification</h2>
+        <table className={styles["form-table"]}>
           <thead>
             <tr>
               <th>Qualification</th>
@@ -171,19 +179,42 @@ export default function Career() {
           <tbody>
             {form.academic.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.qualification} onChange={(e) => handleTableChange("academic", i, "qualification", e.target.value)} /></td>
-                <td><input className="table-input" value={row.stream} onChange={(e) => handleTableChange("academic", i, "stream", e.target.value)} /></td>
-                <td><input className="table-input" value={row.board} onChange={(e) => handleTableChange("academic", i, "board", e.target.value)} /></td>
-                <td><input className="table-input" value={row.year} onChange={(e) => handleTableChange("academic", i, "year", e.target.value)} /></td>
-                <td><input className="table-input" value={row.percentage} onChange={(e) => handleTableChange("academic", i, "percentage", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.qualification} onChange={(e) => handleTableChange("academic", i, "qualification", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.stream} onChange={(e) => handleTableChange("academic", i, "stream", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.board} onChange={(e) => handleTableChange("academic", i, "board", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.year} onChange={(e) => handleTableChange("academic", i, "year", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.percentage} onChange={(e) => handleTableChange("academic", i, "percentage", e.target.value)} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Professional */}
+        <h2 className={styles["section-title"]}>Professional Qualification</h2>
+        <table className={styles["form-table"]}>
+          <thead>
+            <tr>
+              <th>Professional Course Name</th>
+              <th>Institute Name</th>
+              <th>Duration</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {form.professional.map((row, i) => (
+              <tr key={i}>
+                <td><input className={styles["table-input"]} value={row.qualification} onChange={(e) => handleTableChange("professional", i, "course", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.stream} onChange={(e) => handleTableChange("professional", i, "institute", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.board} onChange={(e) => handleTableChange("professional", i, "duration", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.year} onChange={(e) => handleTableChange("professional", i, "remark", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>
         </table>
 
         {/* Experience */}
-        <h2 className="section-title">Work Experience</h2>
-        <table className="form-table">
+        <h2 className={styles["section-title"]}>Work Experience</h2>
+        <table className={styles["form-table"]}>
           <thead>
             <tr>
               <th>Company</th>
@@ -197,19 +228,19 @@ export default function Career() {
           <tbody>
             {form.experience.map((row, i) => (
               <tr key={i}>
-                <td><input className="table-input" value={row.company} onChange={(e) => handleTableChange("experience", i, "company", e.target.value)} /></td>
-                <td><input className="table-input" value={row.post} onChange={(e) => handleTableChange("experience", i, "post", e.target.value)} /></td>
-                <td><input className="table-input" value={row.type} onChange={(e) => handleTableChange("experience", i, "type", e.target.value)} /></td>
-                <td><input type="date" className="table-input" value={row.from} onChange={(e) => handleTableChange("experience", i, "from", e.target.value)} /></td>
-                <td><input type="date" className="table-input" value={row.to} onChange={(e) => handleTableChange("experience", i, "to", e.target.value)} /></td>
-                <td><input className="table-input" value={row.salary} onChange={(e) => handleTableChange("experience", i, "salary", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.company} onChange={(e) => handleTableChange("experience", i, "company", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.post} onChange={(e) => handleTableChange("experience", i, "post", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.type} onChange={(e) => handleTableChange("experience", i, "type", e.target.value)} /></td>
+                <td><input type="date" className={styles["table-input"]} value={row.from} onChange={(e) => handleTableChange("experience", i, "from", e.target.value)} /></td>
+                <td><input type="date" className={styles["table-input"]} value={row.to} onChange={(e) => handleTableChange("experience", i, "to", e.target.value)} /></td>
+                <td><input className={styles["table-input"]} value={row.salary} onChange={(e) => handleTableChange("experience", i, "salary", e.target.value)} /></td>
               </tr>
             ))}
           </tbody>
         </table>
 
-        <button type="submit" className="submit-btn">Submit</button>
+        <button type="submit" className={styles["submit-btn"]}>Submit</button>
       </form>
-    </div>
+      </div>
   );
 }
