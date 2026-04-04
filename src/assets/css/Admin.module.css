@@ -1,0 +1,64 @@
+ .thStyle {
+     padding: 12px;
+ }
+
+ .tdStyle {
+     padding: 10px;
+ }
+
+ .editBtn {
+     background: #e74c3c;
+     color: #fff;
+     border: none;
+     padding: 6px 10px;
+     margin-right: 5px;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ .deleteBtn {
+     background: #e74c3c;
+     color: #fff;
+     border: none;
+     padding: 6px 10px;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ .saveBtn {
+     background: #27ae60;
+     color: #fff;
+     border: none;
+     padding: 6px 10px;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+ .exportBtn {
+     background: #e74c3c;
+     color: #fff;
+     border: none;
+     padding: 6px 12px;
+     border-radius: 6px;
+     cursor: pointer;
+     margin: 10px;
+     font-size: 13px;
+ }
+
+ .enquiry-contain {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     /*margin-bottom: 25px;
+     padding: 0 100px;*/
+     gap: "140px",
+ }
+
+ .card {
+     background: #fff;
+     padding: 20px;
+     border-radius: 12px;
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+     max-width: 900px;
+     margin: auto;
+ }

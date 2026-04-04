@@ -36,6 +36,9 @@ const Home = () => {
       }
 
       alert("Message sent successfully");
+
+  // Redirect to courses
+  window.location.href = "/courses";
     } catch (err) {
       console.error("ERROR:", err.message);
       alert(err.message);

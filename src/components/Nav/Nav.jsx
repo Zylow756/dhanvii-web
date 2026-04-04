@@ -41,7 +41,7 @@ const Nav = () => {
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
             <li><Link to="/services">Services</Link></li>
-            <li><Link to="/courses">Training</Link></li>
+            <li><Link to="/courses">Courses</Link></li>
             <li><Link to="/placement">Placement</Link></li>
 
             {/* Dropdown */}

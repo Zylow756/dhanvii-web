@@ -16,8 +16,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/placement", placementRoutes);
 app.use("/api/enquiry", enquiryRoutes);
 
- mongoose.connect("mongodb://dhanvii_db:dhanvii12345@ac-ycrnqfx-shard-00-00.vkdpko5.mongodb.net:27017,ac-ycrnqfx-shard-00-01.vkdpko5.mongodb.net:27017,ac-ycrnqfx-shard-00-02.vkdpko5.mongodb.net:27017/dhanviDB?ssl=true&replicaSet=atlas-2eskuw-shard-0&authSource=admin&retryWrites=true&w=majority")
- .then(() => console.log("MongoDB Atlas Connected ✅"))
+mongoose.connect("mongodb://dhanvii_db:dhanvii12345@ac-ycrnqfx-shard-00-00.vkdpko5.mongodb.net:27017,ac-ycrnqfx-shard-00-01.vkdpko5.mongodb.net:27017,ac-ycrnqfx-shard-00-02.vkdpko5.mongodb.net:27017/dhanviDB?ssl=true&replicaSet=atlas-2eskuw-shard-0&authSource=admin&retryWrites=true&w=majority")
+  .then(() => console.log("MongoDB Atlas Connected"))
   .catch(err => console.log("Error:", err));
 
 app.listen(5000, () => {

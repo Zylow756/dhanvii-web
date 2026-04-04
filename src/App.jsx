@@ -3,7 +3,7 @@ import About from './pages/About';
 import Contact from "./pages/Contact";
 import Training from "./pages/Courses";
 import Career from "./pages/Career";
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin/Admin";
 import Services from "./pages/Services";
 import Placement from "./pages/Placement";
 
