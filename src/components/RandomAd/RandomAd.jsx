@@ -1,32 +1,23 @@
-import { useState, useEffect } from "react";
-import { jacketAds } from "../../pages/adsData";
 import styles from "./RandomAd.module.css";
+import WelcomeAd from "../WelcomeModal/WelcomeAd";
 
 const RandomAd = () => {
-  const [ad, setAd] = useState(null);
-
-  useEffect(() => {
-    // function to pick random ad
-    const getRandomAd = () => {
-      const randomIndex = Math.floor(Math.random() * jacketAds.length);
-      setAd(jacketAds[randomIndex]);
-    };
-
-    // show first ad immediately
-    getRandomAd();
-
-    // change ad every 5 seconds
-    const interval = setInterval(getRandomAd, 5000);
-
-    // cleanup (VERY IMPORTANT)
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!ad) return null;
-
   return (
     <div className={styles.adBox}>
-      <img src={ad.image} alt={ad.title} />
+
+      {/* LEFT - YouTube */}
+      <div className={styles.video}>
+        <iframe
+          src="https://www.youtube.com/embed/_EDjWCDtDt0"
+          title="YouTube video"
+          allowFullScreen
+        ></iframe>
+      </div>
+
+      {/* RIGHT - Random Ad */}
+      <div className={styles.ad}>
+      <WelcomeAd />
+      </div>
     </div>
   );
 };

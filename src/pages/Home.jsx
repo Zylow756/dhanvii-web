@@ -3,7 +3,8 @@ import Footer from '../components/Footer/Footer';
 import StudentReview from '../components/StudentReview/StudentReview';
 import styles from '../assets/css/Home.module.css';
 import { useState } from "react";
-import RandomAd from '../components/RandomAd/RandomAd'
+import RandomAd from '../components/RandomAd/RandomAd';
+import WelcomeModal from "../components/WelcomeModal/WelcomeModal";
 
 const Home = () => {
 
@@ -51,6 +52,7 @@ const Home = () => {
       <header className={styles['box-contain']}>
         <h1>Best Accounting Institute in Kota</h1>
       </header>
+      <WelcomeModal />
       <RandomAd />
       <div className={styles['enquiry-form']}>
         <div className={styles["premium-card"]}>

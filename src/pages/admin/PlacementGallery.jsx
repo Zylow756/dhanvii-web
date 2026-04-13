@@ -75,6 +75,13 @@ const styles = {
     borderRadius: "5px",
     cursor: "pointer",
   },
+
+  pagination:  {
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "20px",
+  gap: "10px",
+}
 };
 
 const PlacementGallery = () => {
@@ -90,6 +97,16 @@ const PlacementGallery = () => {
   const [editId, setEditId] = useState(null);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [bgPreview, setBgPreview] = useState(null);
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 10;
+  
+      const totalPages = Math.ceil(students.length / itemsPerPage);
+  
+  
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  
+      const currentData = students.slice(indexOfFirstItem, indexOfLastItem);
 
   const data = new FormData();
 
@@ -230,6 +247,7 @@ const PlacementGallery = () => {
           style={styles.table}>
           <thead style={{ background: "#7b0000", color: "#fff" }}>
             <tr>
+              <th style={styles.th}>S.No.</th>
               <th style={styles.th}>Name</th>
               <th style={styles.th}>Qualification</th>
               <th style={styles.th}>Company</th>
@@ -239,21 +257,47 @@ const PlacementGallery = () => {
           </thead>
 
           <tbody>
-            {students.map(s => (
-              <tr key={s._id}>
-                <td style={styles.td}>{s.name}</td>
-                <td style={styles.td}>{s.qualification}</td>
-                <td style={styles.td}>{s.company}</td>
-                <td style={styles.td}>{s.salary}</td>
+            {currentData.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{indexOfFirstItem + index + 1}</td>
+                <td style={styles.td}>{item.name}</td>
+                <td style={styles.td}>{item.qualification}</td>
+                <td style={styles.td}>{item.company}</td>
+                <td style={styles.td}>{item.salary}</td>
                 <td style={styles.td}>
-                  <button style={styles.editBtn} onClick={() => handleEdit(s)}>✏️ Edit</button>
-                  <button style={styles.deleteBtn} onClick={() => handleDelete(s._id)}> 🗑 Delete</button>
+                  <button style={styles.editBtn} onClick={() => handleEdit(item)}>✏️ Edit</button>
+                  <button style={styles.deleteBtn} onClick={() => handleDelete(item._id)}> 🗑 Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+            <div style={styles.pagination}>
+                <button
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        style={currentPage === i + 1 ? styles.active : {}}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+
+                <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
     </div>
   );
 };

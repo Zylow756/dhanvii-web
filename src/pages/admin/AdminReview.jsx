@@ -104,10 +104,35 @@ const styles = {
         borderRadius: "5px",
         cursor: "pointer",
     },
+
+    pagination:  {
+  display: "flex",
+  justifyContent: "center",
+  marginTop: "20px",
+  gap: "10px",
+}
+
+/*paginationButton: {
+  padding: "8px 14px",
+  border: "none",
+  background: "#eee",
+  cursor: "pointer",
+  borderRadius: "5px",
+}
+
+paginationButton hover: {
+  background: "#b31212",
+  color: "white",
+}
+
+active: {
+  background: "#b31212",
+  color: "white",
+}*/
 };
 
 const AdminReview = () => {
-    const [reviews, setReviews] = useState([]);
+    const [ reviews, setReviews] = useState([]);
     const [editId, setEditId] = useState(null);
     const [form, setForm] = useState({
         name: "",
@@ -116,6 +141,16 @@ const AdminReview = () => {
         qualification: "",
         image: null,
     });
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    const totalPages = Math.ceil(reviews.length / itemsPerPage);
+
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+    const currentData = reviews.slice(indexOfFirstItem, indexOfLastItem);
 
     const fetchReviews = async () => {
         const res = await axios.get("http://localhost:5000/api/reviews");
@@ -137,8 +172,7 @@ const AdminReview = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const formData = new FormData();
+    const formData = new FormData();
         formData.append("name", form.name);
         formData.append("message", form.message);
         formData.append("path", form.path);
@@ -193,7 +227,7 @@ const AdminReview = () => {
 
     return (
         <div style={styles.container}>
-                        <AdminNav />
+            <AdminNav />
             <h2 style={styles.title}>Admin Review Panel</h2>
 
             {/* FORM CARD */}
@@ -259,6 +293,7 @@ const AdminReview = () => {
                 <table style={styles.table}>
                     <thead>
                         <tr>
+                            <th style={styles.th}>S.No.</th>
                             <th style={styles.th}>Image</th>
                             <th style={styles.th}>Name</th>
                             <th style={styles.th}>Message</th>
@@ -268,29 +303,30 @@ const AdminReview = () => {
                     </thead>
 
                     <tbody>
-                        {reviews.map((r) => (
-                            <tr key={r._id}>
+                        {currentData.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{indexOfFirstItem + index + 1}</td>
                                 <td style={styles.td}>
                                     <img
-                                        src={`http://localhost:5000/uploads/${r.image}`}
+                                        src={`http://localhost:5000/uploads/${item.image}`}
                                         alt=""
                                         style={styles.image}
                                     />
                                 </td>
 
-                                <td style={styles.td}>{r.name}</td>
-                                <td style={styles.td}>{r.message}</td>
-                                <td style={styles.td}>{r.qualification}</td>
+                                <td style={styles.td}>{item.name}</td>
+                                <td style={styles.td}>{item.message}</td>
+                                <td style={styles.td}>{item.qualification}</td>
                                 <td style={styles.td}>
                                     <button
-                                        onClick={() => handleEdit(r)}
+                                        onClick={() => handleEdit(item)}
                                         style={styles.editBtn}
                                     >
                                         ✏️ Edit
                                     </button>
 
                                     <button
-                                        onClick={() => handleDelete(r._id)}
+                                        onClick={() => handleDelete(item._id)}
                                         style={styles.deleteBtn}
                                     >
                                         🗑 Delete
@@ -300,6 +336,31 @@ const AdminReview = () => {
                         ))}
                     </tbody>
                 </table>
+            </div>
+            <div style={styles.pagination}>
+                <button
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        style={currentPage === i + 1 ? styles.active : {}}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+
+                <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

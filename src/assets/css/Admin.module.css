@@ -1,9 +1,16 @@
- .thStyle {
+.thStyle {
      padding: 12px;
+     text-align: center;
  }
 
  .tdStyle {
      padding: 10px;
+     text-align: center;
+ }
+
+ tableStyle{
+        width: 100%;
+        border-collapse: collapse;
  }
 
  .deleteBtn {
@@ -107,3 +114,14 @@
      padding: 20px;
      overflow-y: auto;
  }
+
+ .pagination  {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+card-container{
+     padding: 20px; 
+}

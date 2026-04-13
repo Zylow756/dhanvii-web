@@ -25,7 +25,7 @@
 
 /* Logo */
 .logo img {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 /* Desktop Nav */
@@ -44,6 +44,7 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  font-size: 24px;
 }
 
 /* Hamburger lines */
@@ -75,14 +76,6 @@
   height: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 998;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-
-  .menu-icon {
-    display: flex;
-  }
 }
   
 .nav-links a,
@@ -143,15 +136,6 @@
 .dropdown-menu li:hover {
   background: #f2f2f2;
 }
-
-@media (max-width: 768px) {
-  .dropdown-menu {
-    position: static;   
-    width: 100%;
-  }
-}
-
-
 
 /* Login Button */
 .loginBtn {
@@ -258,4 +242,33 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex; /* ✅ show hamburger */
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+.nav-links {
+  transition: all 0.3s ease;
 }

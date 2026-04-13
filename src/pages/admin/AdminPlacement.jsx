@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/Admin.module.css';
 import * as XLSX from "xlsx";
@@ -8,6 +8,16 @@ export default function AdminPlacement() {
   const [data, setData] = useState([]);
   const [selected, setSelected] = useState(null);
   const [loading, setLoading] = useState(true);
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 10;
+  
+      const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+  
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  
+      const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchData = () => {
     fetch("http://localhost:5000/api/placement/all")
@@ -158,27 +168,30 @@ export default function AdminPlacement() {
 
   return (
     <div className={styles['root']}>
-            <AdminNav />
-      <div style={{ padding: "20px" }}>
+      <AdminNav />
+      <div className="card-container">
         <h1>Admin Career Dashboard</h1>
         <span className={styles.exportBtn} onClick={exportToExcel}>
           📥  Export to Excel
         </span>
         {/* TABLE */}
-        <table style= {{ border:"1px", cellPadding:"10px", width:"100%", marginTop:"10px"}}>
-          <thead style={{ background: "#eee" }}>
+         <div className={styles.card}>
+        <table border="1">
+          <thead style={{ background: "#a97a7a", color: "#ffffff" }}>
             <tr>
+              <th>S.No.</th>
               <th>Name</th>
               <th>Mobile</th>
-              <th>Job</th>
+              <th>Job Title</th>
               <th>Expected Salary</th>
               <th>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {data.map((item) => (
-              <tr key={item._id}>
+             {currentData.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{indexOfFirstItem + index + 1}</td>
                 <td className={styles.thStyle}>{item.name}</td>
                 <td className={styles.thStyle}>{item.mobile}</td>
                 <td className={styles.thStyle}>{item.jobTitle}</td>
@@ -192,7 +205,32 @@ export default function AdminPlacement() {
             ))}
           </tbody>
         </table>
+            <div className={styles.pagination}>
+                <button
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Prev
+                </button>
 
+                {[...Array(totalPages)].map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        style={currentPage === i + 1 ? styles.active : ""}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+
+                <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
+</div>
         {/* FULL DETAILS MODAL */}
         {selected && (
           <div className={styles.overlayStyle}>
@@ -231,7 +269,8 @@ export default function AdminPlacement() {
                 ))}
                 <button onClick={() => setSelected(null)}>Close</button>
               </div>
-            </div></div>
+            </div>
+          </div>
         )}
       </div>
     </div>

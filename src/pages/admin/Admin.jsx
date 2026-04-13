@@ -10,6 +10,16 @@ const Admin = () => {
     phone: "",
     qualification: "",
   });
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 10;
+  
+      const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+  
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  
+      const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   //  Fetch data
   const fetchData = async () => {
@@ -76,9 +86,9 @@ const Admin = () => {
               </thead>
 
               <tbody>
-                {data.map((item, index) => (
-                  <tr key={item._id} style={{ borderBottom: "1px solid #ddd" }}>
-                    <td className={styles.tdStyle}>{index + 1}</td>
+               {currentData.map((item, index) => (
+                            <tr key={item._id}>
+                                <td>{indexOfFirstItem + index + 1}</td>
 
                     <td className={styles.tdStyle}>
                       {editId === item._id ? (
@@ -139,6 +149,31 @@ const Admin = () => {
               </tbody>
             </table>
           </div>
+            <div className={styles.pagination}>
+                <button
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    disabled={currentPage === 1}
+                >
+                    Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setCurrentPage(i + 1)}
+                        style={currentPage === i + 1 ? styles.active : ""}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+
+                <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
         </div>
       </div>
     </div>

@@ -22,11 +22,13 @@ const Nav = () => {
 
           {/* Hamburger Menu */}
           <div
-            className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
-          </div>
+  className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 
           {/* Overlay */}
           {menuOpen && (
