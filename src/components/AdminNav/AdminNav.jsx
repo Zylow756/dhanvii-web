@@ -51,6 +51,7 @@ const handleLogout = () => {
 
           <li><Link to="/adminReview">Review</Link></li>
           <li><Link to="/adminPlacement">Career</Link></li>
+          <li><Link to="/adminVideo">Youtube Video</Link></li>
 <li>
         <span onClick={() => setShowLogoutPopup(true)}>Logout</span></li>
         </ul>

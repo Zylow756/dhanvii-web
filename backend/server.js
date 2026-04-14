@@ -9,7 +9,7 @@ import enquiryRoutes from "./routes/enquiry.js";
 import reviewRoutes from "./routes/review.js";
 import placementGalleryRoutes from "./routes/placementGallery.js";
 import galleryRoutes from "./routes/gallery.js";
-
+import videoRoutes from "./routes/video.js";
 
 const app = express();
 dotenv.config();
@@ -24,6 +24,7 @@ app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/placementGallery", placementGalleryRoutes);
 app.use("/api/gallery", galleryRoutes);
+app.use("/api", videoRoutes);         
 
 //  STATIC
 app.use("/uploads", express.static("uploads"));

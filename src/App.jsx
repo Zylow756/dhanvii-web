@@ -16,6 +16,7 @@ import AdminReview from "./pages/admin/AdminReview";
 import ProtectedRoute from "./components/logoutPopup/ProtectedRoute";
 import PlacementGallery from "./pages/admin/PlacementGallery";
 import AdminGallery from "./pages/admin/AdminGallery";
+import AdminVideo from "./pages/admin/AdminVideo";
 
 function App() {
   return (
@@ -62,6 +63,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminReview />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route
+          path="/adminVideo"
+          element={
+            <ProtectedRoute>
+              <AdminVideo />
             </ProtectedRoute>
           }
         />
