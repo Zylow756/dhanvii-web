@@ -2,6 +2,13 @@
   width: 100%;
 }
 
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #4c0803;
+    text-align: center;
+}
+
 /* MAIN LAYOUT */
 .container {
   display: flex;
@@ -48,6 +55,11 @@
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 15px;
+}
+
+.text{
+    line-height: 1.6;
+    color: #4c0803;
 }
 
 /* ICON */

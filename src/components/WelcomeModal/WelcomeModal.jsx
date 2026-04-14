@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./WelcomeModal.module.css";
-//import { jacketAds } from "../../pages/adsData";
 import { AnimatePresence, motion as Motion } from "framer-motion";
 import WelcomeAd from "./WelcomeAd";
 
@@ -48,7 +47,7 @@ const WelcomeModal = () => {
 
                         {/* Optional Banner */}
                         <div className={styles.banner}>
-                            <p>Join Kota's Top Professional Accounting Institute &<br /> Become Job-Ready with experts</p>
+                            <p><strong>Join Kota's Top Professional Accounting Institute<br /> & Become Job-Ready with experts</strong></p>
 
                         </div>
 

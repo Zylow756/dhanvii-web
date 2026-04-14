@@ -64,39 +64,39 @@ const About = () => {
 
         <ul>
           <li>
-            <strong>30+ Years of Expertise</strong> | 30+ वर्षों का अनुभव
+            <strong>30+ Years of Expertise | 30+ वर्षों का अनुभव</strong>
             <p>Decades of excellence in <strong>accounting,finannce & skill development.</strong></p>
           </li>
           <li>
-            <strong>Global Standards</strong> | वैश्विक मानक
+            <strong>Global Standards | वैश्विक मानक</strong>
             <p>Courses are <strong>ISO & IAF certified,</strong>ensuring international quality standards.</p>
           </li>
           <li>
-            <strong>Comprehensive Courses Offerings</strong> | व्यापक पाठ्यक्रम
+            <strong>Comprehensive Courses Offerings | व्यापक पाठ्यक्रम</strong>
             <p>From <strong>Bookkeeping to GST, Income Tax, TDS, H/R ,Payroll Management,</strong> we cover all essential accounting & finance topics.</p>
           </li>
           <li>
-            <strong>Finance & Auditing</strong> | वित्त और ऑडिटिंग
+            <strong>Finance & Auditing | वित्त और ऑडिटिंग</strong>
             <p>Guidance on <strong>compliance, auditing, & professional financial practices.</strong></p>
           </li>
           <li>
-            <strong>Business & Startup Support</strong> |  स्टार्टअप सहायता 
+            <strong>Business & Startup Support |  स्टार्टअप सहायता </strong>
             <p>Assistance for <strong>Startup registration,MSME registration, </strong>& legal formalities.</p>
           </li>
           <li>
-            <strong>Career Support</strong> | करियर सहायता
+            <strong>Career Support | करियर सहायता</strong>
             <p>Help with <strong>resume building, interview guidance, and job placement,</strong>ensuring students are <strong>job-ready</strong></p>
           </li>
           <li>
-            <strong>100% Practical Training </strong> | 100% व्यावहारिक प्रशिक्षण
+            <strong>100% Practical Training  | 100% व्यावहारिक प्रशिक्षण</strong>
             <p>We provide <strong>hands-on, real-world industry training</strong> bridging the gap between theory and practice</p>
           </li>
           <li>
-            <strong>Industry Connections</strong> | उद्योग कनेक्शन
+            <strong>Industry Connections | उद्योग कनेक्शन</strong>
             <p>Collaborations with<strong> top companies</strong> provide students with <strong>internship and placement opportunities</strong></p>
           </li>
           <li>
-            <strong>Personalized Mentorship</strong> | व्यक्तिगत मार्गदर्शन
+            <strong>Personalized Mentorship | व्यक्तिगत मार्गदर्शन</strong>
             <p>Dedicated mentors guide students in <strong>career growth, skill enhancement, and professional success</strong></p>
           </li>
         </ul>

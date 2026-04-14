@@ -93,7 +93,7 @@
 }
 
 .dropdown span {
-  color: #7a1d1d;
+  color: #4c0803;
   font-weight: 500;
 }
 
@@ -103,10 +103,11 @@
   padding-bottom: 10px; 
 }
 .navItem {
-  color: #7a1d1d; 
+  color: #4c0803; 
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 20px;
 }
 
 .navItem:hover {

@@ -8,7 +8,6 @@ const Contact = () => {
     return (
         <div className={styles.root}>
             <Nav />
-
             <div className={styles.container}>
 
                 {/* LEFT - MAP */}
@@ -26,22 +25,23 @@ const Contact = () => {
 
                     <div className={styles.item}>
                         <FaPhoneAlt className={styles.icon} />
-                        <div><strong>Call Us At<br /></strong>
-                        +91 9414729662 [Grievance Call-Sanjay Nagar]<br /> +91 8824248824 [Counselor]<br/> +91 8955989444 [Placement]<br/>+91 8766166166 [WhatsApp]</div>
+                        <div className={styles.text}><strong>Call Us At<br /></strong>
+                        <p>+91 9414729662 [Grievance Call-Sanjay Nagar]<br /> +91 8824248824 [Counselor]<br/> +91 8955989444 [Placement]<br/>+91 8766166166 [WhatsApp]</p></div>
                     </div>
 
                     <div className={styles.item}>
                         <FaEnvelope className={styles.icon} />
-                        <div><strong>Mail Us At</strong><br/>contact.dhanvi@gmail.com<br/>enquiry.dhanvi@gmail.com</div>
+                        <div className={styles.text}><strong>Mail Us At</strong>
+                        <p>contact.dhanvi@gmail.com<br/>enquiry.dhanvi@gmail.com</p></div>
                     </div>
 
                     <div className={styles.item}>
                         <FaBuilding  className={styles.icon} />
-                        <div>
+                        <div className={styles.text}>
                             <strong>Address</strong><br/>
-                            267, Ganesh Nagar,<br />
+                            <p>267, Ganesh Nagar,<br />
                             Near Khade Ganesh Ji Temple,<br />
-                            Kota [Rajasthan] - 324010
+                            Kota [Rajasthan] - 324010</p>
                         </div>
                     </div>
 

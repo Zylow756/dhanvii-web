@@ -1,4 +1,3 @@
-// routes/video.js
 import express from "express";
 import Video from "../models/Video.js";
 
