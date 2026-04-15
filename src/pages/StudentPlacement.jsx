@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../assets/css/StudentPlacement.module.css";
 import Nav from '../components/Nav/Nav';
+import Footer from '../components/Footer/Footer';
 
 const StudentPlacement = () => {
   const [students, setStudents] = useState([]);
@@ -26,6 +27,7 @@ const StudentPlacement = () => {
   return (
     <div className={styles.root}>
       <Nav />
+      <div className={styles.content}>
 <h1 className="hindiHeading">हम सिर्फ ट्रेनिंग नहीं, करियर बनाते हैं</h1>
       <div className={styles.container}>
         {sortedStudents.map((student, index) => (
@@ -57,6 +59,9 @@ const StudentPlacement = () => {
 
         ))}
       </div>
+      </div>
+      
+      <Footer />
     </div>
   );
 };

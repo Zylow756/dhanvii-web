@@ -6,6 +6,7 @@ const Contact = () => {
   return (
     <div className={styles.root}>
       <Nav />
+      <div className={styles.content}>
       <h1 className={styles.heading}>WHAT WE DO?</h1>
       <div className={styles.grid}>
           <div className={styles.card}>
@@ -62,6 +63,7 @@ const Contact = () => {
               </ul>
             </div>
           </div>
+      </div>
       </div>
 
       <Footer />
