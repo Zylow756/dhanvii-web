@@ -22,6 +22,7 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: #f7f2ec67;
   transition: 0.3s;
   height: auto;
 }
@@ -41,8 +42,8 @@
 }
 
 .cardHeader p {
-  color: gray;
   font-size: 14px;
+  color: #4c0803;
 }
 
 /* Description */

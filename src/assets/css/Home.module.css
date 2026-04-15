@@ -114,11 +114,10 @@ textarea {
     resize: vertical;
 }
 
-.error-message {
-    color: red;
-    font-size: 0.875rem;
-    display: none;
-    /* Hidden by default */
+ .error {
+  color: red;
+  font-size: 16px;
+  margin-top: 2px;
 }
 
 .submit-button {

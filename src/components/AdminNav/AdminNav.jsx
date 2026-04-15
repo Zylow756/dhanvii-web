@@ -43,16 +43,16 @@ const handleLogout = () => {
 
         {/* Navigation Links */}
         <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
-          <li><Link to="/Admin">Admin Home</Link></li>
+          <li className={styles.navItem}><Link to="/Admin">Admin Home</Link></li>
 
-                <li><Link to="/placementGallery">Placement Gallery</Link></li>
+                <li className={styles.navItem}><Link to="/placementGallery">Placement Gallery</Link></li>
           {/* Dropdown */}
-          <li><Link to= "/adminFuncGallery">Gallery</Link></li>
+          <li className={styles.navItem}><Link to= "/adminFuncGallery">Gallery</Link></li>
 
-          <li><Link to="/adminReview">Review</Link></li>
-          <li><Link to="/adminPlacement">Career</Link></li>
-          <li><Link to="/adminVideo">Youtube Video</Link></li>
-<li>
+          <li className={styles.navItem}><Link to="/adminReview">Review</Link></li>
+          <li className={styles.navItem}><Link to="/adminPlacement">Career</Link></li>
+          <li className={styles.navItem}><Link to="/adminVideo">Youtube Video</Link></li>
+<li className={styles.navItem}>
         <span onClick={() => setShowLogoutPopup(true)}>Logout</span></li>
         </ul>
       </div>

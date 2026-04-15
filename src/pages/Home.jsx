@@ -13,6 +13,38 @@ const Home = () => {
     phone: "",
     qualification: ""
   });
+   const [errors, setErrors] = useState({});
+  
+    const validateForm = () => {
+      let newErrors = {};
+  
+      // Required fields
+      if (!formData.name) newErrors.name = "Name is required";
+  
+      // Name validation (only letters and spaces)
+      const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+      if (formData.name && !nameRegex.test(formData.name)) {
+        newErrors.name = "Enter valid full name";
+      }
+  
+      if (!formData.phone) newErrors.phone = "Phone number is required";
+  
+      // Phone validation (10 digit)
+      const phoneRegex = /^[0-9]{10}$/;
+      if (formData.phone && !phoneRegex.test(formData.phone)) {
+        newErrors.phone = "Enter valid 10-digit number";
+      }
+  
+      // Indian phone validation (starts with 6-9 and 10 digits)
+      const phoneRegex1 = /^[6-9]\d{9}$/;
+      if (formData.phone && !phoneRegex1.test(formData.phone)) {
+        newErrors.phone = "Enter valid Indian mobile number";
+      }
+  
+      setErrors(newErrors);
+      return Object.keys(newErrors).length === 0;
+    };
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -20,6 +52,11 @@ const Home = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      alert("Please fix errors");
+      return;
+    }
 
     try {
       const res = await fetch("http://localhost:5000/api/enquiry/send", {
@@ -72,12 +109,12 @@ const Home = () => {
             <div className={styles['form-group']}>
               <input type="text" id="name" name="name" placeholder="Your Name"
                 onChange={handleChange} required />
-              <span className={styles['error-message']} id="nameError"></span>
+                {errors.name && <p className={styles["error"]}>{errors.name}</p>}
             </div>
             <div className={styles['form-group']}>
               <input type="tel" id="phone" name="phone" placeholder="Your Phone Number"
                 onChange={handleChange} required />
-              <span className={styles['error-message']} id="phoneError"></span>
+                {errors.phone && <p className={styles["error"]}>{errors.phone}</p>}
             </div>
             <div className={styles['form-group']}>
               <select

@@ -8,6 +8,7 @@ import StudentPlacement from "./pages/StudentPlacement";
 // Gallery Pages
 import FuncGallery from "./pages/gallery/FuncGallery";
 import InstitGallery from "./pages/gallery/InstitGallery";
+import CertiGallery from "./pages/gallery/CertiGallery";
 import { Routes, Route } from 'react-router-dom'; 
 
 import Admin from "./pages/admin/Admin";
@@ -32,6 +33,7 @@ function App() {
         {/*  Gallery Routes */}
         <Route path="/func-gallery" element={<FuncGallery />} />
         <Route path="/instit-gallery" element={<InstitGallery />} />
+        <Route path="/certi-gallery" element={<CertiGallery />} />
         <Route
           path="/adminFuncGallery"
           element={

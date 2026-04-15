@@ -16,35 +16,35 @@ export default function Career() {
     expectedSalary: "",
     jobLocation: "",
     family: Array.from({ length: 3 }, () => ({
-  relation: "",
-  name: "",
-  education: "",
-  working: ""
-})),
+      relation: "",
+      name: "",
+      education: "",
+      working: ""
+    })),
 
-academic: Array.from({ length: 3 }, () => ({
-  qualification: "",
-  stream: "",
-  board: "",
-  year: "",
-  percentage: ""
-})),
+    academic: Array.from({ length: 3 }, () => ({
+      qualification: "",
+      stream: "",
+      board: "",
+      year: "",
+      percentage: ""
+    })),
 
-professional: Array.from({ length: 3 }, () => ({
-  course: "",
-  institute: "",
-  duration: "",
-  remark: ""
-})),
+    professional: Array.from({ length: 3 }, () => ({
+      course: "",
+      institute: "",
+      duration: "",
+      remark: ""
+    })),
 
-experience: Array.from({ length: 3 }, () => ({
-  company: "",
-  post: "",
-  type: "",
-  from: "",
-  to: "",
-  salary: ""
-}))
+    experience: Array.from({ length: 3 }, () => ({
+      company: "",
+      post: "",
+      type: "",
+      from: "",
+      to: "",
+      salary: ""
+    }))
   });
 
   const [errors, setErrors] = useState({});
@@ -54,12 +54,25 @@ experience: Array.from({ length: 3 }, () => ({
 
     // Required fields
     if (!form.name) newErrors.name = "Name is required";
+
+    // Name validation (only letters and spaces)
+    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    if (form.name && !nameRegex.test(form.name)) {
+      newErrors.name = "Enter valid full name";
+    }
+
     if (!form.mobile) newErrors.mobile = "Mobile number is required";
 
     // Phone validation (10 digit)
     const phoneRegex = /^[0-9]{10}$/;
     if (form.mobile && !phoneRegex.test(form.mobile)) {
       newErrors.mobile = "Enter valid 10-digit number";
+    }
+
+    // Indian phone validation (starts with 6-9 and 10 digits)
+    const phoneRegex1 = /^[6-9]\d{9}$/;
+    if (form.mobile && !phoneRegex1.test(form.mobile)) {
+      newErrors.mobile = "Enter valid Indian mobile number";
     }
 
     // Percentage validation (0–100)
@@ -267,6 +280,6 @@ experience: Array.from({ length: 3 }, () => ({
 
         <button type="submit" className={styles["submit-btn"]}>Submit</button>
       </form>
-      </div>
+    </div>
   );
 }

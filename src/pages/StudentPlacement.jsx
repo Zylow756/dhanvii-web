@@ -37,7 +37,7 @@ const StudentPlacement = () => {
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}>
-            <h1 className={styles.heading}>🎓 Congratulations 🎓</h1>
+            <h1 className={styles.heading}>Congratulations</h1>
 
             {/* FIXED IMAGE */}
             <img
@@ -52,7 +52,7 @@ const StudentPlacement = () => {
             <p className={styles.companyCard}>
               {student.company}
             </p>
-            <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong></p>
+            <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
           </div>
 
         ))}

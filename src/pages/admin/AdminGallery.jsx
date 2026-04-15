@@ -45,7 +45,7 @@ const AdminGallery = () => {
     const formData = new FormData();
 
     for (let i = 0; i < file.length; i++) {
-      formData.append("images", file[i]); 
+      formData.append("images", file[i]);
     }
 
     formData.append("category", category);
@@ -82,9 +82,11 @@ const AdminGallery = () => {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            className={styles['select-input']}
           >
             <option value="function">Function</option>
             <option value="institute">Institute</option>
+            <option value="certification">Certification</option>
           </select>
 
           <button onClick={handleUpload}>Upload</button>
@@ -120,12 +122,21 @@ const AdminGallery = () => {
           >
             Institute
           </button>
+          <button
+            className={`${styles.tab} ${activeTab === "certification" ? styles.active : ""}`}
+            onClick={() => {
+              setActiveTab("certification");
+              fetchImages("certification");
+            }}
+          >
+            Certification
+          </button>
         </div>
         {/* Image List */}
         <div className={styles.grid}>
           {Array.isArray(images) &&
             images.map((img) => (
-              <div>
+              <div key={img._id}>
 
                 <div key={img._id} className={styles.card}>
                   <img

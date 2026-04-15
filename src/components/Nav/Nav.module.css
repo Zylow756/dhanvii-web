@@ -95,7 +95,14 @@
 .dropdown span {
   color: #4c0803;
   font-weight: 500;
+  font-size: 20px;
 }
+
+.loginBtn{
+  color: #4c0803;
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;}
 
 /* Parent */
 .dropdown {
@@ -107,6 +114,12 @@
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 20px;
+}
+
+.navItem span{
+  color: #4c0803;
+  font-weight: 500;
   font-size: 20px;
 }
 
