@@ -5,6 +5,7 @@ import Training from "./pages/Courses";
 import Career from "./pages/Career";
 import Services from "./pages/Services";
 import StudentPlacement from "./pages/StudentPlacement";
+import StudentDistance from "./pages/StudentDistance";
 // Gallery Pages
 import FuncGallery from "./pages/gallery/FuncGallery";
 import InstitGallery from "./pages/gallery/InstitGallery";
@@ -18,6 +19,7 @@ import ProtectedRoute from "./components/logoutPopup/ProtectedRoute";
 import PlacementGallery from "./pages/admin/PlacementGallery";
 import AdminGallery from "./pages/admin/AdminGallery";
 import AdminVideo from "./pages/admin/AdminVideo";
+import AdminDistanceGallery from "./pages/admin/AdminDistanceGallery";
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
         <Route path="/career" element={<Career />} />
         <Route path="/services" element={<Services />} />
         <Route path="/studentPlacement" element={<StudentPlacement />} />
+        <Route path="/studentDistance" element={<StudentDistance />} />
 
         {/*  Gallery Routes */}
         <Route path="/func-gallery" element={<FuncGallery />} />
@@ -83,6 +86,15 @@ function App() {
           element={
             <ProtectedRoute>
               <PlacementGallery />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route
+          path="/adminDistanceGallery"
+          element={
+            <ProtectedRoute>
+              <AdminDistanceGallery />
             </ProtectedRoute>
           }
         />

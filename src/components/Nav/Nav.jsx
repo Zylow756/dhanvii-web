@@ -45,6 +45,7 @@ const Nav = () => {
             <li className={styles.navItem}><Link to="/courses">Courses</Link></li>
             <li className={styles.navItem}><Link to="/services">Services</Link></li>
             <li className={styles.navItem}><Link to="/studentPlacement">Placement</Link></li>
+            <li className={styles.navItem}><Link to="/studentDistance">Students</Link></li>
 
             {/* Dropdown */}
             <li className={styles.dropdown}

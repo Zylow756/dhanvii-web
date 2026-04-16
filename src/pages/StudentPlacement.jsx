@@ -28,39 +28,39 @@ const StudentPlacement = () => {
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
-<h1 className="hindiHeading">हम सिर्फ ट्रेनिंग नहीं, करियर बनाते हैं</h1>
-      <div className={styles.container}>
-        {sortedStudents.map((student, index) => (
-          <div className={styles.certificate} key={index}
-            style={{
-              backgroundImage: student.background
-                ? `url(http://localhost:5000/${student.background})`
-                : `linear-gradient(135deg, #f4f79d, #81b2f7)`, // default design
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}>
-            <h1 className={styles.heading}>Congratulations</h1>
+        <h1 className="hindiHeading">हम सिर्फ ट्रेनिंग नहीं, करियर बनाते हैं</h1>
+        <div className={styles.container}>
+          {sortedStudents.map((student, index) => (
+            <div className={styles.certificate} key={index}
+              style={{
+                backgroundImage: student.background
+                  ? `url(http://localhost:5000/${student.background})`
+                  : `linear-gradient(135deg, #f4f79d, #81b2f7)`, // default design
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}>
+              
 
-            {/* FIXED IMAGE */}
-            <img
-              src={`http://localhost:5000/${student.photo.replace(/\\/g, "/")}`}
-              className={styles.photo}
-              alt={student.name}
-            />
+              {/* FIXED IMAGE */}
+              <img
+                src={`http://localhost:5000/${student.photo.replace(/\\/g, "/")}`}
+                className={styles.photo}
+                alt={student.name}
+              />
 
-            <h2 className={styles.name}>{student.name}</h2>
-            <p className={styles.qual}>{student.qualification}</p>
+              <h2 className={styles.name}>{student.name}</h2>
+              <p className={styles.qual}>{student.qualification}</p>
 
-            <p className={styles.companyCard}>
-              {student.company}
-            </p>
-            <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
-          </div>
+              <p className={styles.companyCard}>
+                {student.company}
+              </p>
+              <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
+            </div>
 
-        ))}
+          ))}
+        </div>
       </div>
-      </div>
-      
+
       <Footer />
     </div>
   );

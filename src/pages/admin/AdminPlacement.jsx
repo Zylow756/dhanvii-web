@@ -177,7 +177,7 @@ export default function AdminPlacement() {
         {/* TABLE */}
          <div className={styles.card}>
         <table border="1">
-          <thead style={{ background: "#a97a7a", color: "#ffffff" }}>
+          <thead className={styles.thead}>
             <tr>
               <th>S.No.</th>
               <th>Name</th>

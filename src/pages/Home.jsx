@@ -5,6 +5,7 @@ import styles from '../assets/css/Home.module.css';
 import { useState } from "react";
 import RandomAd from '../components/RandomAd/RandomAd';
 import WelcomeModal from "../components/WelcomeModal/WelcomeModal";
+import FloatingShare from '../components/FloatingShare/FloatingShare';
 
 const Home = () => {
 
@@ -154,6 +155,7 @@ const Home = () => {
         </div>
       </div>
       <StudentReview />
+      <FloatingShare />
       <Footer />
     </div>
 

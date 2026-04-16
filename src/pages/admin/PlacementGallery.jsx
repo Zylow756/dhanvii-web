@@ -1,88 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
+import styles from '../../assets/css/AdminDistanceGallery.module.css';
 
-const styles = {
-  card: {
-    background: "#fff",
-    padding: "20px",
-    borderRadius: "10px",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    marginBottom: "20px",
-  },
-
-  input: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-  },
-
-  textarea: {
-    padding: "10px",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    minHeight: "80px",
-  },
-
-  button: {
-    backgroundColor: "#8B0000",
-    color: "#fff",
-    padding: "10px",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontWeight: "bold",
-  },
-
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
-    marginTop: "10px",
-    textAlign: "center",
-  },
-
-  th: {
-    textAlign: "center",
-    padding: "12px",
-    backgroundColor: "#f1f1f1",
-    borderBottom: "2px solid #ddd",
-    borderLeft: "2px solid #ddd",
-    color:"#090909",
-  },
-
-  td: {
-    padding: "12px",
-    borderBottom: "3px solid #ddd",
-    borderLeft: "2px solid #ddd",
-    textAlign: "center",
-  },
-
-  editBtn: {
-    backgroundColor: "#51e760",
-    color: "#fff",
-    border: "none",
-    padding: "6px 10px",
-    marginRight: "5px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-
-  deleteBtn: {
-    backgroundColor: "#dc3545",
-    color: "#fff",
-    border: "none",
-    padding: "6px 10px",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
-
-  pagination:  {
-  display: "flex",
-  justifyContent: "center",
-  marginTop: "20px",
-  gap: "10px",
-}
-};
 
 const PlacementGallery = () => {
   const [students, setStudents] = useState([]);
@@ -217,14 +137,15 @@ const PlacementGallery = () => {
       <AdminNav />
       <h1>Admin Placement Gallery</h1>
 
-      <div style={styles.card}>
+      <div className={styles.card}>
         <h3>Add New Placement</h3>
         {/* FORM */}
         <form onSubmit={handleSubmit}>
-          <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" style={styles.input} />
-          <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Qualification" style={styles.input} />
-          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Contain with company name" style={styles.textarea} />
-          <input name="salary" value={formData.salary} onChange={handleChange} placeholder="Salary per year" style={styles.input} />
+          <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" className={styles.input} />
+          <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Qualification" className={styles.input} />
+          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name with designation" className={styles.textarea} maxLength={50}/>
+          <p className={styles.p}>{formData.company.length}/50</p>
+          <input name="salary" value={formData.salary} onChange={handleChange} placeholder="Salary per year" className={styles.input} />
           <label>Student Photo
             <input type="file" name="photo" onChange={handleChange} />
           </label>
@@ -236,23 +157,23 @@ const PlacementGallery = () => {
           {photoPreview && <img src={photoPreview} width="100" />}
           {bgPreview && <img src={bgPreview} width="100" />}
 
-          <button type="submit" style={styles.button}>{editId ? "Update" : "Add"}</button>
+          <button type="submit" className={styles.button}>{editId ? "Update" : "Add"}</button>
         </form>
       </div>
 
       {/* TABLE CARD */}
-      <div style={styles.card}>
+      <div className={styles.card}>
         <h3>All Placement</h3>
         <table border="1"
-          style={styles.table}>
-          <thead style={{ background: "#7b0000", color: "#fff" }}>
+          className={styles.table}>
+          <thead className={styles.thead}>
             <tr>
-              <th style={styles.th}>S.No.</th>
-              <th style={styles.th}>Name</th>
-              <th style={styles.th}>Qualification</th>
-              <th style={styles.th}>Company</th>
-              <th style={styles.th}>Salary</th>
-              <th style={styles.th}>Action</th>
+              <th className={styles.th}>S.No.</th>
+              <th className={styles.th}>Name</th>
+              <th className={styles.th}>Qualification</th>
+              <th className={styles.th}>Company</th>
+              <th className={styles.th}>Salary</th>
+              <th className={styles.th}>Action</th>
             </tr>
           </thead>
 
@@ -260,20 +181,20 @@ const PlacementGallery = () => {
             {currentData.map((item, index) => (
                             <tr key={item._id}>
                                 <td>{indexOfFirstItem + index + 1}</td>
-                <td style={styles.td}>{item.name}</td>
-                <td style={styles.td}>{item.qualification}</td>
-                <td style={styles.td}>{item.company}</td>
-                <td style={styles.td}>{item.salary}</td>
-                <td style={styles.td}>
-                  <button style={styles.editBtn} onClick={() => handleEdit(item)}>✏️ Edit</button>
-                  <button style={styles.deleteBtn} onClick={() => handleDelete(item._id)}> 🗑 Delete</button>
+                <td className={styles.td}>{item.name}</td>
+                <td className={styles.td}>{item.qualification}</td>
+                <td className={styles.td}>{item.company}</td>
+                <td className={styles.td}>{item.salary}</td>
+                <td className={styles.td}>
+                  <button className={styles.editBtn} onClick={() => handleEdit(item)}>✏️ Edit</button>
+                  <button className={styles.deleteBtn} onClick={() => handleDelete(item._id)}> 🗑 Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-            <div style={styles.pagination}>
+            <div className={styles.pagination}>
                 <button
                     onClick={() => setCurrentPage(prev => prev - 1)}
                     disabled={currentPage === 1}
@@ -285,7 +206,7 @@ const PlacementGallery = () => {
                     <button
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
-                        style={currentPage === i + 1 ? styles.active : {}}
+                        className={currentPage === i + 1 ? styles.active : {}}
                     >
                         {i + 1}
                     </button>

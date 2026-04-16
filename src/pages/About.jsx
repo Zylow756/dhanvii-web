@@ -22,7 +22,7 @@ const About = () => {
           We are <strong>ISO 9001:2015 certified</strong> and accredited by <strong>International Accreditation Forum</strong> [IAF], ensuring that our courses meet <strong>global quality standards.</strong>Our program are recognized for excellence in <strong>practical knowledge,professional skills, & career readiness</strong>
           <br />
           <span>
-            We are registered with <strong>MSME & NCS,</strong> offering professional courses and skill development programs to empower students and working professionals. 
+            We are registered with <strong>MSME & NCS,</strong> offering professional courses and skill development programs to empower students and working professionals.
           </span>
         </p>
       </section>
@@ -53,7 +53,7 @@ const About = () => {
             <strong>Professional Skills | <span>पेशेवर कौशल</span></strong>
           </li>
         </ul>
-<p>Through <strong>hands-on practical training & real-world exposure,</strong>we ensure students gain experience that makes them <strong>industry-ready.</strong> Our program are designed to develop both <strong>knowledge & confidence,</strong> helping students excel in their careers.</p>
+        <p>Through <strong>hands-on practical training & real-world exposure,</strong>we ensure students gain experience that makes them <strong>industry-ready.</strong> Our program are designed to develop both <strong>knowledge & confidence,</strong> helping students excel in their careers.</p>
       </section>
 
       {/* Why Choose Us */}

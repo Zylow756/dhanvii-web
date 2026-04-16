@@ -10,62 +10,63 @@ const AdminNav = () => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const navigate = useNavigate();
 
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  navigate("/");
-};
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
-  <>
-    <nav className={styles.navbar}>
-      <div className={styles['nav-container']}>
+    <>
+      <nav className={styles.navbar}>
+        <div className={styles['nav-container']}>
 
-        {/* Logo */}
-        <div className={styles['logo']}>
-          <img src={logo} alt="logo" />
-        </div>
+          {/* Logo */}
+          <div className={styles['logo']}>
+            <img src={logo} alt="logo" />
+          </div>
 
-        {/* Hamburger Menu */}
-        <div
-          className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </div>
-
-        {/* Overlay */}
-        {menuOpen && (
+          {/* Hamburger Menu */}
           <div
-            className={styles['overlay']}
-            onClick={() => setMenuOpen(false)}
-          ></div>
-        )}
+            className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </div>
 
-        {/* Navigation Links */}
-        <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
-          <li className={styles.navItem}><Link to="/Admin">Admin Home</Link></li>
+          {/* Overlay */}
+          {menuOpen && (
+            <div
+              className={styles['overlay']}
+              onClick={() => setMenuOpen(false)}
+            ></div>
+          )}
 
-                <li className={styles.navItem}><Link to="/placementGallery">Placement Gallery</Link></li>
-          {/* Dropdown */}
-          <li className={styles.navItem}><Link to= "/adminFuncGallery">Gallery</Link></li>
+          {/* Navigation Links */}
+          <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
+            <li className={styles.navItem}><Link to="/Admin">Admin Home</Link></li>
 
-          <li className={styles.navItem}><Link to="/adminReview">Review</Link></li>
-          <li className={styles.navItem}><Link to="/adminPlacement">Career</Link></li>
-          <li className={styles.navItem}><Link to="/adminVideo">Youtube Video</Link></li>
-<li className={styles.navItem}>
-        <span onClick={() => setShowLogoutPopup(true)}>Logout</span></li>
-        </ul>
-      </div>
-    </nav>
+            <li className={styles.navItem}><Link to="/placementGallery">Placement Gallery</Link></li>
+            <li className={styles.navItem}><Link to="/adminDistanceGallery">Students</Link></li>
+            {/* Dropdown */}
+            <li className={styles.navItem}><Link to="/adminFuncGallery">Gallery</Link></li>
 
-    {showLogoutPopup && (
-  <LogoutPopup
-    onConfirm={handleLogout}
-    onCancel={() => setShowLogoutPopup(false)}
-  />
-)}
-  </>
-);
+            <li className={styles.navItem}><Link to="/adminReview">Review</Link></li>
+            <li className={styles.navItem}><Link to="/adminPlacement">Career</Link></li>
+            <li className={styles.navItem}><Link to="/adminVideo">Youtube Video</Link></li>
+            <li className={styles.navItem}>
+              <span onClick={() => setShowLogoutPopup(true)}>Logout</span></li>
+          </ul>
+        </div>
+      </nav>
+
+      {showLogoutPopup && (
+        <LogoutPopup
+          onConfirm={handleLogout}
+          onCancel={() => setShowLogoutPopup(false)}
+        />
+      )}
+    </>
+  );
 };
 
 export default AdminNav;

@@ -1,5 +1,4 @@
 import styles from './Footer.module.css'
-import FloatingShare from '../FloatingShare/FloatingShare';
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -12,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-        <FloatingShare />
+        
       <div className={styles['footer-area']}>
       <div className={styles['footer-bottom-area']}>
         <p>© Dhanvii Accounting System. All rights reserved.</p>
