@@ -17,6 +17,7 @@
     border-radius: 6px;
     border: 1px solid #ccc;
     min-height: 80px;
+  white-space: pre-line;
   }
 
   .p {
@@ -87,4 +88,9 @@
   justify-content: center;
   margin-top: 20px;
   gap: 10px;
+}
+
+.tableContainer { 
+  border: 1px solid #ddd;
+  padding: 10px;
 }

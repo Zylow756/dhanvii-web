@@ -24,11 +24,25 @@ const StudentPlacement = () => {
     (a, b) => Number(b.salary) - Number(a.salary)
   );
 
+  const formatCompany = (text) => {
+  if (!text) return "";
+
+  // Split by comma, dash, or newline
+  let parts = text.split(/,|-|\n/).map(item => item.trim());
+
+  // If only one part, return as is
+  if (parts.length === 1) return parts[0];
+
+  // Return first two parts in new lines
+  return parts.slice(0, 2).join("\n");
+};
+
   return (
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
-        <h1 className="hindiHeading">हम सिर्फ ट्रेनिंग नहीं, करियर बनाते हैं</h1>
+        <h2 className="heading">Training Tuh Bahut Milti Hai...</h2>
+        <h2 className="heading">Par Career Yaha Banta Hai.</h2>
         <div className={styles.container}>
           {sortedStudents.map((student, index) => (
             <div className={styles.certificate} key={index}
@@ -52,7 +66,7 @@ const StudentPlacement = () => {
               <p className={styles.qual}>{student.qualification}</p>
 
               <p className={styles.companyCard}>
-                {student.company}
+                {formatCompany(student.company)}
               </p>
               <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
             </div>

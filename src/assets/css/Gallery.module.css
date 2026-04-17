@@ -28,7 +28,7 @@
 
 .card img {
   width: 100%;
-  height: 200px;        /* same height for all */
+  min-height: 200px;        /* same height for all */
   object-fit: cover;    /* crop nicely */
   border-radius: 10px;
 }

@@ -4,7 +4,6 @@ import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/AdminDistanceGallery.module.css';
 
 const AdminDistanceGallery = () => {
-  const [students, setStudents] = useState([]);
   const [form, setForm] = useState({
     name: "",
     address: "",
@@ -14,27 +13,38 @@ const AdminDistanceGallery = () => {
     isTop: false,
   });
 
+  const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
-  const [filterCity] = useState("");
   const [imageFile, setImageFile] = useState(null);
-
-const filteredStudents = filterCity
-  ? students.filter((s) => s.city === filterCity)
-  : students;
-
-
-  useEffect(() => {
-    const fetchStudents = async () => {
-      const res = await axios.get("http://localhost:5000/api/far-students");
-      setStudents(res.data);
-    };
-    fetchStudents();
-  }, []);
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 10;
+  
+      const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+  
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  
+      const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = async () => {
     const res = await axios.get("http://localhost:5000/api/far-students");
-    setStudents(res.data);
+    
+    const result = await res.data;
+    setData(result);
   };
+
+      useEffect(() => {
+          const loadData = async () => {
+              try {
+                  await fetchStudents();
+              } catch (err) {
+                  console.error("Error fetching reviews:", err);
+              }
+          };
+  
+          loadData();
+      }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -46,33 +56,33 @@ const filteredStudents = filterCity
 
   // ADD or UPDATE
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const data = new FormData();
-  data.append("name", form.name);
-  data.append("address", form.address);
-  data.append("distance", form.distance);
-  data.append("city", form.city);
-  data.append("isTop", form.isTop);
+    const data = new FormData();
+    data.append("name", form.name);
+    data.append("address", form.address);
+    data.append("distance", form.distance);
+    data.append("city", form.city);
+    data.append("isTop", form.isTop);
 
-  if (imageFile) {
-    data.append("image", imageFile);
-  }
+    if (imageFile) {
+      data.append("image", imageFile);
+    }
 
-  if (editId) {
-    await axios.put(
-      `http://localhost:5000/api/far-students/${editId}`,
-      data
-    );
-  } else {
-    await axios.post(
-      "http://localhost:5000/api/far-students/add",
-      data
-    );
-  }
+    if (editId) {
+      await axios.put(
+        `http://localhost:5000/api/far-students/${editId}`,
+        data
+      );
+    } else {
+      await axios.post(
+        "http://localhost:5000/api/far-students/add",
+        data
+      );
+    }
 
-  fetchStudents();
-};
+    fetchStudents();
+  };
 
   // DELETE
   const handleDelete = async (id) => {
@@ -89,8 +99,8 @@ const filteredStudents = filterCity
   };
 
   const handleFileChange = (e) => {
-  setImageFile(e.target.files[0]);
-};
+    setImageFile(e.target.files[0]);
+  };
 
   return (
     <div className={styles['root']}>
@@ -101,7 +111,7 @@ const filteredStudents = filterCity
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
         <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
         <input name="address" placeholder="Area" value={form.address} onChange={handleChange} required />
-        <input name="distance" placeholder="Distance (e.g. 80 KM)" value={form.distance} onChange={handleChange} />
+        <input name="distance" placeholder="Distance (e.g. 80)" value={form.distance} onChange={handleChange} />
         <input name="city" placeholder="City (e.g. Kota, Bundi)" value={form.city} onChange={handleChange} />
         <input type="file" name="image" onChange={handleFileChange} />
 
@@ -111,33 +121,60 @@ const filteredStudents = filterCity
       </form>
 
       {/* LIST */}
-      <table border="1" cellPadding="10">
+      <table className={styles.tableContainer}>
         <thead className={styles.thead}>
           <tr>
+            <th className={styles.thStyle}>S.No.</th>
             <th className={styles.thStyle}>Name</th>
             <th className={styles.thStyle}>City</th>
-            <th className={styles.thStyle}>Distance</th>
+            <th className={styles.thStyle}>Distance[km]</th>
             <th className={styles.thStyle}>Area</th>
             <th className={styles.thStyle}>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          {filteredStudents.map((s) => (
+          {currentData.map((s, index) => (
             <tr key={s._id}>
+              <td className={styles.tdStyle}>{indexOfFirstItem + index + 1}</td>
               <td className={styles.tdStyle}>{s.name}</td>
               <td className={styles.tdStyle}>{s.city}</td>
               <td className={styles.tdStyle}>{s.distance}</td>
               <td className={styles.tdStyle}>{s.address}</td>
 
               <td className={styles.tdStyle}>
-                <button className={styles.editBtn} onClick={() => handleEdit(s)}>Edit</button>
-                <button className={styles.deleteBtn} onClick={() => handleDelete(s._id)}>Delete</button>
+                <button className={styles.editBtn} onClick={() => handleEdit(s)}>✏️ Edit</button>
+                <button className={styles.deleteBtn} onClick={() => handleDelete(s._id)}> 🗑 Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className={styles.pagination}>
+        <button
+          onClick={() => setCurrentPage(prev => prev - 1)}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </button>
+
+        {[...Array(totalPages)].map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentPage(i + 1)}
+            style={currentPage === i + 1 ? styles.active : ""}
+          >
+            {i + 1}
+          </button>
+        ))}
+
+        <button
+          onClick={() => setCurrentPage(prev => prev + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

@@ -75,7 +75,7 @@ const styles = {
 
     image: {
         width: "50px",
-        height: "50px",
+        minHeight: "50px",
         borderRadius: "50%",
         objectFit: "cover",
     },
@@ -105,16 +105,16 @@ const styles = {
         cursor: "pointer",
     },
 
-    pagination:  {
-  display: "flex",
-  justifyContent: "center",
-  marginTop: "20px",
-  gap: "10px",
-}
+    pagination: {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: "20px",
+        gap: "10px",
+    }
 };
 
 const AdminReview = () => {
-    const [ reviews, setReviews] = useState([]);
+    const [reviews, setReviews] = useState([]);
     const [editId, setEditId] = useState(null);
     const [form, setForm] = useState({
         name: "",
@@ -154,7 +154,7 @@ const AdminReview = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    const formData = new FormData();
+        const formData = new FormData();
         formData.append("name", form.name);
         formData.append("message", form.message);
         formData.append("path", form.path);

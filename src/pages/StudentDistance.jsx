@@ -8,6 +8,7 @@ import axios from "axios";
 const StudentDistance = () => {
   const [students, setStudents] = useState([]);
 
+
   useEffect(() => {
     axios.get("http://localhost:5000/api/far-students")
       .then(res => {
@@ -17,9 +18,15 @@ const StudentDistance = () => {
       .catch(err => console.error(err));
   }, []);
 
+  if (students.length === 0) {
+    return <h2>No Data Found !!!</h2>;
+  }
+
   const sortedStudents = [...students].sort(
-    (a, b) => Number(b.salary) - Number(a.salary)
+    (a, b) => Number(b.distance) - Number(a.distance)
   );
+
+
 
   return (
     <div className={styles.root}>
@@ -31,8 +38,8 @@ const StudentDistance = () => {
           {sortedStudents.map((student, index) => (
             <div
               key={student.id}
-              className={styles.certificate}
-               key={index}
+              className={styles.card}
+              key={index}
               style={{
                 backgroundImage: `linear-gradient(135deg, #f4f79d, #81b2f7)`,
                 backgroundSize: "cover",

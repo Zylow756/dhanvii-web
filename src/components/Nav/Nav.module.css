@@ -39,7 +39,7 @@
 /* Hamburger */
 .menu-icon {
   width: 30px;
-  height: 25px;
+  min-height: 25px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -49,7 +49,7 @@
 
 /* Hamburger lines */
 .menu-icon span {
-  height: 3px;
+  min-height: 3px;
   width: 100%;
   background: #4c0803;
   border-radius: 2px;

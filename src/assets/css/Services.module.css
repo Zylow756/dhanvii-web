@@ -30,7 +30,7 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   background: #f7f2ec67;
   transition: 0.3s;
-  height: auto;
+  min-height: auto;
 }
 
 .card:hover {
