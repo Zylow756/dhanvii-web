@@ -168,12 +168,12 @@ const PlacementGallery = () => {
           className={styles.table}>
           <thead className={styles.thead}>
             <tr>
-              <th className={styles.th}>S.No.</th>
-              <th className={styles.th}>Name</th>
-              <th className={styles.th}>Qualification</th>
-              <th className={styles.th}>Company</th>
-              <th className={styles.th}>Salary</th>
-              <th className={styles.th}>Action</th>
+              <th className={styles.thStyle}>S.No.</th>
+              <th className={styles.thStyle}>Name</th>
+              <th className={styles.thStyle}>Qualification</th>
+              <th className={styles.thStyle}>Company</th>
+              <th className={styles.thStyle}>Salary</th>
+              <th className={styles.thStyle}>Action</th>
             </tr>
           </thead>
 
@@ -181,11 +181,11 @@ const PlacementGallery = () => {
             {currentData.map((item, index) => (
                             <tr key={item._id}>
                                 <td>{indexOfFirstItem + index + 1}</td>
-                <td className={styles.td}>{item.name}</td>
-                <td className={styles.td}>{item.qualification}</td>
-                <td className={styles.td}>{item.company}</td>
-                <td className={styles.td}>{item.salary}</td>
-                <td className={styles.td}>
+                <td className={styles.tdStyle}>{item.name}</td>
+                <td className={styles.tdStyle}>{item.qualification}</td>
+                <td className={styles.tdStyle}>{item.company}</td>
+                <td className={styles.tdStyle}>{item.salary}</td>
+                <td className={styles.tdStyle}>
                   <button className={styles.editBtn} onClick={() => handleEdit(item)}>✏️ Edit</button>
                   <button className={styles.deleteBtn} onClick={() => handleDelete(item._id)}> 🗑 Delete</button>
                 </td>

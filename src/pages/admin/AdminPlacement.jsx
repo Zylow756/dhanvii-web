@@ -197,7 +197,7 @@ export default function AdminPlacement() {
                 <td className={styles.thStyle}>{item.jobTitle}</td>
                 <td className={styles.thStyle}>{item.expectedSalary}</td>
 
-                <td>
+                <td className={styles.thStyle}>
                   <button onClick={() => setSelected(item)}>View</button>
                   <button onClick={() => handleDelete(item._id)}>Delete</button>
                 </td>
