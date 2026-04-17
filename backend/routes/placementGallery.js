@@ -39,7 +39,6 @@ router.post("/", upload.fields([
       qualification: req.body.qualification,
       company: req.body.company,
   salary: Number(req.body.salary),
-      photo: req.files["photo"]?.[0]?.path.replace(/\\/g, "/"),
       background: req.files["background"]?.[0]?.path.replace(/\\/g, "/")
     });
 
@@ -53,7 +52,6 @@ router.post("/", upload.fields([
 
 //  UPDATE student
 router.put("/:id", upload.fields([
-  { name: "photo", maxCount: 1 },
   { name: "background", maxCount: 1 }
 ]), async (req, res) => {
   try {
@@ -65,10 +63,6 @@ router.put("/:id", upload.fields([
     };
 
     // optional update for images
-    if (req.files["photo"]) {
-      updateData.photo = req.files["photo"][0].path.replace(/\\/g, "/");
-    }
-
     if (req.files["background"]) {
       updateData.background = req.files["background"][0].path.replace(/\\/g, "/");
     }

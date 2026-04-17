@@ -35,11 +35,10 @@ const StudentDistance = () => {
         <h1 className="hindiHeading">Far Away Distance Students</h1>
 
         <div className={styles.container}>
-          {sortedStudents.map((student, index) => (
+          {sortedStudents.map((student) => (
             <div
-              key={student.id}
+              key={student._id}
               className={styles.card}
-              key={index}
               style={{
                 backgroundImage: `linear-gradient(135deg, #f4f79d, #81b2f7)`,
                 backgroundSize: "cover",

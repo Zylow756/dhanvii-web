@@ -25,17 +25,17 @@ const StudentPlacement = () => {
   );
 
   const formatCompany = (text) => {
-  if (!text) return "";
+    if (!text) return "";
 
-  // Split by comma, dash, or newline
-  let parts = text.split(/,|-|\n/).map(item => item.trim());
+    // Split by comma, dash, or newline
+    let parts = text.split(/,|\n/).map(item => item.trim());
 
-  // If only one part, return as is
-  if (parts.length === 1) return parts[0];
+    // If only one part, return as is
+    if (parts.length === 1) return parts[0];
 
-  // Return first two parts in new lines
-  return parts.slice(0, 2).join("\n");
-};
+    // Return first two parts in new lines
+    return parts.slice(0, 3).join("\n");
+  };
 
   return (
     <div className={styles.root}>
@@ -44,37 +44,39 @@ const StudentPlacement = () => {
         <h2 className="heading">Training Tuh Bahut Milti Hai...</h2>
         <h2 className="heading">Par Career Yaha Banta Hai.</h2>
         <div className={styles.container}>
-          {sortedStudents.map((student, index) => (
-            <div className={styles.certificate} key={index}
+          {sortedStudents.map((student) => (
+            
+            <div className={styles.certificate} key={student._id}
               style={{
                 backgroundImage: student.background
                   ? `url(http://localhost:5000/${student.background})`
                   : `linear-gradient(135deg, #f4f79d, #81b2f7)`, // default design
-                backgroundSize: "cover",
-                backgroundPosition: "center"
+                backgroundSize: "100% 100%",
+backgroundPosition: "center"
               }}>
-              
+      
+<div className={styles.card}>
+              <div className={styles.topContent}>
+                <h2 className={styles.name}>{student.name}</h2>
+                <p className={styles.qual}>{student.qualification}</p>
 
-              {/* FIXED IMAGE */}
-              <img
-                src={`http://localhost:5000/${student.photo.replace(/\\/g, "/")}`}
-                className={styles.photo}
-                alt={student.name}
-              />
+              </div>
 
-              <h2 className={styles.name}>{student.name}</h2>
-              <p className={styles.qual}>{student.qualification}</p>
+              <div className={styles.middleContent}>
+                <p className={styles.companyCard}>
+                  {formatCompany(student.company)}
+                </p>
 
-              <p className={styles.companyCard}>
-                {formatCompany(student.company)}
-              </p>
-              <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
+              </div>
+
+              <div className={styles.bottomContent}>
+                <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
+              </div>
             </div>
-
+            </div>
           ))}
         </div>
-      </div>
-
+</div>
       <Footer />
     </div>
   );

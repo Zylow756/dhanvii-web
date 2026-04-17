@@ -5,7 +5,6 @@ const placementGallerySchema = new mongoose.Schema({
   qualification: String,
   company: String,
   salary: Number,
-  photo: String,
   background: {
   type: String
 }

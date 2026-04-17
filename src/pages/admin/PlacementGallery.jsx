@@ -11,11 +11,9 @@ const PlacementGallery = () => {
     qualification: "",
     company: "",
     salary: "",
-    photo: null,
     background: null,
   });
   const [editId, setEditId] = useState(null);
-  const [photoPreview, setPhotoPreview] = useState(null);
   const [bgPreview, setBgPreview] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -47,12 +45,7 @@ const PlacementGallery = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-    if (name === "photo") {
-      const file = files[0];
-      setFormData(prev => ({ ...prev, photo: file }));
-      setPhotoPreview(URL.createObjectURL(file));
-    }
-    else if (name === "background") {
+    if (name === "background") {
       const file = files[0];
       setFormData(prev => ({ ...prev, background: file }));
       setBgPreview(URL.createObjectURL(file));
@@ -74,10 +67,6 @@ const PlacementGallery = () => {
     data.append("salary", formData.salary);
 
     // ONLY append if it's FILE
-    if (formData.photo instanceof File) {
-      data.append("photo", formData.photo);
-    }
-
     if (formData.background instanceof File) {
       data.append("background", formData.background);
     }
@@ -116,13 +105,10 @@ const PlacementGallery = () => {
       qualification: student.qualification,
       company: student.company,
       salary: student.salary || "",
-      photo: null,
       background: null
     });
-    setPhotoPreview(null);
     setBgPreview(null);
     setEditId(student._id);
-    setPhotoPreview(`http://localhost:5000/${student.photo}`);
     setBgPreview(`http://localhost:5000/${student.background}`);
   };
 
@@ -145,18 +131,15 @@ const PlacementGallery = () => {
         <form onSubmit={handleSubmit}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" className={styles.input} />
           <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Qualification" className={styles.input} />
-          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name with designation" className={styles.textarea} maxLength={50} />
-          <p className={styles.p}>{formData.company.length}/50</p>
+          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name" className={styles.textarea} maxLength={75} />
+          <p className={styles.p}>{formData.company.length}/75</p>
           <input name="salary" value={formData.salary} onChange={handleChange} placeholder="Salary per year" className={styles.input} />
-          <label>Student Photo
-            <input type="file" name="photo" onChange={handleChange} />
-          </label>
+          
           <label>Background Image
             <input type="file" name="background" onChange={handleChange} />
           </label>
 
           {/*  IMAGE PREVIEW */}
-          {photoPreview && <img src={photoPreview} width="100" />}
           {bgPreview && <img src={bgPreview} width="100" />}
 
           <button type="submit" className={styles.button}>{editId ? "Update" : "Add"}</button>
