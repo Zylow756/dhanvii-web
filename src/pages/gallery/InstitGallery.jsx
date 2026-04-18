@@ -58,7 +58,9 @@ const FuncGallery = () => {
                 src={`http://localhost:5000/uploads/${img.image}`}
                 alt="gallery"
               />
-              <div className={styles.overlay}>View</div>
+              <div className={styles.overlay}>
+                <p className={styles.desc}>{img.description}</p>            
+              </div>
             </div>
           ))}
         </div>

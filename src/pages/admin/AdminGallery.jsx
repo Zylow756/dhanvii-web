@@ -15,6 +15,15 @@ const AdminGallery = () => {
   const [editCategory, setEditCategory] = useState("");
   const [editFile, setEditFile] = useState(null);
 
+  
+      const [currentPage, setCurrentPage] = useState(1);
+      const itemsPerPage = 21;
+      const totalPages = Math.ceil(images.length / itemsPerPage);
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentData = images.slice(indexOfFirstItem, indexOfLastItem);
+
+
   const fetchImages = useCallback(async (category = "all") => {
     let url = "http://localhost:5000/api/gallery";
 
@@ -200,12 +209,9 @@ const AdminGallery = () => {
         </div>
 
         {/* Image List */}
+       
         <div className={styles.grid}>
-          {Array.isArray(images) &&
-            images.map((img) => (
-
-
-
+          {Array.isArray(images) && currentData.map((img) => (
               <div key={img._id} className={styles.card}>
                 <img
                   src={`http://localhost:5000/uploads/${img.image}`}
@@ -234,6 +240,31 @@ const AdminGallery = () => {
 
             ))}
         </div>
+                    <div className={styles.pagination}>
+                        <button
+                            onClick={() => setCurrentPage(prev => prev - 1)}
+                            disabled={currentPage === 1}
+                        >
+                            Prev
+                        </button>
+        
+                        {[...Array(totalPages)].map((_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentPage(i + 1)}
+                                className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.active : ""}`}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+        
+                        <button
+                            onClick={() => setCurrentPage(prev => prev + 1)}
+                            disabled={currentPage === totalPages}
+                        >
+                            Next
+                        </button>
+                    </div>
       </div>
     </div>
   );
