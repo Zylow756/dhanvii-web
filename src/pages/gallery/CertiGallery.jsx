@@ -10,22 +10,22 @@ const CertiGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
 
   const fetchImages = async () => {
-      const res = await axios.get("http://localhost:5000/api/gallery?category=certification");
-      setImages(res.data);
-    
-  };
-  
-  useEffect(() => {
-        const loadData = async () => {
-            try {
-                await fetchImages();
-            } catch (err) {
-                console.error("Error fetching reviews:", err);
-            }
-        };
+    const res = await axios.get("http://localhost:5000/api/gallery?category=certification");
+    setImages(res.data);
 
-        loadData();
-    }, []);
+  };
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        await fetchImages();
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const openPopup = (index) => setCurrentIndex(index);
   const closePopup = () => setCurrentIndex(null);
@@ -56,7 +56,9 @@ const CertiGallery = () => {
                 src={`http://localhost:5000/uploads/${img.image}`}
                 alt="gallery"
               />
-              <div className={styles.overlay}>View</div>
+              <div className={styles.overlay}>
+                <p className={styles.desc}>{img.description}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -74,7 +76,7 @@ const CertiGallery = () => {
             />
 
             <button className={styles.next} onClick={nextImage}>
-                        <FaChevronRight /></button>
+              <FaChevronRight /></button>
           </div>
         )}
       </div>

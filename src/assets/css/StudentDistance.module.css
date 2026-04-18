@@ -1,0 +1,83 @@
+.root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+} 
+
+/*  MAIN CONTAINER */
+.container {
+  display: flex;
+  flex-wrap: wrap;   /* allows next row */
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 70px;
+}
+
+.card {
+    width: 280px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* HEADER */
+.heading {
+  font-size: 32px;
+  color: #a31515;
+  margin: 10px 0;
+  font-family: 'Great Vibes', cursive;
+  letter-spacing: 1px;
+}
+
+.address {
+  font-size: 20px;
+  color: #a31515;
+  margin: 0%;
+}
+
+.photoCircle {
+  width: 150px;
+  height: 150px;
+  border: 4px solid gold;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;        /* 🔥 important */
+  margin: 20px auto;     /* 🔥 centers horizontally */
+}
+
+/* NAME */
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1px;
+}
+
+@media (max-width: 768px) {
+  .certificate {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .photoCircle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+  
+  h1 {
+    font-size: 22px;   /* 🔥 reduce size */
+    line-height: 1.4;  /* improve readability */
+    padding: 0 10px;   /* spacing from sides */
+    word-break: break-word;
+  }
+}

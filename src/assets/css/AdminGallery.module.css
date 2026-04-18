@@ -72,8 +72,9 @@
 
 .card img {
   width: 100%;
-  min-height: 150px;
-  object-fit: cover;
+  height: 250px;       
+  object-fit: cover;    /* crop nicely */
+  border-radius: 10px;
 }
 
 /* Category Badge */
@@ -87,6 +88,14 @@
   font-size: 12px;
   border-radius: 5px;
   text-transform: capitalize;
+}
+
+.desc{
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  font-size: 14px;
+  color: #a12323;
 }
 
 /* Delete Button */

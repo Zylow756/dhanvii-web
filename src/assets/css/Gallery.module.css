@@ -5,10 +5,9 @@
 }
 
 .galleryContainer {
-  padding: 0px;
-  max-width: 700px;
-  margin: 30px;
-  flex: 1;
+  width: 100%;        
+  max-width: 100%;
+  padding: 20px;
 }
 
 /* Grid */
@@ -28,7 +27,7 @@
 
 .card img {
   width: 100%;
-  min-height: 200px;        /* same height for all */
+  height: 250px;       
   object-fit: cover;    /* crop nicely */
   border-radius: 10px;
 }
@@ -42,16 +41,19 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0,0,0,0.6);
+  background: #a31515;
   color: white;
   text-align: center;
   padding: 10px;
-  opacity: 0;
-  transition: 0.3s;
+  opacity: 1;
 }
 
-.card:hover .overlay {
-  opacity: 1;
+.desc {
+  text-align: center;
+  margin: 0px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
 }
 
 /* ================= MODAL ================= */
@@ -130,20 +132,3 @@
 }
 
 
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-}

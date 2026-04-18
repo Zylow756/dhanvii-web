@@ -29,7 +29,7 @@ router.post("/upload", upload.array("images", 10), async (req, res) => {
       return res.status(400).json({ msg: "No files uploaded" });
     }
 
-    const category = req.body.category;
+    const { category, description } = req.body;
 
     if (!category) {
       return res.status(400).json({ msg: "Category missing" });
@@ -41,6 +41,7 @@ router.post("/upload", upload.array("images", 10), async (req, res) => {
       const newFileName = "compressed-" + file.filename;
 
       await sharp(file.path)
+        .rotate()    // auto-rotate based on EXIF data
         .resize(800)
         .jpeg({ quality: 70 })
         .toFile(`uploads/${newFileName}`);
@@ -50,6 +51,7 @@ router.post("/upload", upload.array("images", 10), async (req, res) => {
       compressedImages.push({
         image: newFileName,
         category: category,
+        description: description,
       });
     }
 
@@ -80,7 +82,7 @@ router.get("/", async (req, res) => {
 });
 
 
-// ✅ DELETE IMAGE
+//  DELETE IMAGE
 router.delete("/:id", async (req, res) => {
   try {
     const image = await Gallery.findById(req.params.id);
@@ -94,6 +96,48 @@ router.delete("/:id", async (req, res) => {
     await Gallery.findByIdAndDelete(req.params.id);
 
     res.json({ msg: "Deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+//  UPDATE DATA
+router.put("/:id", upload.single("image"), async (req, res) => {
+  try {
+    const imageDoc = await Gallery.findById(req.params.id);
+    if (!imageDoc) {
+      return res.status(404).json({ message: "Image not found" });
+    }
+
+    let updatedData = {
+      description: req.body.description,
+      category: req.body.category,
+    };
+
+    //  If new image uploaded
+    if (req.file) {
+      const newFileName = "compressed-" + req.file.filename;
+
+      await sharp(req.file.path)
+       //.rotate()    // auto-rotate based on EXIF data
+        .resize(800)
+        .jpeg({ quality: 70 })
+        .toFile(`uploads/${newFileName}`);
+
+      // delete old image
+      fs.unlinkSync(`uploads/${imageDoc.image}`);
+      fs.unlinkSync(req.file.path);
+
+      updatedData.image = newFileName;
+    }
+
+    const updated = await Gallery.findByIdAndUpdate(
+      req.params.id,
+      updatedData,
+      { returnDocument: "after", runValidators: true }
+    );
+
+    res.json(updated);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

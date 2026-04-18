@@ -7,10 +7,13 @@ const gallerySchema = new mongoose.Schema(
       required: true,
     },
     category: {
-      type: String,   // ✅ ADD THIS
+      type: String,  
       required: true,
-      enum: ["function", "institute", "certification"], // optional but recommended
+      enum: ["function", "institute", "certification"],
     },
+    description: {
+      type: String
+    }
   },
   { timestamps: true }
 );

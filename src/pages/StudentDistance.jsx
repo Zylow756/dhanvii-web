@@ -1,4 +1,4 @@
-import styles from "../assets/css/StudentPlacement.module.css";
+import styles from "../assets/css/StudentDistance.module.css";
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import React, { useEffect, useState } from "react";

@@ -6,9 +6,14 @@ import AdminNav from '../../components/AdminNav/AdminNav';
 const AdminGallery = () => {
 
   const [images, setImages] = useState([]);
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState([]);
   const [category, setCategory] = useState("function");
   const [activeTab, setActiveTab] = useState("all");
+  const [description, setDescription] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [editDescription, setEditDescription] = useState("");
+  const [editCategory, setEditCategory] = useState("");
+  const [editFile, setEditFile] = useState(null);
 
   const fetchImages = useCallback(async (category = "all") => {
     let url = "http://localhost:5000/api/gallery";
@@ -49,13 +54,46 @@ const AdminGallery = () => {
     }
 
     formData.append("category", category);
+    formData.append("description", description);
 
     await axios.post(
       "http://localhost:5000/api/gallery/upload",
       formData
     );
 
+    setDescription("");
     fetchImages();
+  };
+
+  // Edit
+  const handleUpdate = async () => {
+    try {
+      const formData = new FormData();
+
+      formData.append("description", editDescription);
+      formData.append("category", editCategory);
+
+      if (editFile) {
+        formData.append("image", editFile);
+      }
+
+      await axios.put(
+        `http://localhost:5000/api/gallery/${editId}`,
+        formData
+      );
+
+      alert("Updated successfully");
+
+      setEditId(null);
+      setEditDescription("");
+      setEditCategory("");
+      setEditFile(null);
+
+      fetchImages();
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert("Update failed");
+    }
   };
 
   // Delete
@@ -72,26 +110,54 @@ const AdminGallery = () => {
         <h2>Admin Gallery</h2>
 
         {/* Upload Section */}
-        <div className={styles.uploadBox}>
-          <input
-            type="file"
-            multiple
-            onChange={(e) => setFile(e.target.files)}
-          />
 
+        <div className={styles.uploadBox}>
+          {/* Upload Image */}
+          {!editId && (
+            <input
+              type="file"
+              multiple
+              onChange={(e) => setFile(e.target.files)}
+            />
+          )}
+
+          {/* Edit Image */}
+          {editId && (
+            <input
+              type="file"
+              onChange={(e) => setEditFile(e.target.files[0])}
+            />
+          )}
+
+          <input
+            type="text"
+            placeholder="Enter image description"
+            value={editId ? editDescription : description}
+            onChange={(e) =>
+              editId
+                ? setEditDescription(e.target.value)
+                : setDescription(e.target.value)
+            }
+          />
           <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            value={editId ? editCategory : category}
+            onChange={(e) =>
+              editId
+                ? setEditCategory(e.target.value)
+                : setCategory(e.target.value)
+            }
             className={styles['select-input']}
           >
             <option value="function">Function</option>
             <option value="institute">Institute</option>
             <option value="certification">Certification</option>
           </select>
-
-          <button onClick={handleUpload}>Upload</button>
+          <button onClick={editId ? handleUpdate : handleUpload}>
+            {editId ? "Update" : "Upload"}
+          </button>
         </div>
 
+        {/* Tabs */}
         <div className={styles.tabs}>
           <button
             className={`${styles.tab} ${activeTab === "all" ? styles.active : ""}`}
@@ -132,28 +198,40 @@ const AdminGallery = () => {
             Certification
           </button>
         </div>
+
         {/* Image List */}
         <div className={styles.grid}>
           {Array.isArray(images) &&
             images.map((img) => (
-              <div key={img._id}>
 
-                <div key={img._id} className={styles.card}>
-                  <img
-                    src={`http://localhost:5000/uploads/${img.image}`}
-                    alt=""
-                  />
 
-                  <span className={styles.badge}>{img.category}</span>
 
-                  <button
-                    className={styles.deleteBtn}
-                    onClick={() => handleDelete(img._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
+              <div key={img._id} className={styles.card}>
+                <img
+                  src={`http://localhost:5000/uploads/${img.image}`}
+                  alt=""
+                />
+
+                <span className={styles.badge}>{img.category}</span>
+                <p className={styles.desc}>{img.description}</p>
+                <button
+                  className={styles.editBtn}
+                  onClick={() => {
+                    setEditId(img._id);
+                    setEditDescription(img.description || "");
+                    setEditCategory(img.category || "function");
+                  }}
+                >
+                  ✏️ Edit
+                </button>
+                <button
+                  className={styles.deleteBtn}
+                  onClick={() => handleDelete(img._id)}
+                >
+                  🗑️ Delete
+                </button>
               </div>
+
             ))}
         </div>
       </div>
