@@ -161,7 +161,7 @@ const Admin = () => {
                     <button
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
-                        style={currentPage === i + 1 ? styles.active : ""}
+                        className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.active : ""}`}
                     >
                         {i + 1}
                     </button>

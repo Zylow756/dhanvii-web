@@ -123,3 +123,10 @@
     background-color: white;
     cursor: pointer;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
