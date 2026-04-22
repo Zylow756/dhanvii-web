@@ -77,6 +77,18 @@ h2 {
   color: #444;
 }
 
+.btn-icon{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #a31515;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
   .container {

@@ -1,8 +1,7 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import styles from '../assets/css/Contact.module.css';
-
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaWhatsapp, FaBuilding } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaBuilding } from "react-icons/fa";
 
 const Contact = () => {
     return (

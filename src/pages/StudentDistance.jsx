@@ -46,8 +46,8 @@ const StudentDistance = () => {
               }}
             >
               <h1 className={styles.heading}>Distance</h1>
-              <h2 className={styles.address}>{student.city}</h2>
-              <h2 className={styles.address}>{student.address} - {student.distance}km</h2>
+              <h2 className={styles.address}>{student.distance} km - {student.address}</h2>
+              <h2 className={styles.city}>{student.city}</h2>
 
               <img
                 src={`http://localhost:5000/uploads/${student.image}`}
