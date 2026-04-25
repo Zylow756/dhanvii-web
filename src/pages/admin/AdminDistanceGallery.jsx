@@ -103,19 +103,19 @@ const AdminDistanceGallery = () => {
   };
 
   return (
-    <div className={styles['root']}>
+    <div className={styles.root}>
       <AdminNav />
       <h2>Far Students Panel</h2>
 
       {/* FORM */}
-      <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
-        <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-        <input name="address" placeholder="Area" value={form.address} onChange={handleChange} required />
-        <input name="distance" placeholder="Distance (e.g. 80)" value={form.distance} onChange={handleChange} />
-        <input name="city" placeholder="City (e.g. Kota, Bundi)" value={form.city} onChange={handleChange} />
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" value={form.name} onChange={handleChange} className={styles.input}  required />
+        <input name="address" placeholder="Area" value={form.address} onChange={handleChange} className={styles.input}  required />
+        <input name="distance" placeholder="Distance (e.g. 80)" value={form.distance} onChange={handleChange} className={styles.input}  />
+        <input name="city" placeholder="City (e.g. Kota, Bundi)" value={form.city} onChange={handleChange} className={styles.input}  />
         <input type="file" name="image" onChange={handleFileChange} />
 
-        <button type="submit">
+        <button type="submit" className={styles.button}>
           {editId ? "Update" : "Add"} Student
         </button>
       </form>
@@ -162,7 +162,7 @@ const AdminDistanceGallery = () => {
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            style={currentPage === i + 1 ? styles.active : ""}
+            className={currentPage === i + 1 ? styles.active : ""}
           >
             {i + 1}
           </button>

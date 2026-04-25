@@ -47,17 +47,17 @@ const Admin = () => {
   };
 
   return (
-    <div className={styles['root']}>
+    <div className={styles.root}>
             <AdminNav />
-      <div style={{ padding: "30px", background: "#f5f6fa", minHeight: "100vh" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+      <div className={styles.heading}>
+        <h2>
           Admin Enquiry Dashboard
         </h2>
 
         {/* Card */}
-        <div className={styles['card']}>
+        <div className={styles.card}>
           {/* Top Bar */}
-          <div className={styles['enquiry-contain']}>
+          <div className={styles.enquiryContain}>
             <span
               onClick={() =>
                 window.open("http://localhost:5000/api/enquiry/export")
@@ -66,7 +66,7 @@ const Admin = () => {
               📥 Export Excel
             </span>
           </div>
-          <div className={styles["table-container"]}>
+          <div className={styles.tableContainer}>
             {/* Table */}
             <table
               style={{
@@ -75,7 +75,7 @@ const Admin = () => {
                 textAlign: "center",
               }}
             >
-              <thead style={{ background: "#7b0000", color: "#fff" }}>
+              <thead className={styles.thead}>
                 <tr>
                   <th className={styles.thStyle}>ID</th>
                   <th className={styles.thStyle}>Name</th>

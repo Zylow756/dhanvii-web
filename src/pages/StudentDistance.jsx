@@ -26,13 +26,11 @@ const StudentDistance = () => {
     (a, b) => Number(b.distance) - Number(a.distance)
   );
 
-
-
   return (
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
-        <h1 className="hindiHeading">Distance doesn't Matter when Skill Speaks</h1>
+        <h1>Distance doesn't Matter when Skill Speaks</h1>
 
         <div className={styles.container}>
           {sortedStudents.map((student) => (

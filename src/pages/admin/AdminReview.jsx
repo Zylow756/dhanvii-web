@@ -4,15 +4,16 @@ import AdminNav from '../../components/AdminNav/AdminNav';
 
 const styles = {
     container: {
-        padding: "30px",
+        padding: "10px",
         backgroundColor: "#f5f7fb",
         minHeight: "100vh",
     },
 
     title: {
         textAlign: "center",
+        marginTop: "20px",
+        color: "#8B0000",
         marginBottom: "20px",
-        color: "#333",
     },
 
     card: {
@@ -110,7 +111,7 @@ const styles = {
         justifyContent: "center",
         marginTop: "20px",
         gap: "10px",
-    }
+    },
 };
 
 const AdminReview = () => {
@@ -321,6 +322,7 @@ const AdminReview = () => {
             </div>
             <div style={styles.pagination}>
                 <button
+                style={styles.button}
                     onClick={() => setCurrentPage(prev => prev - 1)}
                     disabled={currentPage === 1}
                 >
@@ -329,6 +331,7 @@ const AdminReview = () => {
 
                 {[...Array(totalPages)].map((_, i) => (
                     <button
+                style={styles.button}
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
                         className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.active : ""}`}
@@ -338,6 +341,7 @@ const AdminReview = () => {
                 ))}
 
                 <button
+                style={styles.button}
                     onClick={() => setCurrentPage(prev => prev + 1)}
                     disabled={currentPage === totalPages}
                 >

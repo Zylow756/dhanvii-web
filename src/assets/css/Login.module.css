@@ -11,38 +11,55 @@
   z-index: 2000;
 }
 
+/* Responsive Popup */
 .popup {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 300px;
+  padding: 2vw;              /* Scales with screen */
+  border-radius: 0.8vw;
+  width: 90%;
+  max-width: 500px;          /* Bigger for 4K */
   position: relative;
   animation: fadeIn 0.3s ease;
 }
 
+/* Inputs */
 .popup input {
   width: 100%;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 0.8vw 0;
+  padding: 0.8vw;
+  font-size: 0.9rem;
 }
 
-.loginBtn {
+/* Button */
+.popup button {
   width: 100%;
-  padding: 10px;
+  padding: 0.8vw;
+  font-size: 1rem;
   background: #4c0803;
   color: white;
   border: none;
-  border-radius: 5px;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 22px;
+  border-radius: 0.4vw;
   cursor: pointer;
 }
 
+/* Close Button */
+.close {
+  position: absolute;
+  top: 0.8vw;
+  right: 1vw;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Error Text */
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: -0.3vw;
+  margin-bottom: 0.5vw;
+}
+
+/* Animation */
 @keyframes fadeIn {
   from {
     transform: scale(0.8);
@@ -54,9 +71,28 @@
   }
 }
 
-.error {
-  color: red;
-  font-size: 13px;
-  margin-top: -5px;
-  margin-bottom: 8px;
+/*  Extra: Ultra-large screens (4K+) */
+@media (min-width: 2560px) {
+  .popup {
+    max-width: 650px;
+    padding: 1.5vw;
+  }
+
+  .popup input {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .loginBtn {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .close {
+    font-size: 28px;
+  }
+
+  .error {
+    font-size: 14px;
+  }
 }

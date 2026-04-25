@@ -1,168 +1,167 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* GLOBAL SCALE */
+html {
+  font-size: 16px;
 }
 
-.root{
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-.content {
-  flex: 1;
-  padding: 20px;
-} 
-
-/*  MAIN CONTAINER */
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  justify-content: flex-start;
-  padding: 20px;
-  align-items: stretch;
-  gap: 20px;
-}
-
-.certificate {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.topContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.middleContent {
-  flex: 1; /* 🔥 THIS FIXES EVERYTHING */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bottomContent {
-  margin-top: auto; /* 🔥 KEY FIX */
-  text-align: center;
-}
-
-.salary {
-  margin-top: 10px;
-}
-
-.card {
-  width: 100%;
-  height: 100%; /* 🔥 VERY IMPORTANT */
-  padding: 20px;
-margin-top: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.companyCard {
-  width: 100%;
-  max-width: 220px;
-  padding: 8px 10px;
-  text-align: center;
-  white-space: pre-line;
-  word-break: break-word;
-}
-
-.heading {
-  max-width: 90%;
-  text-align: center;
-  font-size: 10px;
-  line-height: 1.5;
-}
-
-/* HEADER */
-.heading {
-  font-size: 32px;
-  color: #a31515;
-  margin: 10px 0;
-  font-family: 'Great Vibes', cursive;
-  letter-spacing: 1px;
-}
-
-.address {
-  font-size: 20px;
-  color: #a31515;
-  margin: 0%;
-}
-
-/* PHOTO */
-.photoCircle{
-  width: 150px;
-  min-height: 150px;
-  border: 4px solid gold;
-  object-fit: cover;
-  margin: 10px 0;
-  border-radius: 50%;
-}
-
-/* NAME */
-.name {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1px;
-}
-
-.photoCircleWrapper{
-  width: 250px;
-  min-height: 150px;
-  object-fit: cover;
-  margin-top: 320px;
-  text-align: center;
-}
-
-/* QUALIFICATION */
-.qual {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 1px;
-  margin-bottom: 1px;
-}
-
-.salary {
-  font-size: 14px;
-  text-align: center;
-  margin-top: auto; 
-}
-
-@media (max-width: 768px) {
-  .certificate {
-    width: 90%;
-    margin: 10px auto;
-  }
-
-  .photo {
-    width: 100px;
-    min-height: 100px;
-  }
-
-  .heading {
+@media (min-width: 2560px) {
+  html {
     font-size: 20px;
   }
-  
-  h1 {
-    font-size: 22px;   /* 🔥 reduce size */
-    line-height: 1.4;  /* improve readability */
-    padding: 0 10px;   /* spacing from sides */
-    word-break: break-word;
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 22px;
   }
 }
 
-@media (max-width: 1024px) {
+/* ROOT */
+.root {
+  width: 100%;
+}
+
+/* CONTENT WRAPPER */
+.content {
+  max-width: 1800px;   /* 🔥 increased */
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.content h2 {
+  margin-bottom: 2rem;
+}
+
+/*  GRID (AUTO PERFECT FOR 4K) */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/*  ULTRA WIDE */
+@media (min-width: 2560px) {
+  .content {
+    max-width: 2400px;
+  }
+
   .container {
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3rem;
+  }
+}
+
+/* CARD */
+.certificate {
+  position: relative;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  width: 100%;
+  height: 620px; /* ❌ removed vh */
+  transition: 0.3s ease;
+}
+
+.certificate:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* IMAGE */
+.bgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* CARD OVERLAY */
+.card {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* 🔥 better spacing */
+  padding: 1rem;
+  background: rgba(240, 237, 237, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 0.8rem;
+  text-align: center;
+}
+
+/* HEADING */
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 2.5rem 0;
+  color: #8b0000;
+}
+
+/* TEXT */
+.name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.qual {
+  font-size: 0.95rem;
+}
+
+.salary {
+  font-size: 1rem;
+}
+
+/*  MOBILE */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate {
+    height: 510px;
+  }
+}
+
+/*  FULL HD */
+@media (min-width: 1920px) {
+  .heading {
+    font-size: 3rem;
+  }
+
+  .name {
+    font-size: 1.6rem;
+  }
+
+  .qual {
+    font-size: 1.1rem;
+  }
+
+  .salary {
+    font-size: 1.1rem;
+  }
+}
+
+/*  4K ULTRA */
+@media (min-width: 2560px) {
+  .heading {
+    font-size: 3.8rem;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .qual {
+    font-size: 1.3rem;
+  }
+
+  .salary {
+    font-size: 1.3rem;
+  }
+
+  .certificate {
+    height: 520px;
   }
 }

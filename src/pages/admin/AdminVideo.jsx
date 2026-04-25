@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import AdminNav from '../../components/AdminNav/AdminNav';
+import styles from '../../assets/css/Admin.module.css'
 
 const AdminVideo = () => {
 
@@ -16,8 +17,8 @@ const AdminVideo = () => {
   return (
     <div>
       <AdminNav />
-      <div style={{ padding: "30px", background: "#f5f6fa", minHeight: "100vh" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+      <div className={styles.contain}>
+        <h2>
           Admin Enquiry Dashboard
         </h2>
         <input
@@ -26,7 +27,7 @@ const AdminVideo = () => {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
         />
-        <button onClick={handleSubmit}>Save</button>
+        <button className={styles.saveBtn} onClick={handleSubmit}>Save</button>
       </div>
     </div>
   );

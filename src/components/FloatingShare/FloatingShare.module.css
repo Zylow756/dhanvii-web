@@ -1,6 +1,6 @@
 .fabContainer {
   position: fixed;
-  top: 130px;
+  top: 100px;
   right: 30px;
   display: flex;
   flex-direction: column-reverse;
@@ -31,7 +31,6 @@
   justify-content: center;
   color: white;
   text-decoration: none;
-
   transform: scale(0);
   opacity: 0;
   transition: 0.3s ease;

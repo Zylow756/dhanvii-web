@@ -1,14 +1,33 @@
+html {
+  font-size: 16px;
+}
+
+/* Ultra HD / 4K Screens */
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px; /* increases all rem-based sizes */
+  }
+}
+
+@media (min-width: 3840px) {
+  html {
+    font-size: 22px;
+  }
+}
+
 /* Bottom text link */
 p {
-    margin-top: 15px;
-    color: #4c0803;
-    font-style: oblique;
+  margin-top: 1rem;
+  color: #4c0803;
+  font-style: oblique;
+  font-size: 1rem;
 }
 
 a {
     color: #4c0803;
     font-weight: bold;
     text-decoration: none;
+  font-size: 1rem;
 }
 
 a:hover {
@@ -19,229 +38,170 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-.enquiry-form {
+.enquiryForm {
     display: flex;
     flex-direction: row;
-    /*align-items: center;*/
-    padding: 20px;
-  gap: 10px;
+  padding: 2rem;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.premium-card {
-  max-width: 400px;
-  margin: 30px auto;
-  padding: 25px;
-  border-radius: 16px;
+.premiumCard {
+  max-width: 600px; /* increased for 4K */
+  padding: 1.7rem;
+  border-radius: 1rem;
   background: #f7f2ec67;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
   transition: 0.3s ease;
   border: 1px solid #eee;
+  flex: 1;
 }
 
-.premium-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+.premiumCard:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
 }
 
 /* List Styling */
-.premium-card ul {
+.premiumCard ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.premium-card h2{
-    color: #4c0803;
-    margin-bottom: 20px;
+.premiumCard h2{
+  color: #4c0803;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
-.premium-card li {
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 12px;
+.premiumCard li {
+  position: relative; 
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
   color: #4c0803df;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 /* Check Icon */
-.premium-card li::before {
+.premiumCard li::before {
   content: "✔";
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   color: #22c55e;
   font-weight: bold;
 }
 
-.contact-form-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    width: 100%;
+.contactFormContainer {
+  background: #fefbfb;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+  max-width: 600px;   /* ✅ same as side cards */
+  width: 100%;
+  flex: 1;
+  transition: 0.3s ease;
+}
+
+.contactFormContainer:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
 }
 
 h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #a31515;
-    text-align: center;
+  margin: 0.8rem 0;
+  color: #a31515;
+  text-align: center;
+  font-size: 2rem;
 }
 
-.form-group {
+.formGroup {
     margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #4c0803;
 }
 
 input,
 textarea {
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem;
     border: 1px solid #ddd;
-    border-radius: 4px;
+  border-radius: 0.4rem;
     box-sizing: border-box;
     font-size: 1rem;
 }
 
-textarea {
-    resize: vertical;
-}
-
  .error {
   color: red;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 2px;
 }
 
-.submit-button {
+.submitButton {
     background-color: #4c0803;
     color: white;
     border: none;
-    padding: 0.75rem;
-    border-radius: 4px;
-    font-size: 1rem;
     cursor: pointer;
     width: 100%;
     transition: background-color 0.3s;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 0.4rem;
 }
 
-.submit-button:hover {
+.submitButton:hover {
     background-color: #88212659;
 }
 
-.contact-form-container:hover {
+.contactFormContainer:hover {
     transform: translateY(-5px);
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-input:focus,
-textarea:focus {
-    border-color: #7b0f0f;
-    outline: none;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: #7b0f0f;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #a31515;
-}
-
-.banner-container {
-    overflow: hidden;
-}
-
-.banner-img {
-    width: 100%;
-    min-height: auto;
-}
-
-.widget ul {
-    list-style-type: none;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.widget ul li {
-    padding: 10px;
-}
-
 /* qualification dropdown*/
-.select-input {
+.selectInput {
     width: 100%;
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+  padding: 0.8rem;
+  font-size: 1rem;
     background-color: white;
     cursor: pointer;
 }
-
-.header-contain {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: #a31515;
-}
-
-.box-contain {
+.boxContain {
     text-align: center;
-    margin-bottom: 50px;
+  margin-bottom: 3rem;
 }
 
-.box-contain h1 {
+.boxContain h1 {
+  font-size: 2.5rem;
     color: #a31515;
 }
 
-.box-contain p {
+.boxContain p {
+  font-size: 1.2rem;
     color: #a31515ad;
 }
 
-.icon {
-    margin-right: 8px;
-    vertical-align: middle;
+/* 🔥 4K specific layout improvements */
+@media (min-width: 2560px) {
+  .enquiryForm {
+    gap: 3rem;
+  }
+
+  .premiumCard {
+    max-width: 800px;
+  }
+
+  .contactFormContainer {
+    max-width: 900px;
+  }
 }
 
-.btn-icon {
-    margin-right: 6px;
-}
-
-.contactItem {
-    display: flex;
-    align-items: center;
-    /* 👈 keeps icon + text in same row */
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-/* Mobile View */
+/* Mobile */
 @media (max-width: 768px) {
-  .enquiry-form {
+  .enquiryForm {
     flex-direction: column;
   }
 }

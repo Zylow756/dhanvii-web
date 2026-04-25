@@ -85,15 +85,15 @@ const Home = () => {
   };
 
   return (
-    <div className={styles['root']}>
+    <div className={styles.root}>
       <Nav />
-      <header className={styles['box-contain']}>
+      <header className={styles.boxContain}>
         <h1>Best Accounting Institute in Kota</h1>
       </header>
       <WelcomeModal />
       <RandomAd />
-      <div className={styles['enquiry-form']}>
-        <div className={styles["premium-card"]}>
+      <div className={styles.enquiryForm}>
+        <div className={styles.premiumCard}>
           <h2>Who Should Join?</h2>
           <ul>
             <li>12th Commerse & Non-Commerse Students</li>
@@ -104,26 +104,26 @@ const Home = () => {
             <li>Technical: ITI, B.Tech, others</li>
           </ul>
         </div>
-        <div className={styles['contact-form-container']}>
+        <div className={styles.contactFormContainer}>
           <h2>Enquiry Form For Demo Classes</h2>
           <form id="contactForm" onSubmit={handleSubmit}>
-            <div className={styles['form-group']}>
+            <div className={styles.formGroup}>
               <input type="text" id="name" name="name" placeholder="Your Name"
                 onChange={handleChange} required />
-                {errors.name && <p className={styles["error"]}>{errors.name}</p>}
+                {errors.name && <p className={styles.error}>{errors.name}</p>}
             </div>
-            <div className={styles['form-group']}>
+            <div className={styles.formGroup}>
               <input type="tel" id="phone" name="phone" placeholder="Your Phone Number"
                 onChange={handleChange} required />
-                {errors.phone && <p className={styles["error"]}>{errors.phone}</p>}
+                {errors.phone && <p className={styles.error}>{errors.phone}</p>}
             </div>
-            <div className={styles['form-group']}>
+            <div className={styles.formGroup}>
               <select
                 id="qualification"
                 name="qualification"
                 onChange={handleChange}
                 required
-                className={styles['select-input']}
+                className={styles.selectInput}
               >
                 <option value="">Select Qualification</option>
                 <option value="12th">12th pass</option>
@@ -132,14 +132,14 @@ const Home = () => {
                 <option value="Graduate">Graduate</option>
                 <option value="Postgraduate">Postgraduate</option>
               </select>
-              <span className={styles['error-message']} id="qualificationError"></span>
+              <span className={styles.errorMessage} id="qualificationError"></span>
             </div>
-            <button type="submit" className={styles['submit-button']}>
+            <button type="submit" className={styles.submitButton}>
               Send Message
             </button>
           </form>
         </div>
-        <div className={styles["premium-card"]}>
+        <div className={styles.premiumCard}>
           <h2>Job Opportunities</h2>
           <ul>
             <li>Accounting Clerks</li>

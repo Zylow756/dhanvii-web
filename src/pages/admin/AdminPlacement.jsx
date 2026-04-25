@@ -167,9 +167,9 @@ export default function AdminPlacement() {
   if (loading) return <h2>Loading...</h2>;
 
   return (
-    <div className={styles['root']}>
+    <div className={styles.root}>
       <AdminNav />
-      <div className="card-container">
+      <div className={styles.cardContainer}>
         <h1>Admin Career Dashboard</h1>
         <span className={styles.exportBtn} onClick={exportToExcel}>
           📥  Export to Excel
@@ -198,8 +198,8 @@ export default function AdminPlacement() {
                 <td className={styles.thStyle}>{item.expectedSalary}</td>
 
                 <td className={styles.thStyle}>
-                  <button onClick={() => setSelected(item)}>View</button>
-                  <button onClick={() => handleDelete(item._id)}>Delete</button>
+                  <button className={styles.viewBtn} onClick={() => setSelected(item)}>View</button>
+                  <button className={styles.deleteBtn} onClick={() => handleDelete(item._id)}>Delete</button>
                 </td>
               </tr>
             ))}
@@ -267,7 +267,7 @@ export default function AdminPlacement() {
                 {selected.experience.map((c, i) => (
                   <p key={i}>{c.company} - {c.post} - {c.type} - {c.from} - {c.to} - {c.salary}</p>
                 ))}
-                <button onClick={() => setSelected(null)}>Close</button>
+                <button className={styles.closeBtn} onClick={() => setSelected(null)}>Close</button>
               </div>
             </div>
           </div>

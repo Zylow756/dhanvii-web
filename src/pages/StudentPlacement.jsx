@@ -41,42 +41,39 @@ const StudentPlacement = () => {
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
-        <h2 className="heading">Training Tuh Bahut Milti Hai...</h2>
-        <h2 className="heading">Par Career Yaha Banta Hai.</h2>
+        <h2 className="heading">Training Tuh Bahut Milti Hai...<br/> Par Career Yaha Banta Hai.</h2>
         <div className={styles.container}>
           {sortedStudents.map((student) => (
-            
-            <div className={styles.certificate} key={student._id}
-              style={{
-                backgroundImage: student.background
-                  ? `url(http://localhost:5000/${student.background})`
-                  : `linear-gradient(135deg, #f4f79d, #81b2f7)`, // default design
-                backgroundSize: "100% 100%",
-backgroundPosition: "center"
-              }}>
-      
-<div className={styles.card}>
-              <div className={styles.topContent}>
-                <h2 className={styles.name}>{student.name}</h2>
-                <p className={styles.qual}>{student.qualification}</p>
+<div className={styles.certificate} key={student._id}>
+    <img
+      src={`http://localhost:5000/${student.background}`}
+      alt={student.name}
+      className={styles.bgImage}
+    />
 
-              </div>
+  {/* OVERLAY CONTENT */}
+  <div className={styles.card}>
+    <div className={styles.topContent}>
+      <h2 className={styles.name}>{student.name}</h2>
+      <p className={styles.qual}>{student.qualification}</p>
+    </div>
 
-              <div className={styles.middleContent}>
-                <p className={styles.companyCard}>
-                  {formatCompany(student.company)}
-                </p>
+    <div className={styles.middleContent}>
+      <p className={styles.companyCard}>
+        {formatCompany(student.company)}
+      </p>
+    </div>
 
-              </div>
-
-              <div className={styles.bottomContent}>
-                <p className={styles.salary}>Salary Package: <strong>{student.salary}</strong> lpa</p>
-              </div>
-            </div>
-            </div>
+    <div className={styles.bottomContent}>
+      <p className={styles.salary}>
+        Salary Package: <strong>{student.salary}</strong> lpa
+      </p>
+    </div>
+  </div>
+</div>
           ))}
         </div>
-</div>
+      </div>
       <Footer />
     </div>
   );

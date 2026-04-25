@@ -1,5 +1,5 @@
 .thead {
-    background: #a97a7a;
+    background: #915b5b;
     color: #ffffff;
 }
 
@@ -13,9 +13,19 @@
     text-align: center;
 }
 
-tableStyle {
+.tableStyle {
     width: 100%;
     border-collapse: collapse;
+}
+
+
+.viewBtn {
+    background: #3c9ae7;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .deleteBtn {
@@ -38,17 +48,26 @@ tableStyle {
     font-size: 13px;
 }
 
-.enquiry-contain {
+.heading {
+    padding: 30px;
+     background: #f5f6fa;
+      min-height: 100vh;
+}
+
+.heading h2{
+     text-align: center;
+      margin-bottom: 20px;
+}
+
+.enquiryContain {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*margin-bottom: 25px;
-     padding: 0 100px;*/
-    gap: "140px",
+    gap: 140px,
 }
 
 .card {
-    background: #fff;
+    background: #eae8e86f;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -56,7 +75,7 @@ tableStyle {
     margin: auto;
 }
 
-.table-container {
+.tableContainer {
     max-height: 300px;
     overflow-y: auto;
     border: 1px solid #ddd;
@@ -120,6 +139,10 @@ tableStyle {
     overflow-y: auto;
 }
 
+.bodyStyle p {
+    font-size: 1rem;
+}
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -127,6 +150,34 @@ tableStyle {
     gap: 10px;
 }
 
-card-container {
+.pagination button{
+    background-color: #915b5b;
+    color: white;
+    padding: 1vh;
+}
+
+.cardContainer {
     padding: 20px;
+}
+
+.contain {
+    padding: 30px;
+    background: #f5f6fa; 
+    min-height: 100vh;
+}
+
+.contain h2 {
+    text-align: center;
+     margin-bottom: 20px;
+}
+
+.saveBtn{
+    background-color: #51e760;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }

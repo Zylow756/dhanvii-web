@@ -7,7 +7,7 @@
 }
 
 .uploadBox input {
-  margin-right: 10px;
+  margin: 10px auto;
 }
 
 .uploadBox button {
@@ -98,6 +98,16 @@
   color: #a12323;
 }
 
+.editBtn{
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #51e760;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
 /* Delete Button */
 .deleteBtn {
   width: 100%;
@@ -113,10 +123,10 @@
   background: #d9363e;
 }
 
-.select-input {
+.selectInput {
     width: 100%;
     padding: 10px;
-    margin-top: 20px;
+    margin: 20px auto;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
@@ -129,4 +139,10 @@
     justify-content: center;
     margin-top: 20px;
     gap: 10px;
+}
+
+.pagination button{
+    background-color: #915b5b;
+    color: white;
+    padding: 1vh;
 }

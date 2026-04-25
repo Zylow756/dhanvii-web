@@ -1,24 +1,26 @@
-.footer-area {
+.footeArea {
     background-color: #4c0803;
 }
 
-.footer-bottom-area {
+.footerBottomArea {
   display: flex;
   justify-content: space-between; /* 🔥 pushes text left & icons right */
   align-items: center;
   padding: 0 20px;
+  background-color: #8977762f;
 }
 
-.footer-bottom-area p {
-    color: white;
+.footerBottomArea p {
+    color: #4c0803;
+    font-size: 1rem;
 }
 
-.social-icons {
+.socialIcons {
   display: flex;
   gap: 10px;
 }
 
-.social-icons a {
+.socialIcons a {
   width: 40px;
   min-height: 40px;
   display: flex;
@@ -37,25 +39,25 @@
 /*.social-icons a:nth-child(4) { background: #1da1f2; } /* Twitter */
 /*.social-icons a:nth-child(5) { background: #ff0000; } /* YouTube */
 
-.footer-social-media a:nth-child(1) { background: #1877f2; color: white; } /* FB */
-.footer-social-media a:nth-child(2) { background: #0077b5; color: white; } /* LinkedIn */
-.footer-social-media a:nth-child(3) { background: #e4405f; color: white; } /* Instagram */
-.footer-social-media a:nth-child(4) { background: #1da1f2; color: white; } /* Twitter */
-.footer-social-media a:nth-child(5) { background: #ff0000; color: white; } /* YouTube */
+.footerSocialMedia a:nth-child(1) { background: #1877f2; color: white; } /* FB */
+.footerSocialMedia a:nth-child(2) { background: #0077b5; color: white; } /* LinkedIn */
+.footerSocialMedia a:nth-child(3) { background: #e4405f; color: white; } /* Instagram */
+.footerSocialMedia a:nth-child(4) { background: #1da1f2; color: white; } /* Twitter */
+.footerSocialMedia a:nth-child(5) { background: #ff0000; color: white; } /* YouTube */
 
-.social-icons a:hover {
+.socialIcons a:hover {
   transform: translateY(-3px);
   opacity: 0.9;
 }
 
-.footer-social-media {
+.footerSocialMedia {
   display: flex;
   align-items: center;
   gap: 12px; 
 
 }
 
-.footer-social-media a {
+.footerSocialMedia a {
   width: 35px;
   min-height: 35px;
   display: flex;
@@ -65,7 +67,7 @@
 }
 
 @media (max-width: 768px) {
-  .footer-bottom-area {
+  .footerBottomArea {
     flex-direction: column;
     gap: 10px;
     text-align: center;

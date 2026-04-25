@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './Nav.module.css';
-import logo from '../../assets/images/logo.jpeg';
+import logo from '../../assets/images/logo 4k.jpg';
 import React, { useState } from "react";
 import Login from "../../pages/Login";
 
@@ -12,17 +12,17 @@ const Nav = () => {
 
   return (
     <>
-      <nav className={styles.navbar}>
-        <div className={styles['nav-container']}>
+      <nav className={styles.navbar}>{/* Logo */}
+        <div className={styles.navContainer}>
 
-          {/* Logo */}
-          <div className={styles['logo']}>
+          <div className={styles.logo}>
             <img src={logo} alt="logo"  loading="lazy"/>
           </div>
+          
 
           {/* Hamburger Menu */}
           <div
-            className={`${styles["menu-icon"]} ${menuOpen ? styles["open"] : ""}`}
+            className={`${styles.menuIcon} ${menuOpen ? styles["open"] : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <span></span>
@@ -33,19 +33,19 @@ const Nav = () => {
           {/* Overlay */}
           {menuOpen && (
             <div
-              className={styles['overlay']}
+              className={styles.overlay}
               onClick={() => setMenuOpen(false)}
             ></div>
           )}
 
           {/* Navigation Links */}
-          <ul className={`${styles["nav-links"]} ${menuOpen ? styles["active"] : ""}`}>
-            <li className={styles.navItem}><Link to="/">Home</Link></li>
-            <li className={styles.navItem}><Link to="/about">About Us</Link></li>
-            <li className={styles.navItem}><Link to="/courses">Courses</Link></li>
-            <li className={styles.navItem}><Link to="/services">Services</Link></li>
-            <li className={styles.navItem}><Link to="/studentPlacement">Placement</Link></li>
-            <li className={styles.navItem}><Link to="/studentDistance">Students</Link></li>
+          <ul className={`${styles.navLinks} ${menuOpen ? styles["active"] : ""}`}>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/courses">Courses</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/studentPlacement">Placement</Link></li>
+            <li><Link to="/studentDistance">Students</Link></li>
 
             {/* Dropdown */}
             <li className={styles.dropdown}
@@ -60,7 +60,7 @@ const Nav = () => {
               <span>Gallery ▾</span>
 
               {open && (
-                <ul className={styles["dropdown-menu"]}>
+                <ul className={styles.dropdownMenu}>
                   <li><Link to="/func-gallery">Functions</Link></li>
                   <li><Link to="/instit-gallery">Institute</Link></li>
                   <li><Link to="/certi-gallery">Certification</Link></li>
@@ -68,9 +68,9 @@ const Nav = () => {
               )}
             </li>
 
-            <li className={styles.navItem}><Link to="/career">Career</Link></li>
-            <li className={styles.navItem}><Link to="/contact">Contact Us</Link></li>
-            <li className={styles.navItem}>
+            <li><Link to="/career">Career</Link></li>
+            <li><Link to="/contact">Contact Us</Link></li>
+            <li>
               <span onClick={() => setShowLogin(true)} className={styles.loginBtn}>
                 Login
               </span>

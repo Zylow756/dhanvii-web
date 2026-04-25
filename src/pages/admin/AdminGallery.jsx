@@ -139,7 +139,7 @@ const AdminGallery = () => {
   const totalPages = Math.ceil(sortedImages.length / itemsPerPage);
 
   return (
-    <div className={styles['root']}>
+    <div className={styles.root}>
       <AdminNav />
       <div className={styles.container}>
         <h2>Admin Gallery</h2>
@@ -153,6 +153,7 @@ const AdminGallery = () => {
               type="file"
               multiple
               onChange={(e) => setFile(e.target.files)}
+              
             />
           )}
 
@@ -161,6 +162,7 @@ const AdminGallery = () => {
             <input
               type="file"
               onChange={(e) => setEditFile(e.target.files[0])}
+               
             />
           )}
 
@@ -172,7 +174,8 @@ const AdminGallery = () => {
               editId
                 ? setEditDescription(e.target.value)
                 : setDescription(e.target.value)
-            }
+            } 
+            
           />
           <select
             value={editId ? editCategory : category}
@@ -181,7 +184,7 @@ const AdminGallery = () => {
                 ? setEditCategory(e.target.value)
                 : setCategory(e.target.value)
             }
-            className={styles['select-input']}
+            className={styles.selectInput}
           >
             <option value="function">Function</option>
             <option value="institute">Institute</option>
