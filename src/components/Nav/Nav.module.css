@@ -301,6 +301,13 @@
   .navLinks.active {
     display: flex;
   }
+
+  .logo img{
+  max-width: 45vw;
+  height: 7vh;    
+  width: 40vw;    
+
+  }
 }
 
 .navLinks {

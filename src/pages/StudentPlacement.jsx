@@ -24,53 +24,52 @@ const StudentPlacement = () => {
     (a, b) => Number(b.salary) - Number(a.salary)
   );
 
-  const formatCompany = (text) => {
-    if (!text) return "";
+ const formatCompany = (text) => {
+  if (!text) return "";
 
-    // Split by comma, dash, or newline
-    let parts = text.split(/,|\n/).map(item => item.trim());
+  // Split by comma, dash, or newline
+  let parts = text.split(/,|\n/).map(item => item.trim());
 
-    // If only one part, return as is
-    if (parts.length === 1) return parts[0];
+  // Take first 3 parts
+  let result = parts.slice(0, 3).join(" ");
 
-    // Return first two parts in new lines
-    return parts.slice(0, 3).join("\n");
-  };
+  // Apply 20 character limit
+  if (result.length > 20) {
+    return result.substring(0, 20) + "...";
+  }
+
+  return result;
+};
 
   return (
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
-        <h2 className="heading">Training Tuh Bahut Milti Hai...<br/> Par Career Yaha Banta Hai.</h2>
+        <h2 className="heading">Training Tuh Bahut Milti Hai...<br /> Par Career Yaha Banta Hai.</h2>
         <div className={styles.container}>
           {sortedStudents.map((student) => (
-<div className={styles.certificate} key={student._id}>
-    <img
-      src={`http://localhost:5000/${student.background}`}
-      alt={student.name}
-      className={styles.bgImage}
-    />
+            <div className={styles.certificate} key={student._id}>
+              <img
+                src={`http://localhost:5000/${student.background}`}
+                alt={student.name}
+                className={styles.bgImage}
+              />
 
-  {/* OVERLAY CONTENT */}
-  <div className={styles.card}>
-    <div className={styles.topContent}>
-      <h2 className={styles.name}>{student.name}</h2>
-      <p className={styles.qual}>{student.qualification}</p>
-    </div>
-
-    <div className={styles.middleContent}>
-      <p className={styles.companyCard}>
-        {formatCompany(student.company)}
-      </p>
-    </div>
-
-    <div className={styles.bottomContent}>
-      <p className={styles.salary}>
-        Salary Package: <strong>{student.salary}</strong> lpa
-      </p>
-    </div>
-  </div>
-</div>
+              {/* OVERLAY CONTENT */}
+              <div className={styles.card}>
+                <div className={styles.topContent}>
+                  <h2 className={styles.name}>{student.name}</h2>
+                  <p className={styles.qual}>{student.qualification}</p>
+                
+                  <p className={styles.middleContent}>
+                    {formatCompany(student.company)}
+                  </p>
+                  <p className={styles.bottomContent}>
+                    Salary Package: <strong>{student.salary}</strong> lpa
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

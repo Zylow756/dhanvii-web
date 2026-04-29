@@ -131,8 +131,8 @@ const PlacementGallery = () => {
         <form onSubmit={handleSubmit}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" className={styles.input} />
           <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Qualification" className={styles.input} />
-          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name" className={styles.textarea} maxLength={75} />
-          <p className={styles.p}>{formData.company.length}/75</p>
+          <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name" className={styles.textarea} maxLength={50} />
+          <p className={styles.p}>{formData.company.length}/50</p>
           <input name="salary" value={formData.salary} onChange={handleChange} placeholder="Salary per year" className={styles.input} />
           
           <label>Background Image

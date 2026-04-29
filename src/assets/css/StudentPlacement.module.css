@@ -56,7 +56,7 @@ html {
   border-radius: 1.2rem;
   overflow: hidden;
   width: 100%;
-  height: 620px; /* ❌ removed vh */
+  height: 600px; /* ❌ removed vh */
   transition: 0.3s ease;
 }
 
@@ -95,6 +95,26 @@ html {
   color: #8b0000;
 }
 
+.topContent h2,
+.topContent p {
+  margin: 0;
+}
+
+.topContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.middleContent{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.bottomContent{
+  font-size: 0.9rem;
+}
+
 /* TEXT */
 .name {
   font-size: 1.2rem;
@@ -103,10 +123,6 @@ html {
 
 .qual {
   font-size: 0.95rem;
-}
-
-.salary {
-  font-size: 1rem;
 }
 
 /*  MOBILE */
@@ -138,7 +154,7 @@ html {
     font-size: 1.1rem;
   }
 
-  .salary {
+  .bottomContent {
     font-size: 1.1rem;
   }
 }
@@ -157,7 +173,7 @@ html {
     font-size: 1.3rem;
   }
 
-  .salary {
+  .bottomContent {
     font-size: 1.3rem;
   }
 
