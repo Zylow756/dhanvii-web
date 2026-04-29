@@ -82,6 +82,56 @@ html {
   margin: 0.8rem 0;
 }
 
+.moduleList {
+  list-style: none;
+  padding: 0;
+}
+
+.moduleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+  margin: 0.4rem 0;
+}
+
+.label {
+  min-width: 50px;
+  font-weight: bold;
+  color: #4c0803;
+}
+
+.text {
+  flex: 1;
+  line-height: 1.6;
+}
+
+.part {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #4c0803;
+}
+
+.simpleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0.4rem 0;
+}
+
+/* Arrow */
+.bullet {
+  min-width: 20px;   /* 🔥 KEY FIX */
+  color: #4c0803;
+  font-size: 1rem;
+  margin-top: 3px;
+}
+
+/* Text */
+.simpleText {
+  flex: 1;
+  line-height: 1.6;
+}
+
 /* BUTTON */
 .btn {
   background: #4c0803;
@@ -104,6 +154,8 @@ html {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.4s ease;
+  line-height: 1.6;
+  word-break: keep-all;
 }
 
 .show {

@@ -13,45 +13,45 @@ const Courses = () => {
   const courses = [
     {
       title: "Free Course",
-      duration: "Duration: 1 Months",
-      desc: <br/>,
+      duration: <strong>Duration: 1 Months</strong>,
+      desc: <br />,
       content: [
-        "Module 1 : Microsoft Excel",
-        "Module 2 : Microsoft word",
-        "Module 3 : Basic Computer",
+        <span><strong>Module 1 :</strong> Microsoft Excel</span>,
+        <span><strong>Module 2 :</strong> Microsoft word</span>,
+        <span><strong>Module 3 :</strong> Basic Computer</span>,
       ],
     },
     {
       title: "Tally Prime",
-      duration: "Duration: 3 Months",
-      desc: <br/>,
+      duration: <strong>Duration: 3 Months</strong>,
+      desc: <br />,
       content: [
-        "Module 1 : Special Fundamental & Financial Accounting - Introduction",
-        "Module 2 : Transactions Vouchers",
-        "Module 3 : Inventory Information & Features",
-        "Module 4 : Statuary & Taxations GST",
-        "Module 5 : View Reports",
+        <span><strong>Module 1 :</strong> Special Fundamental & Financial Accounting - Introduction</span>,
+        <span><strong>Module 2 :</strong> Transactions Vouchers</span>,
+        <span><strong>Module 3 :</strong> Inventory Information & Features</span>,
+        <span><strong>Module 4 :</strong> Statuary & Taxations GST</span>,
+        <span><strong>Module 5 :</strong> View Reports</span>,
       ],
     },
     {
       title: "Beginner Accounting",
-      duration: "Duration: 6 Months",
+      duration: <strong>Duration: 6 Months</strong>,
       desc: <strong>FREE: Banking & Accounting in MS Excel</strong>,
       content: [
-        <strong>Part A : Financial Accounting[Manual Accounting]</strong>,
-        "Module A : Principles & Rules of Accounting",
-        "Module B : Bookkeeping & Practice",
-        "Module C : Stock & Inventory Maintain",
-        "Module D : Goods & Service Tax [GST]",
-        "Module E : Soft Skill Development",
-        "Module F : Office Documentation & Record Management",
-        "Module G : Banking Operation",
+        <strong>Part A : Financial Accounting [Manual Accounting]</strong>,
+        <span><strong>Module A :</strong> Principles & Rules of Accounting</span>,
+        <span><strong>Module B :</strong> Bookkeeping & Practice</span>,
+        <span><strong>Module C :</strong> Stock & Inventory Maintain</span>,
+        <span><strong>Module D :</strong> Goods & Service Tax [GST]</span>,
+        <span><strong>Module E :</strong> Soft Skill Development</span>,
+        <span><strong>Module F :</strong> Office Documentation & Record Management</span>,
+        <span><strong>Module G :</strong> Banking Operation</span>,
         <strong>Part B : Computerized Accounting[Tally Prime]</strong>,
-        "Module 1 : Special Fundamental & Financial Accounting",
-        "Module 2 : Transactions Vouchers",
-        "Module 3 : Inventory Information & Features",
-        "Module 4 : Statuary & Taxations GST",
-        "Module 5 : View Reports"
+        <span><strong>Module 1 :</strong> Special Fundamental & Financial Accounting</span>,
+        <span><strong>Module 2 :</strong> Transactions Vouchers</span>,
+        <span><strong>Module 3 :</strong> Inventory Information & Features</span>,
+        <span><strong>Module 4 :</strong> Statuary & Taxations GST</span>,
+        <span><strong>Module 5 :</strong> View Reports</span>
       ],
     },
     {
@@ -60,22 +60,22 @@ const Courses = () => {
       desc: <strong>FREE: Banking & Accounting in MS Excel</strong>,
       content: [
         <strong>Part A : Financial Accounting[Manual Accounting]</strong>,
-        "Module A : Principles & Rules of Accounting",
-        "Module B : Bookkeeping & Practice",
-        "Module C : Stock & Inventory Maintain",
-        "Module D : Goods & Service Tax [GST]",
-        "Module E : Soft Skill Development",
-        "Module F : Office Documentation & Record Management",
-        "Module G : Banking Operation",
-        "Module H : Tax Deduction at Sources[TDS]",
-        "Module I : Income Tax",
+        <span><strong>Module A :</strong> Principles & Rules of Accounting</span>,
+        <span><strong>Module B :</strong> Bookkeeping & Practice</span>,
+        <span><strong>Module C :</strong> Stock & Inventory Maintain</span>,
+        <span><strong>Module D :</strong> Goods & Service Tax [GST]</span>,
+        <span><strong>Module E :</strong> Soft Skill Development</span>,
+        <span><strong>Module F :</strong> Office Documentation & Record Management</span>,
+        <span><strong>Module G :</strong> Banking Operation</span>,
+        <span><strong>Module H :</strong> Tax Deduction at Sources[TDS]</span>,
+        <span><strong>Module I :</strong> Income Tax</span>,
         <strong>Part B : Computerized Accounting[Tally Prime]</strong>,
-        "Module 1 : Special Fundamental & Financial Accounting",
-        "Module 2 : Transactions Vouchers",
-        "Module 3 : Inventory Information & Features",
-        "Module 4 : Statuary & Taxations GST",
-        "Module 5 : View Reports",
-        "Module 6 : Audit Trail Analysis & Reports",
+        <span><strong>Module 1 :</strong> Special Fundamental & Financial Accounting</span>,
+        <span><strong>Module 2 :</strong> Transactions Vouchers</span>,
+        <span><strong>Module 3 :</strong> Inventory Information & Features</span>,
+        <span><strong>Module 4 :</strong> Statuary & Taxations GST</span>,
+        <span><strong>Module 5 :</strong> View Reports</span>,
+        <span><strong>Module 6 :</strong> Audit Trail Analysis & Reports</span>,
       ],
     },
     {
@@ -84,44 +84,44 @@ const Courses = () => {
       desc: <strong>FREE: Banking,MS Word & Excel & Online Application & Forms</strong>,
       content: [
         <strong>Part A : Financial Accounting[Manual Accounting]</strong>,
-        "Module A : Principles & Rules of Accounting",
-        "Module B : Bookkeeping & Practice",
-        "Module C : Stock & Inventory Maintain",
-        "Module D : Goods & Service Tax [GST]",
-        "Module E : Soft Skill Development",
-        "Module F : Office Documentation & Record Management",
-        "Module G : Banking Operation",
-        "Module H : Tax Deduction at Sources[TDS]",
-        "Module I : Income Tax",
-        "Module J : Preparation of Finalized Accounting & Checking method",
-        "Module K : Payroll/Salary Managements",
-        "Module L : Discussion on Fixed Assets",
-        "Module M : Discussion on Project Reports,Documentations & Financial Data Analyses",
+        <span><strong>Module A :</strong> Principles & Rules of Accounting</span>,
+        <span><strong>Module B :</strong> Bookkeeping & Practice</span>,
+        <span><strong>Module C :</strong> Stock & Inventory Maintain</span>,
+        <span><strong>Module D :</strong> Goods & Service Tax [GST]</span>,
+        <span><strong>Module E :</strong> Soft Skill Development</span>,
+        <span><strong>Module F :</strong> Office Documentation & Record Management</span>,
+        <span><strong>Module G :</strong> Banking Operation</span>,
+        <span><strong>Module H :</strong> Tax Deduction at Sources[TDS]</span>,
+        <span><strong>Module I :</strong> Income Tax</span>,
+        <span><strong>Module J :</strong> Preparation of Finalized Accounting & Checking method</span>,
+        <span><strong>Module K :</strong> Payroll/Salary Managements</span>,
+        <span><strong>Module L :</strong> Discussion on Fixed Assets</span>,
+        <span><strong>Module M :</strong> Discussion on Project Reports,Documentations & Financial Data Analyses</span>,
         <strong>Part B : Computerized Accounting[Tally Prime]</strong>,
-        "Module 1 : Special Fundamental & Financial Accounting",
-        "Module 2 : Transactions Vouchers",
-        "Module 3 : Inventory Information & Features",
-        "Module 4 : Statuary & Taxations GST",
-        "Module 5 : View Reports",
-        "Module 6 : Audit Trail Analysis & Reports",
-        "Module 7 : Statuary & Taxations TDS",
-        "Module 8 : Financial Data Analyses in Tally Prime & Adjustments of Entries",
+        <span><strong>Module 1 :</strong> Special Fundamental & Financial Accounting</span>,
+        <span><strong>Module 2 :</strong> Transactions Vouchers</span>,
+        <span><strong>Module 3 :</strong> Inventory Information & Features</span>,
+        <span><strong>Module 4 :</strong> Statuary & Taxations GST</span>,
+        <span><strong>Module 5 :</strong> View Reports</span>,
+        <span><strong>Module 6 :</strong> Audit Trail Analysis & Reports</span>,
+        <span><strong>Module 7 :</strong> Statuary & Taxations TDS</span>,
+        <span><strong>Module 8 :</strong> Financial Data Analyses in Tally Prime & Adjustments of Entries</span>,
       ],
     },
     {
       title: "Online Certificate Course",
-      duration: "Duration: 6 to 12 months",
-      desc: <br/>,
+      duration: <strong>Duration: 6 to 12 months</strong>,
+      desc: <br />,
       content: [
-        "Module 1 : Advance Diploma in Accounting Management",
-        "Module 2 : Certificate in Tally",
-        "Module 3 : Course on Computer Concept",
-        "Module 4 : Diploma in Fire & Safety Management",
-        "Module 5 : Diploma in Solar Energy Technician",
-        "Module 6 : Diploma in Panchayati Raj & Rural Management",
-        "Module 7 : Diploma in Animal Husbandry",
-        "Module 8 : PGDCA",
-        "Module 9 : Yoga Teacher",
+        "Advance Diploma in Accounting Management",
+        "Certificate in Tally",
+        "Course on Computer Concept",
+        "Diploma in Fire & Safety Management",
+        "Diploma in Solar Energy Technician",
+        "Diploma in Panchayati Raj & Rural Management",
+        "Diploma in Animal Husbandry",
+        "PGDCA",
+        "Yoga Teacher",
       ],
     },
   ];
@@ -163,10 +163,46 @@ const Courses = () => {
             </div>
             {/* Dynamic Content  */}
             <div className={openIndex === index ? `${styles.content} ${styles.show}` : styles.content}>
-              <ul>
-                {course.content.map((item, i) => (
-                  <li key={i}> {item}</li>
-                ))}
+              <ul className={styles.moduleList}>
+                {course.content.map((item, i) => {
+
+                  // 👉 CASE 1: Part headings (strong tag)
+                  if (item?.type === "strong") {
+                    return (
+                      <li key={i} className={styles.part}>
+                        {item.props.children}
+                      </li>
+                    );
+                  }
+
+                  // 👉 CASE 2: Module rows (span)
+                  if (item?.type === "span") {
+                    const children = item.props.children;
+
+                    // children = [<strong>Module A :</strong>, " Text..."]
+                    return (
+                      <li key={i} className={styles.moduleItem}>
+                        <span className={styles.label}>
+                          {children[0]?.props?.children}
+                        </span>
+
+                        <span className={styles.text}>
+                          {children[1]}
+                        </span>
+                      </li>
+                    );
+                  }
+
+                  // 👉 CASE 3: Plain text (last course list)
+                  return (
+                    <li key={i} className={styles.simpleItem}>
+                      <span className={styles.bullet}>➤</span>
+                      <span className={styles.simpleText}>
+                        {item.replace("*", "").trim()}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

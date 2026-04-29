@@ -78,7 +78,6 @@ const Nav = () => {
           </ul>
         </div>
       </nav>
-
       {showLogin && <Login onClose={() => setShowLogin(false)} />}
     </>
   );
