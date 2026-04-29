@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/AdminDistanceGallery.module.css';
+import { SiNushell } from "react-icons/si";
 
 const AdminDistanceGallery = () => {
   const [form, setForm] = useState({
@@ -162,7 +163,7 @@ const AdminDistanceGallery = () => {
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            className={currentPage === i + 1 ? styles.active : ""}
+            style={currentPage === i + 1 ? styles.active : null}
           >
             {i + 1}
           </button>
