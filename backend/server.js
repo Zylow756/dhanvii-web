@@ -31,6 +31,7 @@ app.use("/api/far-students", farStudentRoutes);
 //  STATIC
 app.use("/uploads", express.static("uploads"));
 
+
 // DB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))

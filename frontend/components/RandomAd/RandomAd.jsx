@@ -19,23 +19,34 @@ const RandomAd = () => {
   let videos = [];
 
   const fetchVideos = async () => {
-    const res = await axios.get("http://localhost:5000/api/video");
-    videos = res.data;
+    try {
+      const res = await axios.get("https://dhanvii.in/api/video");
 
-    changeVideo();
+      videos = res.data;
+
+      console.log(videos);
+
+      changeVideo();
+    } catch (err) {
+      console.error("Video fetch error:", err);
+    }
   };
 
   const changeVideo = () => {
     if (videos.length > 0) {
       const randomIndex = Math.floor(Math.random() * videos.length);
+
       const randomVideo = videos[randomIndex];
-      setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
+
+      if (randomVideo.youtubeUrl) {
+        setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
+      }
     }
   };
 
   fetchVideos();
 
-  const interval = setInterval(changeVideo, 10000); // every 10 sec
+  const interval = setInterval(changeVideo, 10000);
 
   return () => clearInterval(interval);
 }, []);
@@ -49,6 +60,7 @@ const RandomAd = () => {
           <iframe
             src={videoUrl}
             title="Random Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
         )}
