@@ -15,7 +15,10 @@ import farStudentRoutes from "./routes/farStudent.js";
 const app = express();
 dotenv.config();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://dhanvii.in",
+  credentials: true
+}));
 app.use(express.json());
 
 //  ROUTES
