@@ -23,14 +23,14 @@ const Admin = () => {
 
   //  Fetch data
   const fetchData = async () => {
-    const res = await fetch("http://localhost:5000/api/enquiry");
+    const res = await fetch("https://dhanvii.in/api/enquiry");
     const result = await res.json();
     setData(result);
   };
 
   useEffect(() => {
     const fetchDataOnMount = async () => {
-      const res = await fetch("http://localhost:5000/api/enquiry");
+      const res = await fetch("https://dhanvii.in/api/enquiry");
       const result = await res.json();
       setData(result);
     };
@@ -40,7 +40,7 @@ const Admin = () => {
 
   //  Delete
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/enquiry/${id}`, {
+    await fetch(`https://dhanvii.in/api/enquiry/${id}`, {
       method: "DELETE",
     });
     fetchData();
@@ -60,7 +60,7 @@ const Admin = () => {
           <div className={styles.enquiryContain}>
             <span
               onClick={() =>
-                window.open("http://localhost:5000/api/enquiry/export")
+                window.open("https://dhanvii.in/api/enquiry/export")
               } className={styles.exportBtn}
             >
               📥 Export Excel

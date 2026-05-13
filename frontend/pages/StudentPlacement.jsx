@@ -8,7 +8,7 @@ const StudentPlacement = () => {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/placementGallery")
+    axios.get("https://dhanvii.in/api/placementGallery")
       .then(res => {
         console.log("API DATA :", res.data);
         setStudents(res.data);
@@ -50,7 +50,7 @@ const StudentPlacement = () => {
           {sortedStudents.map((student) => (
             <div className={styles.certificate} key={student._id}>
               <img
-                src={`http://localhost:5000/${student.background}`}
+                src={`https://dhanvii.in/${student.background}`}
                 alt={student.name}
                 className={styles.bgImage}
               />

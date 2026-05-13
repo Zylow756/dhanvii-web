@@ -10,7 +10,7 @@ const StudentDistance = () => {
 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/far-students")
+    axios.get("https://dhanvii.in/api/far-students")
       .then(res => {
         console.log("API DATA :", res.data);
         setStudents(res.data);
@@ -48,7 +48,7 @@ const StudentDistance = () => {
               <h2 className={styles.city}>{student.city}</h2>
 
               <img
-                src={`http://localhost:5000/uploads/${student.image}`}
+                src={`https://dhanvii.in/uploads/${student.image}`}
                 className={styles.photoCircle}
                 alt={student.name}
               />

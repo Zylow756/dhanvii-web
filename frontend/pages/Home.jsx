@@ -60,7 +60,7 @@ const Home = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/enquiry/send", {
+      const res = await fetch("https://dhanvii.in/api/enquiry/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

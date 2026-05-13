@@ -23,7 +23,7 @@ const AdminGallery = () => {
 
 
   const fetchImages = useCallback(async (category = "all") => {
-    let url = "http://localhost:5000/api/gallery";
+    let url = "https://dhanvii.in/api/gallery";
 
     if (category !== "all") {
       url += `?category=${category}`;
@@ -64,7 +64,7 @@ const AdminGallery = () => {
     formData.append("description", description);
 
     await axios.post(
-      "http://localhost:5000/api/gallery/upload",
+      "https://dhanvii.in/api/gallery/upload",
       formData
     );
 
@@ -85,7 +85,7 @@ const AdminGallery = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/api/gallery/${editId}`,
+        `https://dhanvii.in/api/gallery/${editId}`,
         formData
       );
 
@@ -105,7 +105,7 @@ const AdminGallery = () => {
 
   // Delete
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/gallery/${id}`);
+    await axios.delete(`https://dhanvii.in/api/gallery/${id}`);
     alert("Image deleted successfully");
     fetchImages();
   };
@@ -243,7 +243,7 @@ const AdminGallery = () => {
           {Array.isArray(images) && currentData.map((img) => (
             <div key={img._id} className={styles.card}>
               <img
-                src={`http://localhost:5000/uploads/${img.image}`}
+                src={`https://dhanvii.in/uploads/${img.image}`}
                 alt=""
               />
 

@@ -20,7 +20,7 @@ export default function AdminPlacement() {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchData = () => {
-    fetch("http://localhost:5000/api/placement/all")
+    fetch("https://dhanvii.in/api/placement/all")
       .then(res => res.json())
       .then(resData => {
         console.log(resData);
@@ -45,7 +45,7 @@ export default function AdminPlacement() {
     if (!window.confirm("Are you sure?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/placement/${id}`, {
+      const res = await fetch(`https://dhanvii.in/api/placement/${id}`, {
         method: "DELETE",
       });
 

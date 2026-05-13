@@ -7,7 +7,7 @@ const AdminVideo = () => {
   const [url, setUrl] = useState("");
 
   const handleSubmit = async () => {
-    await axios.post("http://localhost:5000/api/video", {
+    await axios.post("https://dhanvii.in/api/video", {
       youtubeUrl: url,
     });
     alert("Video Added");

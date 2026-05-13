@@ -33,7 +33,7 @@ const PlacementGallery = () => {
   }
   //  FETCH DATA
   const fetchData = () => {
-    axios.get("http://localhost:5000/api/placementGallery")
+    axios.get("https://dhanvii.in/api/placementGallery")
       .then(res => setStudents(res.data));
   };
 
@@ -75,14 +75,14 @@ const PlacementGallery = () => {
       if (editId) {
         //  UPDATE
         await axios.put(
-          `http://localhost:5000/api/placementGallery/${editId}`,
+          `https://dhanvii.in/api/placementGallery/${editId}`,
           data
         );
         alert("Updated");
       } else {
         //  ADD
         await axios.post(
-          "http://localhost:5000/api/placementGallery",
+          "https://dhanvii.in/api/placementGallery",
           data, {
           headers: { "Content-Type": "multipart/form-data" }
         }
@@ -109,12 +109,12 @@ const PlacementGallery = () => {
     });
     setBgPreview(null);
     setEditId(student._id);
-    setBgPreview(`http://localhost:5000/${student.background}`);
+    setBgPreview(`https://dhanvii.in/${student.background}`);
   };
 
   //  DELETE
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/placementGallery/${id}`);
+    await axios.delete(`https://dhanvii.in/api/placementGallery/${id}`);
     fetchData();
   };
 

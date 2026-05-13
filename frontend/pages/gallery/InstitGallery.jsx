@@ -12,7 +12,7 @@ const FuncGallery = () => {
 
   const fetchImages = async () => {
   const res = await axios.get(
-    "http://localhost:5000/api/gallery?category=institute"
+    "https://dhanvii.in/api/gallery?category=institute"
   );
   setImages(res.data);
 };
@@ -55,7 +55,7 @@ const FuncGallery = () => {
               onClick={() => openPopup(index)}
             >
               <img
-                src={`http://localhost:5000/uploads/${img.image}`}
+                src={`https://dhanvii.in/uploads/${img.image}`}
                 alt="gallery"
               />
               <div className={styles.overlay}>
@@ -72,7 +72,7 @@ const FuncGallery = () => {
             <button className={styles.prev} onClick={prevImage}><FaChevronLeft /></button>
 
             <img
-              src={`http://localhost:5000/uploads/${images[currentIndex].image}`}
+              src={`https://dhanvii.in/uploads/${images[currentIndex].image}`}
               className={styles.modalImage}
               alt="preview"
             />

@@ -103,7 +103,7 @@ export default function Career() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/form", {
+      const res = await fetch("https://dhanvii.in/api/form", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -126,7 +126,7 @@ export default function Career() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/placement/add", {
+      const res = await fetch("https://dhanvii.in/api/placement/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

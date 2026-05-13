@@ -14,7 +14,7 @@ const StudentReview = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/reviews");
+      const res = await axios.get("https://dhanvii.in/api/reviews");
       setReviews(res.data);
     } catch (err) {
       console.error(err);
@@ -67,7 +67,7 @@ const StudentReview = () => {
                   <img
                     src={
                       r.image
-                        ? `http://localhost:5000/uploads/${r.image}`
+                        ? `https://dhanvii.in/uploads/${r.image}`
                         : studentImage
                     }
                     alt={r.name}

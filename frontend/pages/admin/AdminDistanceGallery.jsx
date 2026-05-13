@@ -29,7 +29,7 @@ const AdminDistanceGallery = () => {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = async () => {
-    const res = await axios.get("http://localhost:5000/api/far-students");
+    const res = await axios.get("https://dhanvii.in/api/far-students");
     
     const result = await res.data;
     setData(result);
@@ -72,12 +72,12 @@ const AdminDistanceGallery = () => {
 
     if (editId) {
       await axios.put(
-        `http://localhost:5000/api/far-students/${editId}`,
+        `https://dhanvii.in/api/far-students/${editId}`,
         data
       );
     } else {
       await axios.post(
-        "http://localhost:5000/api/far-students/add",
+        "https://dhanvii.in/api/far-students/add",
         data
       );
     }
@@ -88,7 +88,7 @@ const AdminDistanceGallery = () => {
   // DELETE
   const handleDelete = async (id) => {
     await axios.delete(
-      `http://localhost:5000/api/far-students/${id}`
+      `https://dhanvii.in/api/far-students/${id}`
     );
     fetchStudents();
   };
