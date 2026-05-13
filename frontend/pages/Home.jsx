@@ -104,6 +104,20 @@ const Home = () => {
             <li>Technical: ITI, B.Tech, others</li>
           </ul>
         </div>
+        <div className={styles.premiumCard}>
+          <h2>Job Opportunities</h2>
+          <ul>
+            <li>Accounting Clerks</li>
+            <li>Book Keeping</li>
+            <li>Bank Worker</li>
+            <li>Payroll Clerks</li>
+            <li>Financial Dealers</li>
+            <li>Tax Manager</li>
+            <li>Godown Operation</li>
+            <li>Internal Auditors</li>
+            <li>Management Accounting</li>
+          </ul>
+        </div>
         <div className={styles.contactFormContainer}>
           <h2>Enquiry Form For Demo Classes</h2>
           <form id="contactForm" onSubmit={handleSubmit}>
@@ -116,6 +130,11 @@ const Home = () => {
               <input type="tel" id="phone" name="phone" placeholder="Your Phone Number"
                 onChange={handleChange} required />
                 {errors.phone && <p className={styles.error}>{errors.phone}</p>}
+            </div>
+            <div className={styles.formGroup}>
+              <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number"
+                onChange={handleChange} />
+                {errors.altPhone && <p className={styles.error}>{errors.altPhone}</p>}
             </div>
             <div className={styles.formGroup}>
               <select
@@ -138,20 +157,6 @@ const Home = () => {
               Send Message
             </button>
           </form>
-        </div>
-        <div className={styles.premiumCard}>
-          <h2>Job Opportunities</h2>
-          <ul>
-            <li>Accounting Clerks</li>
-            <li>Book Keeping</li>
-            <li>Bank Worker</li>
-            <li>Payroll Clerks</li>
-            <li>Financial Dealers</li>
-            <li>Tax Manager</li>
-            <li>Godown Operation</li>
-            <li>Internal Auditors</li>
-            <li>Management Accounting</li>
-          </ul>
         </div>
       </div>
       <StudentReview />
