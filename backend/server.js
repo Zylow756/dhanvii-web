@@ -16,7 +16,10 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-  origin: "https://dhanvii.in",
+  origin: [
+    "https://dhanvii.in",
+    "http://dhanvii.in"
+  ],
   credentials: true
 }));
 app.use(express.json());
