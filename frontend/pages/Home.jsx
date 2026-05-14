@@ -119,8 +119,8 @@ const Home = () => {
         <div className={styles.premiumCard}>
           <h2>Who Should Join?</h2>
           <ul>
-            <li>12th Commerse & Non-Commerse Students</li>
-            <li>Graduation: Arts, Commerse,Science</li>
+            <li>12th Commerce & Non-Commerce Students</li>
+            <li>Graduation: Arts, Commerce,Science</li>
             <li>Job Seekers in Accounting & Finance</li>
             <li>Business Owners managing their accounts</li>
             <li>Anyone wanting to master Tally & GST</li>
