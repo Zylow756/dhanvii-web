@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const RandomAd = () => {
-  const [videoUrl, setVideoUrl] = useState("");
+ const [videos, setVideos] = useState([]);
+const [videoUrl, setVideoUrl] = useState("");
 
   const getEmbedUrl = (url) => {
     if (url.includes("shorts")) {
@@ -16,41 +17,38 @@ const RandomAd = () => {
   };
 
   useEffect(() => {
-  let videos = [];
-
   const fetchVideos = async () => {
     try {
       const res = await axios.get("https://dhanvii.in/api/video");
 
-      videos = res.data;
+      setVideos(res.data);
 
-      console.log(videos);
+      if (res.data.length > 0) {
+        const randomVideo =
+          res.data[Math.floor(Math.random() * res.data.length)];
 
-      changeVideo();
+        setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
+      }
     } catch (err) {
       console.error("Video fetch error:", err);
     }
   };
 
-  const changeVideo = () => {
-    if (videos.length > 0) {
-      const randomIndex = Math.floor(Math.random() * videos.length);
-
-      const randomVideo = videos[randomIndex];
-
-      if (randomVideo.youtubeUrl) {
-        setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
-      }
-    }
-  };
-
   fetchVideos();
-
-  const interval = setInterval(changeVideo, 10000);
-
-  return () => clearInterval(interval);
 }, []);
 
+useEffect(() => {
+  if (videos.length === 0) return;
+
+  const interval = setInterval(() => {
+    const randomVideo =
+      videos[Math.floor(Math.random() * videos.length)];
+
+    setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
+  }, 10000);
+
+  return () => clearInterval(interval);
+}, [videos]);
   return (
     <div className={styles.adBox}>
 

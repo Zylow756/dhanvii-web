@@ -42,7 +42,7 @@ const StudentReview = () => {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        loop={true}
+        loop={reviews.length > 3}
         autoplay={{ delay: 7000 }}
         coverflowEffect={{
           rotate: 0,
@@ -56,7 +56,7 @@ const StudentReview = () => {
         className={styles.swiper}
       >
         {reviews.map((r) => (
-          <SwiperSlide key={r.id} className={styles.slide}>
+          <SwiperSlide key={r._id} className={styles.slide}>
             
             <a href={r.path}>
               <div className={styles.card}>
