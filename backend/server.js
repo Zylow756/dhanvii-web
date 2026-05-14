@@ -44,7 +44,7 @@ app.use("/api/far-students", farStudentRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // REACT BUILD PATH
-const frontendPath = path.join(__dirname, "../frontend/dist");
+const frontendPath = path.join(__dirname, "../dist");
 
 app.use(express.static(frontendPath));
 
