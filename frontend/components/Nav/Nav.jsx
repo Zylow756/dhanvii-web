@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import styles from './Nav.module.css';
 import logo from '../../assets/images/logo.jpg';
 import React, { useState } from "react";
-import Login from "../../pages/Login";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
 
   return (
@@ -70,15 +68,10 @@ const Nav = () => {
 
             <li><Link to="/career">Career</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
-            <li>
-              <span onClick={() => setShowLogin(true)} className={styles.loginBtn}>
-                Login
-              </span>
-            </li>
           </ul>
         </div>
       </nav>
-      {showLogin && <Login onClose={() => setShowLogin(false)} />}
+      
     </>
   );
 };

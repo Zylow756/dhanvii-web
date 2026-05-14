@@ -1,4 +1,6 @@
-import styles from './Footer.module.css'
+import styles from './Footer.module.css';
+import React, { useState } from "react";
+import Login from "../../pages/Login";
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -8,13 +10,14 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+  const [showLogin, setShowLogin] = useState(false);
 
   return (
     <footer className={styles.footer}>
         
       <div className={styles.footerArea}>
       <div className={styles.footerBottomArea}>
-        <p>© Dhanvii Accounting System. All rights reserved.</p>
+        <p onClick={() => setShowLogin(true)} >© Dhanvii Accounting System. All rights reserved.</p>
         <div className={styles.footerSocialMedia}>
           <a href="https://www.facebook.com/profile.php?id=100063563501750" className={styles.socialIcons}><FaFacebookF /></a>
           <a href="https://www.linkedin.com/in/dhanvii-accounting-system-29092915b" className={styles.socialIcons}><FaLinkedinIn /></a>
@@ -24,6 +27,7 @@ const Footer = () => {
         </div>
       </div>
       </div>
+      {showLogin && <Login onClose={() => setShowLogin(false)} />}
     </footer>
   );
 };
