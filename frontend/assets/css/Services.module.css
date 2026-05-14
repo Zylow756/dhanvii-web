@@ -51,6 +51,7 @@
   border-bottom: 3px solid #eee;
   color: #4c0803;
   font-size: clamp(18px, 1.8vw, 32px);
+  padding-bottom: 3vh;
 }
 
 .cardHeader ul {

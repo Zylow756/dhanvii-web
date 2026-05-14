@@ -14,41 +14,64 @@ const Home = () => {
     phone: "",
     qualification: ""
   });
-   const [errors, setErrors] = useState({});
-  
-    const validateForm = () => {
-      let newErrors = {};
-  
-      // Required fields
-      if (!formData.name) newErrors.name = "Name is required";
-  
-      // Name validation (only letters and spaces)
-      const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
-      if (formData.name && !nameRegex.test(formData.name)) {
-        newErrors.name = "Enter valid full name";
-      }
-  
-      if (!formData.phone) newErrors.phone = "Phone number is required";
-  
-      // Phone validation (10 digit)
-      const phoneRegex = /^[0-9]{10}$/;
-      if (formData.phone && !phoneRegex.test(formData.phone)) {
-        newErrors.phone = "Enter valid 10-digit number";
-      }
-  
-      // Indian phone validation (starts with 6-9 and 10 digits)
-      const phoneRegex1 = /^[6-9]\d{9}$/;
-      if (formData.phone && !phoneRegex1.test(formData.phone)) {
-        newErrors.phone = "Enter valid Indian mobile number";
-      }
-  
-      setErrors(newErrors);
-      return Object.keys(newErrors).length === 0;
-    };
-  
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    // Required fields
+    if (!formData.name) newErrors.name = "Name is required";
+
+    // Name validation (only letters and spaces)
+    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+    if (formData.name && !nameRegex.test(formData.name)) {
+      newErrors.name = "Enter valid full name";
+    }
+
+    if (!formData.phone) newErrors.phone = "Phone number is required";
+
+    // Phone validation (10 digit)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Enter valid 10-digit number";
+    }
+
+    // Indian phone validation (starts with 6-9 and 10 digits)
+    const phoneRegex1 = /^[6-9]\d{9}$/;
+    if (formData.phone && !phoneRegex1.test(formData.phone)) {
+      newErrors.phone = "Enter valid Indian mobile number";
+    }
+
+    if (formData.altPhone) {
+  const altPhoneRegex = /^[6-9]\d{9}$/;
+
+  if (!altPhoneRegex.test(formData.altPhone)) {
+    newErrors.altPhone = "Enter valid 10-digit alternate number";
+  }
+}
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Restrict phone fields to 10 digits only
+    if (name === "phone" || name === "altPhone") {
+      const numericValue = value.replace(/\D/g, "").slice(0, 10);
+
+      setFormData({
+        ...formData,
+        [name]: numericValue,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -124,17 +147,22 @@ const Home = () => {
             <div className={styles.formGroup}>
               <input type="text" id="name" name="name" placeholder="Your Name"
                 onChange={handleChange} required />
-                {errors.name && <p className={styles.error}>{errors.name}</p>}
+              {errors.name && <p className={styles.error}>{errors.name}</p>}
             </div>
             <div className={styles.formGroup}>
               <input type="tel" id="phone" name="phone" placeholder="Your Phone Number"
-                onChange={handleChange} required />
-                {errors.phone && <p className={styles.error}>{errors.phone}</p>}
+                value={formData.phone}
+                onChange={handleChange}
+                maxLength={10} required />
+              {errors.phone && <p className={styles.error}>{errors.phone}</p>}
             </div>
             <div className={styles.formGroup}>
               <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number"
-                onChange={handleChange} />
-                {errors.altPhone && <p className={styles.error}>{errors.altPhone}</p>}
+
+                value={formData.altPhone || ""}
+                onChange={handleChange}
+                maxLength={10} />
+              {errors.altPhone && <p className={styles.error}>{errors.altPhone}</p>}
             </div>
             <div className={styles.formGroup}>
               <select

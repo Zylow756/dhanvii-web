@@ -158,7 +158,17 @@ export default function Career() {
           <input name="mobile" placeholder="Mobile No" onChange={handleChange} className={styles.formInput} />
           {errors.mobile && <p className={styles.error}>{errors.mobile}</p>}
           <input name="address" placeholder="Address" onChange={handleChange} className={styles.formInput} />
-          <input type="date" name="dob" onChange={handleChange} className={styles.formInput} />
+          <input
+            type="text"
+            name="dob"
+            placeholder="Date of Birth"
+            onFocus={(e) => (e.target.type = "date")}
+            onBlur={(e) => {
+              if (!e.target.value) e.target.type = "text";
+            }}
+            onChange={handleChange}
+            className={styles.formInput}
+          />
 
           <select name="gender" onChange={handleChange} className={styles.formSelect}>
             <option value="">Select Gender</option>
