@@ -40,8 +40,18 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api", videoRoutes);  
 app.use("/api/far-students", farStudentRoutes);      
 
-//  STATIC
+// STATIC FILES
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// REACT BUILD PATH
+const frontendPath = path.join(__dirname, "../frontend/dist");
+
+app.use(express.static(frontendPath));
+
+// REACT ROUTES
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
 
 
 // DB
@@ -51,6 +61,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // SERVER
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
