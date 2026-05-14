@@ -6,8 +6,22 @@ const router = express.Router();
 
 // GET
 router.get("/", async (req, res) => {
-  const reviews = await Review.find();
-  res.json(reviews);
+  try {
+    console.log("REVIEWS API CALLED");
+
+    const reviews = await Review.find();
+
+    console.log("REVIEWS:", reviews);
+
+    res.json(reviews);
+
+  } catch (err) {
+    console.error("REVIEWS ERROR:", err);
+
+    res.status(500).json({
+      error: err.message,
+    });
+  }
 });
 
 // POST

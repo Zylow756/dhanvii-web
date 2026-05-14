@@ -18,6 +18,7 @@ dotenv.config();
 app.use(cors({
   origin: [
     "https://dhanvii.in",
+    "https://www.dhanvii.in",
     "http://dhanvii.in"
   ],
   credentials: true

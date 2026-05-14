@@ -19,8 +19,22 @@ router.post("/video", async (req, res) => {
 
 // GET ALL VIDEOS
 router.get("/video", async (req, res) => {
-  const videos = await Video.find().sort({ createdAt: -1 });
-  res.json(videos);
+  try {
+    console.log("VIDEO API CALLED");
+
+    const videos = await Video.find().sort({ createdAt: -1 });
+
+    console.log("VIDEOS:", videos);
+
+    res.json(videos);
+
+  } catch (err) {
+    console.error("VIDEO ERROR:", err);
+
+    res.status(500).json({
+      error: err.message,
+    });
+  }
 });
 
 // DELETE VIDEO (optional but important)
