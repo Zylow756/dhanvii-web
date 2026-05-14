@@ -11,6 +11,11 @@ import placementGalleryRoutes from "./routes/placementGallery.js";
 import galleryRoutes from "./routes/gallery.js";
 import videoRoutes from "./routes/video.js";
 import farStudentRoutes from "./routes/farStudent.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 dotenv.config();
@@ -36,7 +41,7 @@ app.use("/api", videoRoutes);
 app.use("/api/far-students", farStudentRoutes);      
 
 //  STATIC
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // DB
