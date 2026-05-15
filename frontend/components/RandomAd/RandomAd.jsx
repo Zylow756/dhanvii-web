@@ -19,7 +19,8 @@ const [videoUrl, setVideoUrl] = useState("");
   useEffect(() => {
   const fetchVideos = async () => {
     try {
-      const res = await axios.get("https://dhanvii.in/api/video");
+      const API = import.meta.env.VITE_API_URL;
+      const res = await axios.get("${API}/api/video");
 
       setVideos(res.data);
 

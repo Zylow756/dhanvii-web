@@ -49,7 +49,8 @@ const Login = ({ onClose }) => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const res = await fetch("https://dhanvii.in/api/auth/login", {
+        const API = import.meta.env.VITE_API_URL;
+        const res = await fetch("${API}/api/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

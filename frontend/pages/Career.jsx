@@ -99,24 +99,6 @@ export default function Career() {
     setForm({ ...form, [section]: updated });
   };
 
-  /*const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await fetch("https://dhanvii.in/api/form", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-      alert(data.message);
-    } catch (error) {
-      console.error(error);
-      alert("Error saving data");
-    }
-  };*/
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -126,7 +108,8 @@ export default function Career() {
     }
 
     try {
-      const res = await fetch("https://dhanvii.in/api/placement/add", {
+      const API = import.meta.env.VITE_API_URL;
+      const res = await fetch("${API}/api/placement/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

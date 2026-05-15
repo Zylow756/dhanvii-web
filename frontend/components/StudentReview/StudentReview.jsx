@@ -10,11 +10,12 @@ import axios from "axios";
 
 const StudentReview = () => {
   const [reviews, setReviews] = useState([]);
+      const API = import.meta.env.VITE_API_URL;
 
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get("https://dhanvii.in/api/reviews");
+      const res = await axios.get("${API}/api/reviews");
       setReviews(res.data);
     } catch (err) {
       console.error(err);
@@ -67,7 +68,7 @@ const StudentReview = () => {
                   <img
                     src={
                       r.image
-                        ? `https://dhanvii.in/uploads/${r.image}`
+                        ? `${API}/uploads/${r.image}`
                         : studentImage
                     }
                     alt={r.name}

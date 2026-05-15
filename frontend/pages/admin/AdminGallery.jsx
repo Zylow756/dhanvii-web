@@ -20,10 +20,11 @@ const AdminGallery = () => {
   const itemsPerPage = 21;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const API = import.meta.env.VITE_API_URL;
 
 
   const fetchImages = useCallback(async (category = "all") => {
-    let url = "https://dhanvii.in/api/gallery";
+    let url = `${API}/api/gallery`;
 
     if (category !== "all") {
       url += `?category=${category}`;
@@ -64,7 +65,7 @@ const AdminGallery = () => {
     formData.append("description", description);
 
     await axios.post(
-      "https://dhanvii.in/api/gallery/upload",
+      `${API}/api/gallery/upload`,
       formData
     );
 
@@ -85,7 +86,7 @@ const AdminGallery = () => {
       }
 
       await axios.put(
-        `https://dhanvii.in/api/gallery/${editId}`,
+        `${API}/api/gallery/${editId}`,
         formData
       );
 
@@ -105,7 +106,7 @@ const AdminGallery = () => {
 
   // Delete
   const handleDelete = async (id) => {
-    await axios.delete(`https://dhanvii.in/api/gallery/${id}`);
+    await axios.delete(`${API}/api/gallery/${id}`);
     alert("Image deleted successfully");
     fetchImages();
   };
@@ -243,7 +244,7 @@ const AdminGallery = () => {
           {Array.isArray(images) && currentData.map((img) => (
             <div key={img._id} className={styles.card}>
               <img
-                src={`https://dhanvii.in/uploads/${img.image}`}
+                src={`${API}/uploads/${img.image}`}
                 alt=""
               />
 

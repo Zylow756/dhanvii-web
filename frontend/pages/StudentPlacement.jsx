@@ -7,12 +7,12 @@ import Footer from "../components/Footer/Footer";
 const StudentPlacement = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     console.log("USE EFFECT RUNNING");
-
     axios
-      .get("https://dhanvii.in/api/placementGallery")
+      .get("${API}/api/placementGallery")
       .then((res) => {
         console.log("API RESPONSE:", res.data);
 
@@ -70,7 +70,7 @@ const StudentPlacement = () => {
             {sortedStudents.map((student) => (
               <div className={styles.certificate} key={student._id}>
                 <img
-                  src={`https://dhanvii.in/${student.background}`}
+                  src={`${API}/${student.background}`}
                   alt={student.name}
                   className={styles.bgImage}
                 />

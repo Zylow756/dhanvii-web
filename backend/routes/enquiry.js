@@ -1,3 +1,4 @@
+/* global process */
 import express from "express";
 import nodemailer from "nodemailer";
 import fs from "fs";
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
     const data = await Enquiry.find().sort({ createdAt: -1 });
     res.json(data);
   } catch (err) {
-    res.status(500).json({err});
+    res.status(500).json({ err });
   }
 });
 
@@ -59,12 +60,13 @@ router.get("/export", async (req, res) => {
 router.post("/send", async (req, res) => {
   console.log("BODY DATA:", req.body);
   try {
-    const { name, phone, qualification } = req.body;
+    const { name, phone, altPhone, qualification } = req.body;
 
     //  1. Save to MongoDB
     const savedData = await Enquiry.create({
       name,
       phone,
+      altPhone,
       qualification,
     });
 
@@ -83,6 +85,7 @@ router.post("/send", async (req, res) => {
       ID: data.length + 1,
       Name: name,
       Phone: phone,
+      AlternatePhone: altPhone,
       Qualification: qualification,
     };
 
@@ -99,14 +102,14 @@ router.post("/send", async (req, res) => {
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "contact.dhanvi@gmail.com",       //  your gmail
-        pass: "zwqy vlwe qfxi grvy",         //  NOT normal password
+        user: process.env.EMAIL_USER,       //  your gmail
+        pass: process.env.EMAIL_PASS,         //  NOT normal password
       },
     });
 
     // Mail content
     await transporter.sendMail({
-      from: "contact.dhanvi@gmail.com",
+      from: process.env.EMAIL_USER,
       to: "enquiry.dhanvii@gmail.com", // where you want to receive
       subject: "New Enquiry Received",
       //text: `ID: ${newEntry.ID}

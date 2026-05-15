@@ -12,6 +12,7 @@ const Home = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    altPhone: "",
     qualification: ""
   });
   const [errors, setErrors] = useState({});
@@ -31,14 +32,13 @@ const Home = () => {
     if (!formData.phone) newErrors.phone = "Phone number is required";
 
     // Phone validation (10 digit)
-    const phoneRegex = /^[0-9]{10}$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
     if (formData.phone && !phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Enter valid 10-digit number";
+     newErrors.phone = "Enter valid Indian mobile number";
     }
 
     // Indian phone validation (starts with 6-9 and 10 digits)
-    const phoneRegex1 = /^[6-9]\d{9}$/;
-    if (formData.phone && !phoneRegex1.test(formData.phone)) {
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
       newErrors.phone = "Enter valid Indian mobile number";
     }
 
@@ -83,7 +83,8 @@ const Home = () => {
     }
 
     try {
-      const res = await fetch("https://dhanvii.in/api/enquiry/send", {
+      const API = import.meta.env.VITE_API_URL;
+      const res = await fetch("${API}/api/enquiry/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -91,10 +92,16 @@ const Home = () => {
         body: JSON.stringify(formData)
       });
 
-      const data = await res.json();
+      let data;
+
+try {
+  data = await res.json();
+} catch {
+  throw new Error("Server response invalid");
+}
 
       if (!res.ok) {
-        throw new Error(data.message);
+        throw new Error(data.message || "Something went wrong");
       }
 
       alert("Message sent successfully");

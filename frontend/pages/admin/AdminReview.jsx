@@ -134,9 +134,10 @@ const AdminReview = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
     const currentData = reviews.slice(indexOfFirstItem, indexOfLastItem);
+    const API = import.meta.env.VITE_API_URL;
 
     const fetchReviews = async () => {
-        const res = await axios.get("https://dhanvii.in/api/reviews");
+        const res = await axios.get(`${API}/api/reviews`);
         setReviews(res.data);
     };
 
@@ -169,13 +170,13 @@ const AdminReview = () => {
         try {
             if (editId) {
                 await axios.put(
-                    `https://dhanvii.in/api/reviews/${editId}`,
+                    `${API}/api/reviews/${editId}`,
                     formData
                 );
                 setEditId(null);
             } else {
                 await axios.post(
-                    "https://dhanvii.in/api/reviews",
+                    `${API}/api/reviews`,
                     formData
                 );
             }
@@ -202,7 +203,7 @@ const AdminReview = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete?")) {
             await axios.delete(
-                `https://dhanvii.in/api/reviews/${id}`
+                `${API}/api/reviews/${id}`
             );
             fetchReviews();
         }
@@ -291,7 +292,7 @@ const AdminReview = () => {
                                 <td>{indexOfFirstItem + index + 1}</td>
                                 <td style={styles.td}>
                                     <img
-                                        src={`https://dhanvii.in/uploads/${item.image}`}
+                                        src={`${API}/uploads/${item.image}`}
                                         alt=""
                                         style={styles.image}
                                     />

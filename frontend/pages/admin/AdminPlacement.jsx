@@ -18,9 +18,10 @@ export default function AdminPlacement() {
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+      const API = import.meta.env.VITE_API_URL;
 
   const fetchData = () => {
-    fetch("https://dhanvii.in/api/placement/all")
+    fetch(`${API}/api/placement/all`)
       .then(res => res.json())
       .then(resData => {
         console.log(resData);
@@ -45,7 +46,7 @@ export default function AdminPlacement() {
     if (!window.confirm("Are you sure?")) return;
 
     try {
-      const res = await fetch(`https://dhanvii.in/api/placement/${id}`, {
+      const res = await fetch(`${API}/api/placement/${id}`, {
         method: "DELETE",
       });
 

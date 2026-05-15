@@ -7,10 +7,11 @@ import axios from "axios";
 
 const StudentDistance = () => {
   const [students, setStudents] = useState([]);
+    const API = import.meta.env.VITE_API_URL;
 
 
   useEffect(() => {
-    axios.get("https://dhanvii.in/api/far-students")
+    axios.get("${API}/api/far-students")
       .then(res => {
         console.log("API DATA :", res.data);
         setStudents(res.data);
@@ -48,7 +49,7 @@ const StudentDistance = () => {
               <h2 className={styles.city}>{student.city}</h2>
 
               <img
-                src={`https://dhanvii.in/uploads/${student.image}`}
+                src={`${API}/uploads/${student.image}`}
                 className={styles.photoCircle}
                 alt={student.name}
               />

@@ -5,9 +5,10 @@ import styles from '../../assets/css/Admin.module.css'
 
 const AdminVideo = () => {
   const [url, setUrl] = useState("");
+    const API = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async () => {
-    await axios.post("https://dhanvii.in/api/video", {
+    await axios.post(`${API}/api/video`, {
       youtubeUrl: url,
     });
     alert("Video Added");

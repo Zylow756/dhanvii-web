@@ -2,6 +2,7 @@ import jacket1 from "../assets/images/banner.jpg";
 import jacket2 from "../assets/images/banner1.jpg";
 import jacket3 from "../assets/images/banner2.jpg";
 import jacket4 from "../assets/images/banner3.jpg";
+import jacket5 from "../assets/images/banner4.jpg";
 
 
 export const jacketAds = [
@@ -20,6 +21,10 @@ export const jacketAds = [
   {
     id: 5,
     image: jacket4,
+  },
+  {
+    id: 5,
+    image: jacket5,
   }
 
 ];

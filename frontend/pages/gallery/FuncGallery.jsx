@@ -8,9 +8,10 @@ import axios from "axios";
 const FuncGallery = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(null);
+    const API = import.meta.env.VITE_API_URL;
 
   const fetchImages = async () => {
-      const res = await axios.get("https://dhanvii.in/api/gallery?category=function");
+      const res = await axios.get(`${API}/api/gallery?category=function`);
       setImages(res.data);
     
   };
@@ -53,7 +54,7 @@ const FuncGallery = () => {
               onClick={() => openPopup(index)}
             >
               <img
-                src={`https://dhanvii.in/uploads/${img.image}`}
+                src={`${API}/uploads/${img.image}`}
                 alt="gallery"
               />
               <div className={styles.overlay}>
@@ -70,7 +71,7 @@ const FuncGallery = () => {
             <button className={styles.prev} onClick={prevImage}><FaChevronLeft /></button>
 
             <img
-              src={`https://dhanvii.in/uploads/${images[currentIndex].image}`}
+              src={`${API}/uploads/${images[currentIndex].image}`}
               className={styles.modalImage}
               alt="preview"
             />

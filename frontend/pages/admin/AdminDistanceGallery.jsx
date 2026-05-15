@@ -13,6 +13,7 @@ const AdminDistanceGallery = () => {
     image: "",
     isTop: false,
   });
+    const API = import.meta.env.VITE_API_URL;
 
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
@@ -29,7 +30,7 @@ const AdminDistanceGallery = () => {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = async () => {
-    const res = await axios.get("https://dhanvii.in/api/far-students");
+    const res = await axios.get("${API}/api/far-students");
     
     const result = await res.data;
     setData(result);
@@ -72,12 +73,12 @@ const AdminDistanceGallery = () => {
 
     if (editId) {
       await axios.put(
-        `https://dhanvii.in/api/far-students/${editId}`,
+        `${API}/api/far-students/${editId}`,
         data
       );
     } else {
       await axios.post(
-        "https://dhanvii.in/api/far-students/add",
+        `${API}/api/far-students/add`,
         data
       );
     }
@@ -88,7 +89,7 @@ const AdminDistanceGallery = () => {
   // DELETE
   const handleDelete = async (id) => {
     await axios.delete(
-      `https://dhanvii.in/api/far-students/${id}`
+      `${API}/api/far-students/${id}`
     );
     fetchStudents();
   };

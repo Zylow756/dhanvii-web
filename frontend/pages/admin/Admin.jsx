@@ -20,17 +20,18 @@ const Admin = () => {
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+      const API = import.meta.env.VITE_API_URL;
 
   //  Fetch data
   const fetchData = async () => {
-    const res = await fetch("https://dhanvii.in/api/enquiry");
+    const res = await fetch("${API}/api/enquiry");
     const result = await res.json();
     setData(result);
   };
 
   useEffect(() => {
     const fetchDataOnMount = async () => {
-      const res = await fetch("https://dhanvii.in/api/enquiry");
+      const res = await fetch("${API}/api/enquiry");
       const result = await res.json();
       setData(result);
     };
@@ -40,7 +41,7 @@ const Admin = () => {
 
   //  Delete
   const handleDelete = async (id) => {
-    await fetch(`https://dhanvii.in/api/enquiry/${id}`, {
+    await fetch(`${API}/api/enquiry/${id}`, {
       method: "DELETE",
     });
     fetchData();
@@ -60,7 +61,7 @@ const Admin = () => {
           <div className={styles.enquiryContain}>
             <span
               onClick={() =>
-                window.open("https://dhanvii.in/api/enquiry/export")
+                window.open("${API}/api/enquiry/export")
               } className={styles.exportBtn}
             >
               📥 Export Excel

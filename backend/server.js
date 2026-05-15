@@ -25,7 +25,8 @@ app.use(cors({
     "https://dhanvii.in",
     "https://www.dhanvii.in",
     "http://dhanvii.in"
-  ],
+  ], 
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 app.use(express.json());
