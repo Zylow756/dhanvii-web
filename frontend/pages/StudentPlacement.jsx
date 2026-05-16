@@ -78,15 +78,12 @@ const API = import.meta.env.VITE_API_URL;
                 <div className={styles.card}>
                   <div className={styles.topContent}>
                     <h2 className={styles.name}>{student.name}</h2>
-
                     <p className={styles.qual}>
                       {student.qualification}
                     </p>
-
                     <p className={styles.middleContent}>
                       {formatCompany(student.company)}
                     </p>
-
                     <p className={styles.bottomContent}>
                       Salary Package:
                       <strong> {student.salary}</strong> lpa

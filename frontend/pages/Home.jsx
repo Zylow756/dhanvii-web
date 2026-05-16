@@ -34,7 +34,7 @@ const Home = () => {
     // Phone validation (10 digit)
     const phoneRegex = /^[6-9]\d{9}$/;
     if (formData.phone && !phoneRegex.test(formData.phone)) {
-     newErrors.phone = "Enter valid Indian mobile number";
+      newErrors.phone = "Enter valid Indian mobile number";
     }
 
     // Indian phone validation (starts with 6-9 and 10 digits)
@@ -43,12 +43,12 @@ const Home = () => {
     }
 
     if (formData.altPhone) {
-  const altPhoneRegex = /^[6-9]\d{9}$/;
+      const altPhoneRegex = /^[6-9]\d{9}$/;
 
-  if (!altPhoneRegex.test(formData.altPhone)) {
-    newErrors.altPhone = "Enter valid 10-digit alternate number";
-  }
-}
+      if (!altPhoneRegex.test(formData.altPhone)) {
+        newErrors.altPhone = "Enter valid 10-digit alternate number";
+      }
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -94,11 +94,11 @@ const Home = () => {
 
       let data;
 
-try {
-  data = await res.json();
-} catch {
-  throw new Error("Server response invalid");
-}
+      try {
+        data = await res.json();
+      } catch {
+        throw new Error("Server response invalid");
+      }
 
       if (!res.ok) {
         throw new Error(data.message || "Something went wrong");
