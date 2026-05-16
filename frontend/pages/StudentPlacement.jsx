@@ -12,7 +12,7 @@ const API = import.meta.env.VITE_API_URL;
   useEffect(() => {
     console.log("USE EFFECT RUNNING");
     axios
-      .get('${API}/api/placementGallery')
+      .get(`${API}/api/placementGallery`)
       .then((res) => {
         console.log("API RESPONSE:", res.data);
 

@@ -21,7 +21,7 @@ export default function AdminPlacement() {
       const API = import.meta.env.VITE_API_URL;
 
   const fetchData = () => {
-    fetch('${API}/api/placement/all')
+    fetch(`${API}/api/placement/all`)
       .then(res => res.json())
       .then(resData => {
         console.log(resData);

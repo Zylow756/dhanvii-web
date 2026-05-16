@@ -15,7 +15,7 @@ const StudentReview = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get("${API}/api/reviews");
+      const res = await axios.get(`${API}/api/reviews`);
       setReviews(res.data);
     } catch (err) {
       console.error(err);

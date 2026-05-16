@@ -109,7 +109,7 @@ export default function Career() {
 
     try {
       const API = import.meta.env.VITE_API_URL;
-      const res = await fetch('${API}/api/placement/add', {
+      const res = await fetch(`${API}/api/placement/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

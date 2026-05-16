@@ -137,7 +137,7 @@ const AdminReview = () => {
     const API = import.meta.env.VITE_API_URL;
 
     const fetchReviews = async () => {
-        const res = await axios.get('${API}/api/reviews');
+        const res = await axios.get(`${API}/api/reviews`);
         setReviews(res.data);
     };
 
@@ -170,13 +170,13 @@ const AdminReview = () => {
         try {
             if (editId) {
                 await axios.put(
-                    '${API}/api/reviews/${editId}',
+                    `${API}/api/reviews/${editId}`,
                     formData
                 );
                 setEditId(null);
             } else {
                 await axios.post(
-                    '${API}/api/reviews',
+                    `${API}/api/reviews`,
                     formData
                 );
             }
