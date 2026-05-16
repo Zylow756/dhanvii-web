@@ -56,7 +56,7 @@ const StudentReview = () => {
         modules={[EffectCoverflow, Pagination, Autoplay]}
         className={styles.swiper}
       >
-        {Array.isArray(reviews) && reviews.map((r) => (
+        {reviews.map((r) => (
           <SwiperSlide key={r._id} className={styles.slide}>
             
             <a href={r.path}>

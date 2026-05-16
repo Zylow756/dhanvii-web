@@ -287,7 +287,7 @@ const AdminReview = () => {
                     </thead>
 
                     <tbody>
-                        {Array.isArray(currentData) && currentData.map((item, index) => (
+                        {currentData.map((item, index) => (
                             <tr key={item._id}>
                                 <td>{indexOfFirstItem + index + 1}</td>
                                 <td style={styles.td}>

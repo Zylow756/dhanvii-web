@@ -34,7 +34,7 @@ const StudentDistance = () => {
         <h1>Distance doesn't Matter when Skill Speaks</h1>
 
         <div className={styles.container}>
-          {Array.isArray(sortedStudents) && sortedStudents.map((student) => (
+          {sortedStudents.map((student) => (
             <div
               key={student._id}
               className={styles.card}

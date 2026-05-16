@@ -164,7 +164,7 @@ const Courses = () => {
             {/* Dynamic Content  */}
             <div className={openIndex === index ? `${styles.content} ${styles.show}` : styles.content}>
               <ul className={styles.moduleList}>
-                {Array.isArray(course.content) && course.content.map((item, i) => {
+                {course.content.map((item, i) => {
 
                   //  CASE 1: Part headings (strong tag)
                   if (item?.type === "strong") {
