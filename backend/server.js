@@ -49,8 +49,8 @@ const frontendPath = path.join(__dirname, "../dist");
 
 app.use(express.static(frontendPath));
 
-// REACT ROUTES
-app.use((req, res) => {
+// React routes only
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
