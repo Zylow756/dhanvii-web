@@ -21,7 +21,7 @@ export default function AdminPlacement() {
       const API = import.meta.env.VITE_API_URL;
 
   const fetchData = () => {
-    fetch(`${API}/api/placement/all`)
+    fetch('${API}/api/placement/all')
       .then(res => res.json())
       .then(resData => {
         console.log(resData);
@@ -81,7 +81,7 @@ export default function AdminPlacement() {
     // Create workbook
     XLSX.utils.book_append_sheet(workbook, mainSheet, "Placements");
 
-    // ✅ FAMILY SHEET
+    //  FAMILY SHEET
     const familyData = [];
     data.forEach(item => {
       item.family?.forEach(f => {
@@ -98,7 +98,7 @@ export default function AdminPlacement() {
     const familySheet = XLSX.utils.json_to_sheet(familyData);
     XLSX.utils.book_append_sheet(workbook, familySheet, "Family");
 
-    // ✅ ACADEMIC SHEET
+    //  ACADEMIC SHEET
     const academicData = [];
     data.forEach(item => {
       item.academic?.forEach(a => {
@@ -116,7 +116,7 @@ export default function AdminPlacement() {
     const academicSheet = XLSX.utils.json_to_sheet(academicData);
     XLSX.utils.book_append_sheet(workbook, academicSheet, "Academic");
 
-    // ✅ PROFESSIONAL SHEET
+    //  PROFESSIONAL SHEET
     const professionalData = [];
     data.forEach(item => {
       item.professional?.forEach(p => {
@@ -133,7 +133,7 @@ export default function AdminPlacement() {
     const professionalSheet = XLSX.utils.json_to_sheet(professionalData);
     XLSX.utils.book_append_sheet(workbook, professionalSheet, "Professional");
 
-    // ✅ EXPERIENCE SHEET
+    //  EXPERIENCE SHEET
     const experienceData = [];
     data.forEach(item => {
       item.experience?.forEach(e => {

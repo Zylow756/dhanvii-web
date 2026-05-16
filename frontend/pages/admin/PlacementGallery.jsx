@@ -34,7 +34,7 @@ const PlacementGallery = () => {
   }
   //  FETCH DATA
   const fetchData = () => {
-    axios.get(`${API}/api/placementGallery`)
+    axios.get('${API}/api/placementGallery')
       .then(res => setStudents(res.data));
   };
 
@@ -83,7 +83,7 @@ const PlacementGallery = () => {
       } else {
         //  ADD
         await axios.post(
-          `${API}/api/placementGallery`,
+          '${API}/api/placementGallery',
           data, {
           headers: { "Content-Type": "multipart/form-data" }
         }

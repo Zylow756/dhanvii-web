@@ -11,7 +11,7 @@ const FuncGallery = () => {
     const API = import.meta.env.VITE_API_URL;
 
   const fetchImages = async () => {
-      const res = await axios.get(`${API}/api/gallery?category=function`);
+      const res = await axios.get('${API}/api/gallery?category=function');
       setImages(res.data);
     
   };

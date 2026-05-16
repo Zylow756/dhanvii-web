@@ -8,7 +8,7 @@ const AdminVideo = () => {
     const API = import.meta.env.VITE_API_URL;
 
   const handleSubmit = async () => {
-    await axios.post(`${API}/api/video`, {
+    await axios.post('${API}/api/video', {
       youtubeUrl: url,
     });
     alert("Video Added");

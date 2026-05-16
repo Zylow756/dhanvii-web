@@ -30,7 +30,7 @@ const AdminDistanceGallery = () => {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = async () => {
-    const res = await axios.get("${API}/api/far-students");
+    const res = await axios.get('${API}/api/far-students');
     
     const result = await res.data;
     setData(result);
@@ -78,7 +78,7 @@ const AdminDistanceGallery = () => {
       );
     } else {
       await axios.post(
-        `${API}/api/far-students/add`,
+        '${API}/api/far-students/add',
         data
       );
     }

@@ -11,7 +11,7 @@ const StudentDistance = () => {
 
 
   useEffect(() => {
-    axios.get("${API}/api/far-students")
+    axios.get('${API}/api/far-students')
       .then(res => {
         console.log("API DATA :", res.data);
         setStudents(res.data);

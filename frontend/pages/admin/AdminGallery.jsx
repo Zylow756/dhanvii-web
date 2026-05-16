@@ -24,7 +24,7 @@ const AdminGallery = () => {
 
 
   const fetchImages = useCallback(async (category = "all") => {
-    let url = `${API}/api/gallery`;
+    let url = '${API}/api/gallery';
 
     if (category !== "all") {
       url += `?category=${category}`;
@@ -65,7 +65,7 @@ const AdminGallery = () => {
     formData.append("description", description);
 
     await axios.post(
-      `${API}/api/gallery/upload`,
+      '${API}/api/gallery/upload',
       formData
     );
 

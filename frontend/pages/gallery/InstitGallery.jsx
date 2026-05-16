@@ -13,7 +13,7 @@ const FuncGallery = () => {
 
   const fetchImages = async () => {
   const res = await axios.get(
-    `${API}/api/gallery?category=institute`
+    '${API}/api/gallery?category=institute'
   );
   setImages(res.data);
 };

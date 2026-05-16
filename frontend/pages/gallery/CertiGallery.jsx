@@ -11,7 +11,7 @@ const CertiGallery = () => {
     const API = import.meta.env.VITE_API_URL;
 
   const fetchImages = async () => {
-    const res = await axios.get(`${API}/api/gallery?category=certification`);
+    const res = await axios.get('${API}/api/gallery?category=certification');
     setImages(res.data);
 
   };

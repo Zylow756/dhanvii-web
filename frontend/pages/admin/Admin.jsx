@@ -24,14 +24,14 @@ const Admin = () => {
 
   //  Fetch data
   const fetchData = async () => {
-    const res = await fetch("${API}/api/enquiry");
+    const res = await fetch('${API}/api/enquiry');
     const result = await res.json();
     setData(result);
   };
 
   useEffect(() => {
     const fetchDataOnMount = async () => {
-      const res = await fetch("${API}/api/enquiry");
+      const res = await fetch('${API}/api/enquiry');
       const result = await res.json();
       setData(result);
     };
@@ -61,7 +61,7 @@ const Admin = () => {
           <div className={styles.enquiryContain}>
             <span
               onClick={() =>
-                window.open("${API}/api/enquiry/export")
+                window.open('${API}/api/enquiry/export')
               } className={styles.exportBtn}
             >
               📥 Export Excel

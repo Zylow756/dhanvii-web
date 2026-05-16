@@ -2,37 +2,34 @@ import { useState, useEffect } from "react";
 import { jacketAds } from "../../pages/adsData";
 import styles from "../RandomAd/RandomAd.module.css";
 
-
 const WelcomeAd = () => {
-  const [ad, setAd] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // function to pick random ad
-    const getRandomAd = () => {
-      const randomIndex = Math.floor(Math.random() * jacketAds.length);
-      setAd(jacketAds[randomIndex]);
-    };
+    // change image sequentially every 5 seconds
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === jacketAds.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
 
-    // show first ad immediately
-    getRandomAd();
-
-    // change ad every 5 seconds
-    const interval = setInterval(getRandomAd, 5000);
-
-    // cleanup (VERY IMPORTANT)
     return () => clearInterval(interval);
   }, []);
+
+  const ad = jacketAds[currentIndex];
 
   if (!ad) return null;
 
   return (
-  <div className={styles.adBox}>
-    {/* RIGHT - Random Ad */}
-    <div className={styles.ad}>
-      <img src={ad.image} alt={ad.title}  loading="lazy"/>
+    <div className={styles.adBox}>
+      <div className={styles.ad}>
+        <img
+          src={ad.image}
+          alt={ad.title}
+          loading="lazy"
+        />
+      </div>
     </div>
-
-  </div>
   );
 };
 
