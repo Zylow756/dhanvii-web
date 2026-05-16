@@ -136,7 +136,7 @@ const AdminDistanceGallery = () => {
         </thead>
 
         <tbody>
-          {currentData.map((s, index) => (
+          {Array.isArray(currentData) && currentData.map((s, index) => (
             <tr key={s._id}>
               <td className={styles.tdStyle}>{indexOfFirstItem + index + 1}</td>
               <td className={styles.tdStyle}>{s.name}</td>

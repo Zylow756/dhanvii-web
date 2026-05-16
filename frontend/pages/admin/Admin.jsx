@@ -87,7 +87,7 @@ const Admin = () => {
               </thead>
 
               <tbody>
-               {currentData.map((item, index) => (
+               {Array.isArray(currentData) && currentData.map((item, index) => (
                             <tr key={item._id}>
                                 <td>{indexOfFirstItem + index + 1}</td>
 
