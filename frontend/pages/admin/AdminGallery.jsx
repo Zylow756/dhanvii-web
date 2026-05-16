@@ -32,7 +32,7 @@ const AdminGallery = () => {
 
     const res = await axios.get(url);
     setImages(res.data);
-  }, []);
+  }, [API]);
 
 
   useEffect(() => {

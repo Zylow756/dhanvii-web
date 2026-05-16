@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/AdminDistanceGallery.module.css';
@@ -26,21 +26,17 @@ const PlacementGallery = () => {
 
   const currentData = students.slice(indexOfFirstItem, indexOfLastItem);
 
-  const data = new FormData();
-    const API = import.meta.env.VITE_API_URL;
+  const API = import.meta.env.VITE_API_URL;
 
-  for (let pair of data.entries()) {
-    console.log(pair[0]);
-  }
   //  FETCH DATA
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     axios.get(`${API}/api/placementGallery`)
       .then(res => setStudents(res.data));
-  };
+  }, [API]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   //  HANDLE INPUT
   const handleChange = (e) => {

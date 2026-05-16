@@ -10,23 +10,18 @@ const FuncGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
     const API = import.meta.env.VITE_API_URL;
 
-  const fetchImages = async () => {
-      const res = await axios.get(`${API}/api/gallery?category=function`);
-      setImages(res.data);
-    
-  };
-  
   useEffect(() => {
-        const loadData = async () => {
-            try {
-                await fetchImages();
-            } catch (err) {
-                console.error("Error fetching reviews:", err);
-            }
-        };
+    const fetchImages = async () => {
+      try {
+        const res = await axios.get(`${API}/api/gallery?category=function`);
+        setImages(res.data);
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+      }
+    };
 
-        loadData();
-    }, []);
+    fetchImages();
+  }, [API]);
 
   const openPopup = (index) => setCurrentIndex(index);
   const closePopup = () => setCurrentIndex(null);

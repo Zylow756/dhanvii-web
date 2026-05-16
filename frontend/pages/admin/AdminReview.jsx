@@ -137,21 +137,29 @@ const AdminReview = () => {
     const API = import.meta.env.VITE_API_URL;
 
     const fetchReviews = async () => {
-        const res = await axios.get(`${API}/api/reviews`);
-        setReviews(res.data);
+        try {
+            const res = await axios.get(`${API}/api/reviews`);
+            setReviews(res.data);
+        } catch (err) {
+            console.error("Error fetching reviews:", err);
+        }
     };
 
     useEffect(() => {
-        const loadData = async () => {
+        let mounted = true;
+        const getReviews = async () => {
             try {
-                await fetchReviews();
+                const res = await axios.get(`${API}/api/reviews`);
+                if (mounted) setReviews(res.data);
             } catch (err) {
                 console.error("Error fetching reviews:", err);
             }
         };
-
-        loadData();
-    }, []);
+        getReviews();
+        return () => {
+            mounted = false;
+        };
+    }, [API]);
 
 
     const handleSubmit = async (e) => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/Admin.module.css';
 import * as XLSX from "xlsx";
@@ -20,7 +20,7 @@ export default function AdminPlacement() {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
       const API = import.meta.env.VITE_API_URL;
 
-  const fetchData = () => {
+  const fetchData = useCallback(() => {
     fetch(`${API}/api/placement/all`)
       .then(res => res.json())
       .then(resData => {
@@ -36,11 +36,11 @@ export default function AdminPlacement() {
         console.error("Fetch error:", err);
         setLoading(false);
       });
-  };
+  }, [API]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return;

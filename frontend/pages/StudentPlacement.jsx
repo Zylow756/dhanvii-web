@@ -4,10 +4,11 @@ import styles from "../assets/css/StudentPlacement.module.css";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
 
+const API = import.meta.env.VITE_API_URL;
+
 const StudentPlacement = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
-const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     console.log("USE EFFECT RUNNING");

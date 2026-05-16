@@ -10,13 +10,12 @@ const CertiGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
     const API = import.meta.env.VITE_API_URL;
 
-  const fetchImages = async () => {
-    const res = await axios.get(`${API}/api/gallery?category=certification`);
-    setImages(res.data);
-
-  };
-
   useEffect(() => {
+    const fetchImages = async () => {
+      const res = await axios.get(`${API}/api/gallery?category=certification`);
+      setImages(res.data);
+    };
+
     const loadData = async () => {
       try {
         await fetchImages();
@@ -26,7 +25,7 @@ const CertiGallery = () => {
     };
 
     loadData();
-  }, []);
+  }, [API]);
 
   const openPopup = (index) => setCurrentIndex(index);
   const closePopup = () => setCurrentIndex(null);

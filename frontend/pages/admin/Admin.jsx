@@ -37,7 +37,7 @@ const Admin = () => {
     };
 
     fetchDataOnMount();
-  }, []);
+  }, [API]);
 
   //  Delete
   const handleDelete = async (id) => {

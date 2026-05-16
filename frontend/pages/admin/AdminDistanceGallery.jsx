@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/AdminDistanceGallery.module.css';
@@ -29,12 +29,11 @@ const AdminDistanceGallery = () => {
   
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  const fetchStudents = async () => {
+  const fetchStudents = useCallback(async () => {
     const res = await axios.get(`${API}/api/far-students`);
-    
-    const result = await res.data;
+    const result = res.data;
     setData(result);
-  };
+  }, [API]);
 
       useEffect(() => {
           const loadData = async () => {
@@ -46,7 +45,7 @@ const AdminDistanceGallery = () => {
           };
   
           loadData();
-      }, []);
+      }, [fetchStudents]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

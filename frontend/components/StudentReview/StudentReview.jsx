@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import styles from "./StudentReview.module.css";
 import studentImage from '../../assets/images/nophoto.png';
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 const StudentReview = () => {
@@ -13,14 +13,14 @@ const StudentReview = () => {
       const API = import.meta.env.VITE_API_URL;
 
 
-  const fetchReviews = async () => {
+  const fetchReviews = useCallback(async () => {
     try {
       const res = await axios.get(`${API}/api/reviews`);
       setReviews(res.data);
     } catch (err) {
       console.error(err);
     }
-  };
+  }, [API]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -31,7 +31,7 @@ const StudentReview = () => {
       }
     };
     loadData();
-  }, []);
+  }, [fetchReviews]);
 
 
   return (

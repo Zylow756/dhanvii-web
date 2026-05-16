@@ -17,7 +17,7 @@ const StudentDistance = () => {
         setStudents(res.data);
       })
       .catch(err => console.error(err));
-  }, []);
+  }, [API]);
 
   if (students.length === 0) {
     return <h2>No Data Found !!!</h2>;

@@ -8,27 +8,22 @@ import axios from "axios";
 const FuncGallery = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(null);
-    const API = import.meta.env.VITE_API_URL;
+  const API = import.meta.env.VITE_API_URL;
 
-
-  const fetchImages = async () => {
-  const res = await axios.get(
-    `${API}/api/gallery?category=institute`
-  );
-  setImages(res.data);
-};
-  
   useEffect(() => {
-        const loadData = async () => {
-            try {
-                await fetchImages();
-            } catch (err) {
-                console.error("Error fetching reviews:", err);
-            }
-        };
+    const fetchImages = async () => {
+      try {
+        const res = await axios.get(
+          `${API}/api/gallery?category=institute`
+        );
+        setImages(res.data);
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+      }
+    };
 
-        loadData();
-    }, []);
+    fetchImages();
+  }, [API]);
 
   const openPopup = (index) => setCurrentIndex(index);
   const closePopup = () => setCurrentIndex(null);
