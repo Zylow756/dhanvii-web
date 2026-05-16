@@ -47,7 +47,7 @@ const FuncGallery = () => {
 
       <div className={styles.galleryContainer}>
         <div className={styles.grid}>
-          {images.map((img, index) => (
+          {Array.isArray(images) && images.map((img, index) => (
             <div
               key={img._id}
               className={styles.card}

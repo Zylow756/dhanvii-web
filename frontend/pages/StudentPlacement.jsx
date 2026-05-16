@@ -67,7 +67,7 @@ const API = import.meta.env.VITE_API_URL;
           <h2>No Data Found !!!</h2>
         ) : (
           <div className={styles.container}>
-            {sortedStudents.map((student) => (
+            {Array.isArray(sortedStudents) && sortedStudents.map((student) => (
               <div className={styles.certificate} key={student._id}>
                 <img
                   src={`${API}/${student.background}`}

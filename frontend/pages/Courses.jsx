@@ -132,7 +132,7 @@ const Courses = () => {
       <h1 className={styles.heading}>Our Courses / Training [Medium Hindi / English]</h1>
 
       <div className={styles.grid}>
-        {courses.map((course, index) => (
+        {Array.isArray(courses) && courses.map((course, index) => (
           <div key={index} className={styles.card}>
 
             {/* Card Top */}
@@ -164,7 +164,7 @@ const Courses = () => {
             {/* Dynamic Content  */}
             <div className={openIndex === index ? `${styles.content} ${styles.show}` : styles.content}>
               <ul className={styles.moduleList}>
-                {course.content.map((item, i) => {
+                {Array.isArray(course.content) && course.content.map((item, i) => {
 
                   //  CASE 1: Part headings (strong tag)
                   if (item?.type === "strong") {

@@ -74,7 +74,7 @@ const sortedImages = [...images].sort((a, b) => {
 
       <div className={styles.galleryContainer}>
         <div className={styles.grid}>
-          {sortedImages.map((img, index) => (
+          {Array.isArray(sortedImages) && sortedImages.map((img, index) => (
             <div
               key={img._id}
               className={styles.card}

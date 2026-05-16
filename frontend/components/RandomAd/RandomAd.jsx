@@ -8,7 +8,7 @@ const RandomAd = () => {
 const [videoUrl, setVideoUrl] = useState("");
 
   const getEmbedUrl = (url) => {
-    if (url.includes("shorts")) {
+    if (url?.includes("shorts")) {
       return url.replace("shorts/", "embed/");
     }
 
