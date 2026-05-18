@@ -8,64 +8,65 @@ import axios from "axios";
 const CertiGallery = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(null);
-    const API = import.meta.env.VITE_API_URL;
+  const API = import.meta.env.VITE_API_URL;
+
+  const getYear = (desc) => {
+    const match = desc?.match(/\d{4}/);
+    return match ? parseInt(match[0]) : 0;
+  };
+
+  const getName = (desc) => {
+    return desc
+      ? desc.replace(/\d{4}/, "").replace("-", "").trim()
+      : "";
+  };
 
   useEffect(() => {
-    const fetchImages = async () => {
-      const res = await axios.get(`${API}/api/gallery?category=certification`);
-      setImages(res.data);
-    };
+  const fetchImages = async () => {
+    try {
+      const res = await axios.get(
+        `${API}/api/gallery?category=certification`
+      );
 
-    const loadData = async () => {
-      try {
-        await fetchImages();
-      } catch (err) {
-        console.error("Error fetching reviews:", err);
-      }
-    };
+      // First sort
+      const sorted = [...res.data].sort((a, b) => {
+        const yearA = getYear(a.description);
+        const yearB = getYear(b.description);
 
-    loadData();
-  }, [API]);
+        if (yearA !== yearB) {
+          return yearB - yearA;
+        }
+
+        const nameA = getName(a.description);
+        const nameB = getName(b.description);
+
+        return nameA.localeCompare(nameB);
+      });
+
+      // Then shuffle
+      const shuffled = [...sorted].sort(() => Math.random() - 0.5);
+
+      setImages(shuffled);
+    } catch (err) {
+      console.error("Error fetching images:", err);
+    }
+  };
+
+  fetchImages();
+}, [API]);
 
   const openPopup = (index) => setCurrentIndex(index);
   const closePopup = () => setCurrentIndex(null);
 
   const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
-  };
-
-  const getYear = (desc) => {
-  const match = desc?.match(/\d{4}/);
-  return match ? parseInt(match[0]) : 0;
+  setCurrentIndex((prev) => (prev + 1) % images.length);
 };
 
-const getName = (desc) => {
-  return desc
-    ? desc.replace(/\d{4}/, "").replace("-", "").trim()
-    : "";
+const prevImage = () => {
+  setCurrentIndex((prev) =>
+    prev === 0 ? images.length - 1 : prev - 1
+  );
 };
-
-const sortedImages = [...images].sort((a, b) => {
-  const yearA = getYear(a.description);
-  const yearB = getYear(b.description);
-
-  // 1. Year DESC (2025 → 2000)
-  if (yearA !== yearB) {
-    return yearB - yearA;
-  }
-
-  // 2. Name ASC (A → Z)
-  const nameA = getName(a.description);
-  const nameB = getName(b.description);
-
-  return nameA.localeCompare(nameB);
-});
 
   return (
     <div className={styles.root}>
@@ -73,21 +74,23 @@ const sortedImages = [...images].sort((a, b) => {
 
       <div className={styles.galleryContainer}>
         <div className={styles.grid}>
-          {Array.isArray(sortedImages) && sortedImages.map((img, index) => (
-            <div
-              key={img._id}
-              className={styles.card}
-              onClick={() => openPopup(index)}
-            >
-              <img
-                src={`${API}/uploads/${img.image}`}
-                alt="gallery"
-              />
-              <div className={styles.overlay}>
-                <p className={styles.desc}>{img.description}</p>
+          {Array.isArray(images) &&
+            images.map((img, index) => (
+              <div
+                key={img._id}
+                className={styles.card}
+                onClick={() => openPopup(index)}
+              >
+                <img
+                  src={`${API}/uploads/${img.image}`}
+                  alt="gallery"
+                />
+
+                <div className={styles.overlay}>
+                  <p className={styles.desc}>{img.description}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
         {currentIndex !== null && (

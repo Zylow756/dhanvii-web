@@ -31,7 +31,7 @@ const Contact = () => {
                     <div className={styles.item}>
                         <FaEnvelope className={styles.icon} />
                         <div className={styles.text}><strong>Mail Us At</strong>
-                        <p>contact.dhanvi@gmail.com<br/>enquiry.dhanvi@gmail.com</p></div>
+                        <p>contact.dhanvi@gmail.com<br/>enquiry.dhanvii@gmail.com</p></div>
                     </div>
 
                     <div className={styles.item}>

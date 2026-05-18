@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from './Nav.module.css';
 import logo from '../../assets/images/logo.jpg';
 import React, { useState } from "react";
+import menuBg from "../../assets/images/menubarImage.jpg";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,9 +15,9 @@ const Nav = () => {
         <div className={styles.navContainer}>
 
           <div className={styles.logo}>
-            <img src={logo} alt="logo"  loading="lazy"/>
+            <img src={logo} alt="logo" loading="lazy" />
           </div>
-          
+
 
           {/* Hamburger Menu */}
           <div
@@ -37,7 +38,18 @@ const Nav = () => {
           )}
 
           {/* Navigation Links */}
-          <ul className={`${styles.navLinks} ${menuOpen ? styles["active"] : ""}`}>
+          <ul className={`${styles.navLinks} ${menuOpen ? styles["active"] : ""}`}
+            style={
+              menuOpen
+                ? {
+                  backgroundImage: `url(${menuBg})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }
+                : {}
+            }
+          >
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/courses">Courses</Link></li>
@@ -71,7 +83,7 @@ const Nav = () => {
           </ul>
         </div>
       </nav>
-      
+
     </>
   );
 };

@@ -1,5 +1,5 @@
 import styles from "./SuccessPopup.module.css";
-import successImg from "../../assets/images/thanks you.jpg";
+import successImg from "../../assets/images/thanksYou.jpg";
 
 const SuccessPopup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
