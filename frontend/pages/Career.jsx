@@ -119,12 +119,12 @@ export default function Career() {
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
-      console.log("Response:", data);
-      setShowSuccess(true);
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
+     const data = await res.json();
+
+if (!res.ok) {
+  throw new Error(data.message || "Submission failed");
+}
+setShowSuccess(true);
     } catch (err) {
       console.error("ERROR:", err.message);
       alert(err.message);
@@ -134,8 +134,7 @@ export default function Career() {
 
   const handlePopupClose = () => {
     setShowSuccess(false);
-
-    window.location.href = "/courses";
+    navigate("/");
   };
 
   return (
@@ -281,10 +280,10 @@ export default function Career() {
 
         <button type="submit" className={styles.submitBtn}>Submit</button>
       </form>
-      <SuccessPopup
-        isOpen={showSuccess}
-        onClose={handlePopupClose}
-      />
+            <SuccessPopup
+              isOpen={showSuccess}
+              onClose={handlePopupClose}
+            />
     </div>
   );
 }
