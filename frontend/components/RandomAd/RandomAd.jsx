@@ -1,26 +1,35 @@
 import styles from "./RandomAd.module.css";
 import WelcomeAd from "../WelcomeModal/WelcomeAd";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 const RandomAd = () => {
   const [videos, setVideos] = useState([]);
-  const [videoUrl, setVideoUrl] = useState("");
 
-  const getEmbedUrl = (url) => {
+  const playerRef = useRef(null);
+  const playerInstance = useRef(null);
+
+  // Track current video index
+  const currentIndexRef = useRef(0);
+
+  // Extract YouTube Video ID
+  const getVideoId = (url) => {
     if (!url) return "";
 
-    if (url.includes("shorts")) {
-      return url.replace("shorts/", "embed/");
+    // Shorts
+    if (url.includes("shorts/")) {
+      return url.split("shorts/")[1]?.split("?")[0];
     }
 
-    const videoId = url.split("v=")?.[1]?.split("&")?.[0];
+    // Normal videos
+    if (url.includes("v=")) {
+      return url.split("v=")[1]?.split("&")[0];
+    }
 
-    if (!videoId) return "";
-
-    return `https://www.youtube.com/embed/${videoId}`;
+    return "";
   };
 
+  // Fetch videos
   useEffect(() => {
     const fetchVideos = async () => {
       try {
@@ -33,15 +42,6 @@ const RandomAd = () => {
           : [];
 
         setVideos(validVideos);
-
-        if (validVideos.length > 0) {
-          const randomVideo =
-            validVideos[
-              Math.floor(Math.random() * validVideos.length)
-            ];
-
-          setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
-        }
       } catch (err) {
         console.error("Video fetch error:", err);
       }
@@ -50,32 +50,85 @@ const RandomAd = () => {
     fetchVideos();
   }, []);
 
+  // Initialize YouTube Player
   useEffect(() => {
-    if (videos.length === 0) return;
+    if (!videos.length) return;
 
-    const interval = setInterval(() => {
-      const randomVideo =
-        videos[Math.floor(Math.random() * videos.length)];
+    const initializePlayer = () => {
+      // Prevent duplicate player
+      if (playerInstance.current) return;
 
-      if (randomVideo?.youtubeUrl) {
-        setVideoUrl(getEmbedUrl(randomVideo.youtubeUrl));
-      }
-    }, 10000);
+      const firstVideoId = getVideoId(
+        videos[0]?.youtubeUrl
+      );
 
-    return () => clearInterval(interval);
+      playerInstance.current = new window.YT.Player(
+        playerRef.current,
+        {
+          videoId: firstVideoId,
+
+          playerVars: {
+            autoplay: 1,
+            rel: 0,
+          },
+
+          events: {
+            onStateChange: (event) => {
+              // Video ended
+              if (
+                event.data ===
+                window.YT.PlayerState.ENDED
+              ) {
+                let nextIndex =
+                  currentIndexRef.current + 1;
+
+                // Loop back to first video
+                if (nextIndex >= videos.length) {
+                  nextIndex = 0;
+                }
+
+                currentIndexRef.current = nextIndex;
+
+                const nextVideoId = getVideoId(
+                  videos[nextIndex]?.youtubeUrl
+                );
+
+                playerInstance.current.loadVideoById(
+                  nextVideoId
+                );
+              }
+            },
+          },
+        }
+      );
+    };
+
+    // Load YouTube API
+    if (!window.YT) {
+      const tag = document.createElement("script");
+
+      tag.src = "https://www.youtube.com/iframe_api";
+
+      document.body.appendChild(tag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        initializePlayer();
+      };
+    } else {
+      initializePlayer();
+    }
   }, [videos]);
 
   return (
     <div className={styles.adBox}>
       <div className={styles.video}>
-        {videoUrl && (
-          <iframe
-            src={videoUrl}
-            title="Random Video"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        )}
+        <div
+          ref={playerRef}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
       </div>
 
       <div className={styles.ad}>
