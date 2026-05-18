@@ -44,6 +44,7 @@ router.get("/export", async (req, res) => {
     ID: index + 1,
     Name: item.name,
     Phone: item.phone,
+    AlternatePhone: item.altPhone,
     Qualification: item.qualification,
   }));
 
