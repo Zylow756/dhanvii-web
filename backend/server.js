@@ -21,13 +21,17 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-  origin: [
+  /*origin: [
     "https://dhanvii.in",
     "https://www.dhanvii.in",
-    "http://dhanvii.in"
+    "http://dhanvii.in",
+    "http://localhost:5173",
   ], 
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE"],*/
+   origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  //credentials: true
 }));
 app.use(express.json());
 

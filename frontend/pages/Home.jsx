@@ -74,45 +74,50 @@ const Home = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!validateForm()) {
-      alert("Please fix errors");
-      return;
-    }
+  if (!validateForm()) {
+    alert("Please fix errors");
+    return;
+  }
+
+  try {
+    const API = import.meta.env.VITE_API_URL;
+
+    const res = await fetch(`${API}/api/enquiry/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    // Get raw response first
+    const text = await res.text();
+
+    let data;
 
     try {
-      const API = import.meta.env.VITE_API_URL;
-      const res = await fetch(`${API}/api/enquiry/send` , {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-
-      let data;
-
-      try {
-        data = await res.json();
-      } catch {
-        throw new Error("Server response invalid");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-
-      alert("Message sent successfully");
-
-      // Redirect to courses
-      window.location.href = "/courses";
-    } catch (err) {
-      console.error("ERROR:", err.message);
-      alert(err.message);
+      data = JSON.parse(text);
+    } catch {
+      console.error("Invalid JSON response:", text);
+      throw new Error("Server returned invalid response");
     }
-  };
+
+    if (!res.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    alert("Message sent successfully");
+
+    window.location.href = "/courses";
+
+  } catch (err) {
+    console.error("ERROR:", err);
+    alert(err.message);
+  }
+};
 
   return (
     <div className={styles.root}>
