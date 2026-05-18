@@ -102,3 +102,28 @@ img {
   aspect-ratio: 16 / 9; /* Forces the 1080p shape */
   object-fit: cover; /* Prevents stretching by cropping edges */
 }
+
+/* INPUT FIELDS */
+input,
+textarea,
+select {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Placeholder color */
+input::placeholder,
+textarea::placeholder {
+  color: #666 !important;
+}
+
+/* Prevent mobile browser auto dark mode */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #000 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
