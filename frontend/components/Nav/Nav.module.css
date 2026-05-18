@@ -41,12 +41,15 @@
 .navLinks {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 14px;
   position: static;  
+  align-items: center;
 }
 
 .navLinks li {
-  font-size: 0.8rem;
+  font-size:  0.95rem;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .navLinks li span{
@@ -112,14 +115,7 @@
 .dropdown span {
   color: #4c0803;
   font-weight: 500;
-  font-size: 1.2rem;
-}
-
-.loginBtn {
-  color: #4c0803;
-  font-weight: 500;
-  font-size: 1.2rem;
-  cursor: pointer;
+  font-size: 0.95rem;
 }
 
 /* Parent */
@@ -139,7 +135,7 @@
 .navItem span{
   color: #4c0803;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: poppinsbold;
 }
 
@@ -236,7 +232,7 @@
 .loginSubmit {
   width: 100%;
   padding: 10px;
-  background: #007bff;
+  background: #4c0803;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -326,6 +322,7 @@
 
   .navLinks li {
     margin-bottom: 18px;
+    width: 100%;
   }
 
   .logo img {

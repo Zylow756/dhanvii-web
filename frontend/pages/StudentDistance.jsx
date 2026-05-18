@@ -3,11 +3,12 @@ import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import defaultStudent from '../assets/images/default.png';
 
 
 const StudentDistance = () => {
   const [students, setStudents] = useState([]);
-    const API = import.meta.env.VITE_API_URL;
+  const API = import.meta.env.VITE_API_URL;
 
 
   useEffect(() => {
@@ -49,9 +50,17 @@ const StudentDistance = () => {
               <h2 className={styles.city}>{student.city}</h2>
 
               <img
-                src={`${API}/uploads/${student.image}`}
+                src={
+                  student.image
+                    ? `${API}/uploads/${student.image}`
+                    : defaultStudent
+                }
                 className={styles.photoCircle}
                 alt={student.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = defaultStudent;
+                }}
               />
 
               <h2 className={styles.name}>{student.name}</h2>
