@@ -6,6 +6,7 @@ import { useState } from "react";
 import RandomAd from '../components/RandomAd/RandomAd';
 import WelcomeModal from "../components/WelcomeModal/WelcomeModal";
 import FloatingShare from '../components/FloatingShare/FloatingShare';
+import SuccessPopup from "../components/SuccessPopup/SuccessPopup";
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
     qualification: ""
   });
   const [errors, setErrors] = useState({});
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const validateForm = () => {
     let newErrors = {};
@@ -74,50 +76,54 @@ const Home = () => {
     }
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!validateForm()) {
-    alert("Please fix errors");
-    return;
-  }
-
-  try {
-    const API = import.meta.env.VITE_API_URL;
-
-    const res = await fetch(`${API}/api/enquiry/send`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    // Get raw response first
-    const text = await res.text();
-
-    let data;
+    if (!validateForm()) {
+      alert("Please fix errors");
+      return;
+    }
 
     try {
-      data = JSON.parse(text);
-    } catch {
-      console.error("Invalid JSON response:", text);
-      throw new Error("Server returned invalid response");
-    }
+      const API = import.meta.env.VITE_API_URL;
 
-    if (!res.ok) {
-      throw new Error(data.message || "Something went wrong");
-    }
+      const res = await fetch(`${API}/api/enquiry/send`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    alert("Message sent successfully");
+      // Get raw response first
+      const text = await res.text();
+
+      let data;
+
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error("Invalid JSON response:", text);
+        throw new Error("Server returned invalid response");
+      }
+
+      if (!res.ok) {
+        throw new Error(data.message || "Something went wrong");
+      }
+
+      setShowSuccess(true);
+
+    } catch (err) {
+      console.error("ERROR:", err);
+      alert(err.message);
+    }
+  };
+
+  const handlePopupClose = () => {
+    setShowSuccess(false);
 
     window.location.href = "/courses";
-
-  } catch (err) {
-    console.error("ERROR:", err);
-    alert(err.message);
-  }
-};
+  };
 
   return (
     <div className={styles.root}>
@@ -202,6 +208,10 @@ const handleSubmit = async (e) => {
       <StudentReview />
       <FloatingShare />
       <Footer />
+      <SuccessPopup
+        isOpen={showSuccess}
+        onClose={handlePopupClose}
+      />
     </div>
 
   );
