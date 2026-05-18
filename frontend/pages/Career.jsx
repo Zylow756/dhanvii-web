@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from '../assets/css/Career.module.css';
 import { useNavigate } from "react-router-dom";
+import SuccessPopup from "../components/SuccessPopup/SuccessPopup";
 
 export default function Career() {
   const navigate = useNavigate();
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const [form, setForm] = useState({
     name: "",
@@ -119,7 +121,7 @@ export default function Career() {
 
       const data = await res.json();
       console.log("Response:", data);
-      alert(data.message || "Form submitted successfully ");
+      setShowSuccess(true);
       setTimeout(() => {
         navigate("/");
       }, 1500);
@@ -128,6 +130,12 @@ export default function Career() {
       alert(err.message);
     }
 
+  };
+
+  const handlePopupClose = () => {
+    setShowSuccess(false);
+
+    window.location.href = "/courses";
   };
 
   return (
@@ -273,6 +281,10 @@ export default function Career() {
 
         <button type="submit" className={styles.submitBtn}>Submit</button>
       </form>
+      <SuccessPopup
+        isOpen={showSuccess}
+        onClose={handlePopupClose}
+      />
     </div>
   );
 }
