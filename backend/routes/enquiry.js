@@ -116,6 +116,7 @@ router.post("/send", async (req, res) => {
       text: `New Enquiry:
 Name: ${name}
 Phone: ${phone}
+Alternate Phone: ${altPhone}
 Qualification: ${qualification}`,
       attachments: [
         {
