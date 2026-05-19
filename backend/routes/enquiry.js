@@ -7,7 +7,7 @@ import Enquiry from "../models/enquiry.js";
 
 const router = express.Router();
 
-let filePath = "./enquiries.xlsx";
+let filePath = "./enquiry.xlsx";
 
 
 //  GET ALL
@@ -60,7 +60,8 @@ router.get("/export", async (req, res) => {
 });
 
 router.post("/send", async (req, res) => {
-  console.log("BODY DATA:", req.body);
+   console.log("NEW CODE RUNNING");
+  console.log("BODY:", req.body);
 
   const { name, phone, altPhone, email, qualification } = req.body;
   console.log("EMAIL:", email);

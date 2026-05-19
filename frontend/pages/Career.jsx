@@ -119,12 +119,12 @@ export default function Career() {
         body: JSON.stringify(form),
       });
 
-     const data = await res.json();
+      const data = await res.json();
 
-if (!res.ok) {
-  throw new Error(data.message || "Submission failed");
-}
-setShowSuccess(true);
+      if (!res.ok) {
+        throw new Error(data.message || "Submission failed");
+      }
+      setShowSuccess(true);
     } catch (err) {
       console.error("ERROR:", err.message);
       alert(err.message);
@@ -145,7 +145,19 @@ setShowSuccess(true);
         <div className={styles.formGrid}>
           <input name="name" placeholder="Name" onChange={handleChange} className={styles.formInput} />
           {errors.name && <p className={styles.error}>{errors.name}</p>}
-          <input name="mobile" placeholder="Mobile No" onChange={handleChange} className={styles.formInput} />
+          <input
+            type="tel"
+            inputMode="numeric"
+            name="mobile"
+            placeholder="Mobile No"
+            value={form.mobile}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              setForm({ ...form, mobile: value.slice(0, 10) });
+            }}
+            className={styles.formInput}
+            maxLength={10}
+          />
           {errors.mobile && <p className={styles.error}>{errors.mobile}</p>}
           <input name="address" placeholder="Address" onChange={handleChange} className={styles.formInput} />
           <input
@@ -285,10 +297,10 @@ setShowSuccess(true);
 
         <button type="submit" className={styles.submitBtn}>Submit</button>
       </form>
-            <SuccessPopup
-              isOpen={showSuccess}
-              onClose={handlePopupClose}
-            />
+      <SuccessPopup
+        isOpen={showSuccess}
+        onClose={handlePopupClose}
+      />
     </div>
   );
 }
