@@ -166,7 +166,12 @@ setShowSuccess(true);
             <option>Female</option>
           </select>
 
-          <input name="language" placeholder="Language" onChange={handleChange} className={styles.formInput} />
+          <select name="language" onChange={handleChange} className={styles.formSelect}>
+            <option value="">Select Language</option>
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Both</option>
+          </select>
           <select name="jobTitle" onChange={handleChange} className={styles.formSelect}>
             <option value="">Job Title</option>
             <option>Front Office</option>

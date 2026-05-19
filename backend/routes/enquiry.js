@@ -45,12 +45,13 @@ router.get("/export", async (req, res) => {
     Name: item.name,
     Phone: item.phone,
     AlternatePhone: item.altPhone,
+    Email: item.email,
     Qualification: item.qualification,
   }));
 
   const ws = XLSX.utils.json_to_sheet(formatted);
   const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Enquiries");
+  XLSX.utils.book_append_sheet(wb, ws, "Enquiry");
 
   const filePath = "./export.xlsx";
   XLSX.writeFile(wb, filePath);
@@ -60,14 +61,18 @@ router.get("/export", async (req, res) => {
 
 router.post("/send", async (req, res) => {
   console.log("BODY DATA:", req.body);
+
+  const { name, phone, altPhone, email, qualification } = req.body;
+  console.log("EMAIL:", email);
   try {
-    const { name, phone, altPhone, qualification } = req.body;
+    
 
     //  1. Save to MongoDB
     const savedData = await Enquiry.create({
       name,
       phone,
       altPhone,
+      email,
       qualification,
     });
 
@@ -78,16 +83,19 @@ router.post("/send", async (req, res) => {
     if (fs.existsSync(filePath)) {
       const workbook = XLSX.readFile(filePath);
       const sheet = workbook.Sheets["Sheet1"];
-      data = XLSX.utils.sheet_to_json(sheet);
+      data = XLSX.utils.sheet_to_json(sheet, {
+        defval: "",
+      });
     }
 
     //  3. Add new entry with ID
     const newEntry = {
       ID: data.length + 1,
-      Name: name,
-      Phone: phone,
-      AlternatePhone: altPhone,
-      Qualification: qualification,
+      Name: name || "",
+      Phone: phone || "",
+      AlternatePhone: altPhone || "Not Provided",
+      Email: email || "Not Provided",
+      Qualification: qualification || "",
     };
 
     data.push(newEntry);
@@ -110,18 +118,20 @@ router.post("/send", async (req, res) => {
 
     // Mail content
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "enquiry.dhanvii@gmail.com", // where you want to receive
+      from: `"Dhanvii Enquiry" <${process.env.EMAIL_USER}>`,
+      to: "enquiry.dhanvii@gmail.com",
+      replyTo: email !== "Not Provided" ? email : undefined,
       subject: "New Enquiry Received",
-      //text: `ID: ${newEntry.ID}
       text: `New Enquiry:
 Name: ${name}
 Phone: ${phone}
-Alternate Phone: ${altPhone}
+Alternate Phone: ${altPhone || "Not Provided"}
+Email: ${email || "Not Provided"}
 Qualification: ${qualification}`,
+
       attachments: [
         {
-          filename: "enquiries.xlsx",
+          filename: "enquiry.xlsx",
           path: filePath,
         },
       ],

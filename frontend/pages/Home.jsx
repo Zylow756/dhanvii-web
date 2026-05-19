@@ -14,6 +14,7 @@ const Home = () => {
     name: "",
     phone: "",
     altPhone: "",
+    email: "",
     qualification: ""
   });
   const [errors, setErrors] = useState({});
@@ -52,33 +53,42 @@ const Home = () => {
       }
     }
 
+    // Email validation
+    if (formData.email) {
+      const emailRegex =
+        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Enter valid email address";
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
 
-    // Restrict phone fields to 10 digits only
-    if (name === "phone" || name === "altPhone") {
-      const numericValue = value.replace(/\D/g, "").slice(0, 10);
+  if (name === "phone" || name === "altPhone") {
+    const numericValue = value.replace(/\D/g, "").slice(0, 10);
 
-      setFormData({
-        ...formData,
-        [name]: numericValue,
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
-  };
+    setFormData((prev) => ({
+      ...prev,
+      [name]: numericValue,
+    }));
+  } else {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!validateForm()) {
       alert("Please fix errors");
       return;
@@ -92,7 +102,13 @@ const Home = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          altPhone: formData.altPhone || "",
+          email: formData.email || "Not Provided",
+          qualification: formData.qualification,
+        }),
       });
 
       // Get raw response first
@@ -176,11 +192,24 @@ const Home = () => {
             </div>
             <div className={styles.formGroup}>
               <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number"
-
                 value={formData.altPhone || ""}
                 onChange={handleChange}
                 maxLength={10} />
               {errors.altPhone && <p className={styles.error}>{errors.altPhone}</p>}
+            </div>
+            <div className={styles.formGroup}>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Your Email Address"
+                value={formData.email}
+                onChange={handleChange}
+              />
+
+              {errors.email && (
+                <p className={styles.error}>{errors.email}</p>
+              )}
             </div>
             <div className={styles.formGroup}>
               <select
