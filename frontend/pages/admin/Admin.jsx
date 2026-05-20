@@ -8,6 +8,8 @@ const Admin = () => {
   const [form, setForm] = useState({
     name: "",
     phone: "",
+    altPhone: "",
+    email: "",
     qualification: "",
   });
       const [currentPage, setCurrentPage] = useState(1);
@@ -81,6 +83,8 @@ const Admin = () => {
                   <th className={styles.thStyle}>ID</th>
                   <th className={styles.thStyle}>Name</th>
                   <th className={styles.thStyle}>Phone</th>
+                  <th className={styles.thStyle}>Alternate Phone</th>
+                  <th className={styles.thStyle}>Email</th>
                   <th className={styles.thStyle}>Qualification</th>
                   <th className={styles.thStyle}>Actions</th>
                 </tr>
@@ -114,6 +118,32 @@ const Admin = () => {
                         />
                       ) : (
                         item.phone
+                      )}
+                    </td>
+
+                    <td className={styles.tdStyle}>
+                      {editId === item._id ? (
+                        <input
+                          value={form.altPhone}
+                          onChange={(e) =>
+                            setForm({ ...form, altPhone: e.target.value })
+                          }
+                        />
+                      ) : (
+                        item.altPhone
+                      )}
+                    </td>
+
+                    <td className={styles.tdStyle}>
+                      {editId === item._id ? (
+                        <input
+                          value={form.email}
+                          onChange={(e) =>
+                            setForm({ ...form, email: e.target.value })
+                          }
+                        />
+                      ) : (
+                        item.email
                       )}
                     </td>
 
