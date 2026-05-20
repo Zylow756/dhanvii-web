@@ -87,53 +87,55 @@ const Home = () => {
 };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    if (!validateForm()) {
-      alert("Please fix errors");
-      return;
-    }
+  e.preventDefault();
+
+  if (!validateForm()) {
+    alert("Please fix errors");
+    return;
+  }
+
+  try {
+    const API = import.meta.env.VITE_API_URL;
+console.log("API:",API);
+    console.log("formData:",formData);
+
+    const res = await fetch(`${API}/api/enquiry/send`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        name: formData.name,
+        phone: formData.phone,
+          altPhone: formData.altPhone || "",
+        email: formData.email || "",
+        qualification: formData.qualification,
+      }),
+    });
+
+    const text = await res.text();
+
+    let data;
 
     try {
-      const API = import.meta.env.VITE_API_URL;
-
-      const res = await fetch(`${API}/api/enquiry/send`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          altPhone: formData.altPhone || "",
-          email: formData.email || "Not Provided",
-          qualification: formData.qualification,
-        }),
-      });
-
-      // Get raw response first
-      const text = await res.text();
-
-      let data;
-
-      try {
-        data = JSON.parse(text);
-      } catch {
-        console.error("Invalid JSON response:", text);
-        throw new Error("Server returned invalid response");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-
-      setShowSuccess(true);
-
-    } catch (err) {
-      console.error("ERROR:", err);
-      alert(err.message);
+      data = JSON.parse(text);
+    } catch {
+      console.error("Invalid JSON response:", text);
+      throw new Error("Server returned invalid response");
     }
-  };
+
+    if (!res.ok) {
+      throw new Error(data.message || "Something went wrong");
+    }
+
+    setShowSuccess(true);
+
+  } catch (err) {
+    console.error("ERROR:", err);
+    alert(err.message);
+  }
+};
 
   const handlePopupClose = () => {
     setShowSuccess(false);

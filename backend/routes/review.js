@@ -7,11 +7,7 @@ const router = express.Router();
 // GET
 router.get("/", async (req, res) => {
   try {
-    console.log("REVIEWS API CALLED");
-
     const reviews = await Review.find();
-
-    console.log("REVIEWS:", reviews);
 
     res.json(reviews);
 

@@ -20,11 +20,7 @@ router.post("/video", async (req, res) => {
 // GET ALL VIDEOS
 router.get("/video", async (req, res) => {
   try {
-    console.log("VIDEO API CALLED");
-
     const videos = await Video.find().sort({ createdAt: -1 });
-
-    console.log("VIDEOS:", videos);
 
     res.json(videos);
 

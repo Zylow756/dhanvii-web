@@ -60,13 +60,8 @@ router.get("/export", async (req, res) => {
 });
 
 router.post("/send", async (req, res) => {
-   console.log("NEW CODE RUNNING");
-  console.log("BODY:", req.body);
-
-  const { name, phone, altPhone, email, qualification } = req.body;
-  console.log("EMAIL:", email);
   try {
-    
+const { name, phone, altPhone, email, qualification } = req.body;
 
     //  1. Save to MongoDB
     const savedData = await Enquiry.create({
