@@ -11,6 +11,7 @@ const Admin = () => {
     altPhone: "",
     email: "",
     qualification: "",
+    referCode: "",
   });
       const [currentPage, setCurrentPage] = useState(1);
       const itemsPerPage = 10;
@@ -86,6 +87,7 @@ const Admin = () => {
                   <th className={styles.thStyle}>Alternate Phone</th>
                   <th className={styles.thStyle}>Email</th>
                   <th className={styles.thStyle}>Qualification</th>
+                  <th className={styles.thStyle}>Refer Code</th>
                   <th className={styles.thStyle}>Actions</th>
                 </tr>
               </thead>
@@ -160,6 +162,19 @@ const Admin = () => {
                         />
                       ) : (
                         item.qualification
+                      )}
+                    </td>
+
+                    <td className={styles.tdStyle}>
+                      {editId === item._id ? (
+                        <input
+                          value={form.referCode}
+                          onChange={(e) =>
+                            setForm({ ...form, referCode: e.target.value })
+                          }
+                        />
+                      ) : (
+                        item.referCode
                       )}
                     </td>
 

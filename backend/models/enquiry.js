@@ -6,6 +6,7 @@ const enquirySchema = new mongoose.Schema({
   altPhone: String,
   email: String,
   qualification: String,
+  referCode: String,
 }, { timestamps: true });
 
 export default mongoose.model("Enquiry", enquirySchema);

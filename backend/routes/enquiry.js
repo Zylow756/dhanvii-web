@@ -47,6 +47,7 @@ router.get("/export", async (req, res) => {
     AlternatePhone: item.altPhone,
     Email: item.email,
     Qualification: item.qualification,
+    ReferCode: item.referCode,
   }));
 
   const ws = XLSX.utils.json_to_sheet(formatted);
@@ -61,7 +62,7 @@ router.get("/export", async (req, res) => {
 
 router.post("/send", async (req, res) => {
   try {
-const { name, phone, altPhone, email, qualification } = req.body;
+const { name, phone, altPhone, email, qualification, referCode } = req.body;
 
     //  1. Save to MongoDB
     const savedData = await Enquiry.create({
@@ -70,6 +71,7 @@ const { name, phone, altPhone, email, qualification } = req.body;
       altPhone,
       email,
       qualification,
+      referCode,
     });
 
     //  2. Read existing Excel
@@ -92,6 +94,7 @@ const { name, phone, altPhone, email, qualification } = req.body;
       AlternatePhone: altPhone || "Not Provided",
       Email: email || "Not Provided",
       Qualification: qualification || "",
+      ReferCode: referCode || "",
     };
 
     data.push(newEntry);
@@ -123,7 +126,8 @@ Name: ${name}
 Phone: ${phone}
 Alternate Phone: ${altPhone || "Not Provided"}
 Email: ${email || "Not Provided"}
-Qualification: ${qualification}`,
+Qualification: ${qualification}
+Refer Code: ${referCode || "Not Provided"}`,
 
       attachments: [
         {
