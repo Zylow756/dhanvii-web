@@ -37,15 +37,16 @@ html {
 }
 
 /* HEADINGS */
-h1 {
+.section h1 {
   text-align: center;
   margin-bottom: 1.2rem;
   color: #a31515;
   font-weight: bold;
+  font-size: 2rem;
 }
 
-h2,
-h3 {
+.section h2,
+.section h3 {
   margin-top: 1rem;
   color: #a31515;
   text-align: left;
@@ -54,35 +55,34 @@ h3 {
 }
 
 /* TEXT */
-p {
+.section p {
   margin: 1rem 0;
   font-size: 0.6rem;
   color: #a31515fd;
 }
 
-p span {
+.section p span {
   display: block;
   font-size: 1rem;
 }
 
 /* LIST */
-ul {
+.section ul {
   margin-top: 1rem;
   padding-left: 1.5rem;
 }
 
-li {
+.sectionli {
   margin-bottom: 0.6rem;
   font-size: 1rem;
 }
 
-li span {
+.sectionli span {
   font-size: 0.9rem;
 }
 
-/*  FIXED BUG */
 .section p {
-  font-size: 1.2rem; /* instead of 30 (invalid) */
+  font-size: 1.2rem; 
 }
 
 /*  MOBILE */
@@ -92,22 +92,22 @@ li span {
     padding: 0 0.8rem;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  .section h1 {
+    font-size: 2.2rem;
   }
 
-  h2, h3{
+  .section h2, .section h3{
     font-size: 2.0rem;
   }
 }
 
 /*  FULL HD */
 @media (min-width: 1920px) {
-  h1 {
+  .section h1 {
     font-size: 2.8rem;
   }
 
-  h2, h3 {
+  .section h2, .section h3 {
     font-size: 2rem;
   }
 
@@ -118,16 +118,16 @@ li span {
 
 /*  4K ULTRA */
 @media (min-width: 2560px) {
-  h1 {
+  .section h1 {
     font-size: 3.5rem;
   }
 
-  h2, h3 {
+  .section h2, .section h3 {
     font-size: 2.4rem;
   }
 
-  p,
-  li {
+  .section p,
+  .section li {
     font-size: 1.3rem;
   }
 
