@@ -195,7 +195,7 @@ const Home = () => {
               {errors.phone && <p className={styles.error}>{errors.phone}</p>}
             </div>
             <div className={styles.formGroup}>
-              <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number"
+              <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number (Optional)"
                 value={formData.altPhone || ""}
                 onChange={handleChange}
                 maxLength={10} />
@@ -206,7 +206,7 @@ const Home = () => {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Your Email Address"
+                placeholder="Your Email Address (Optional)"
                 value={formData.email}
                 onChange={handleChange}
               />

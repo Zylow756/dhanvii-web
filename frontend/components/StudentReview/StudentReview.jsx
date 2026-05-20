@@ -20,20 +20,24 @@ const StudentReview = () => {
       .toUpperCase()
       .slice(0, 2);
   };
+  
+  const shuffleArray = (array) => {
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+};
 
   const fetchReviews = useCallback(async () => {
     try {
       const res = await axios.get(`${API}/api/reviews`);
-
-      const shuffled = [...res.data];
-
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-
-      setReviews(shuffled);
+    
+      setReviews(shuffleArray(res.data));
 
     } catch (err) {
       console.error(err);
@@ -57,7 +61,6 @@ const StudentReview = () => {
       <h2 className={styles.heading}>What Our Students Says...</h2>
 
       <Swiper
-        key={JSON.stringify(reviews)}
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
