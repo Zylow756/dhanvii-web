@@ -48,7 +48,6 @@
 
 .navLinks li {
   font-size:  0.95rem;
-  padding: 0;
   white-space: nowrap;
 }
 
@@ -274,6 +273,15 @@
   cursor: pointer;
 }
 
+.navLinks {
+  transition: all 0.3s ease;
+}
+
+.navLinks li {
+  width: 100%;
+  padding: 0 0;
+}
+
 /* Mobile View */
 @media (max-width: 768px) {
   .menuIcon {
@@ -342,13 +350,4 @@
   .dropdownMenu li a {
     color: #4c0803;
   }
-}
-
-.navLinks {
-  transition: all 0.3s ease;
-}
-
-.navLinks li {
-  width: 100%;
-  padding: 0 0;
 }

@@ -1,10 +1,17 @@
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
 .footeArea {
     background-color: #4c0803;
 }
 
 .footerBottomArea {
   display: flex;
-  justify-content: space-between; /* 🔥 pushes text left & icons right */
+  justify-content: space-between; 
   align-items: center;
   padding: 0 20px;
   background-color: #8977762f;
@@ -31,13 +38,6 @@
   font-size: 18px;
   transition: 0.3s;
 }
-
-/* Brand Colors */
-/*.social-icons a:nth-child(1) { background: #1877f2; } /* Facebook */
-/*.social-icons a:nth-child(2) { background: #0077b5; } /* LinkedIn */
-/*.social-icons a:nth-child(3) { background: #e4405f; } /* Instagram */
-/*.social-icons a:nth-child(4) { background: #1da1f2; } /* Twitter */
-/*.social-icons a:nth-child(5) { background: #ff0000; } /* YouTube */
 
 .footerSocialMedia a:nth-child(1) { background: #1877f2; color: white; } /* FB */
 .footerSocialMedia a:nth-child(2) { background: #0077b5; color: white; } /* LinkedIn */
