@@ -30,10 +30,15 @@ const AdminDistanceGallery = () => {
       const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = useCallback(async () => {
-    const res = await axios.get(`${API}/api/far-students`);
-    const result = res.data;
-    setData(result);
-  }, [API]);
+  const res = await axios.get(`${API}/api/far-students`);
+
+  // Sort by distance in decreasing order
+  const sortedData = res.data.sort(
+    (a, b) => Number(b.distance) - Number(a.distance)
+  );
+
+  setData(sortedData);
+}, [API]);
 
       useEffect(() => {
           const loadData = async () => {
