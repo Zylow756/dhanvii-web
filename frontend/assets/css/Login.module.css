@@ -45,10 +45,17 @@
 /* Close Button */
 .close {
   position: absolute;
-  top: 0.8vw;
-  right: 1vw;
+  top: 15px;
+  right: 20px;
   font-size: 2rem;
+  font-weight: bold;
   cursor: pointer;
+  color: #6d0b05;
+  z-index: 10001;
+}
+
+.close:hover {
+  color: #a10000;
 }
 
 /* Error Text */

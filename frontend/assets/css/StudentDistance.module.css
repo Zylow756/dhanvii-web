@@ -30,6 +30,9 @@
   padding: 1.5vw;
   border-radius: 1vw;
   box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f7f2ec67, #dcd7d1e7);
+  background-size: cover;
+  background-position: center;
 }
 
 .card h1{
@@ -55,7 +58,7 @@
 .photoCircle {
   width: 12vw;
   height: 25vh;
-  border: 0.3vw solid gold;
+  border: 0.3vw solid #a31515;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;

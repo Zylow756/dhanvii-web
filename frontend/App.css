@@ -5,12 +5,25 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.root {
+  width: 100%;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: #f5f7fb;
   color: #333;
   margin: 0;
   padding: 0;
 }
+
 h1 {
     color: #FFFFFF;
     font-style: oblique;

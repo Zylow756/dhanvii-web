@@ -39,11 +39,6 @@ const StudentDistance = () => {
             <div
               key={student._id}
               className={styles.card}
-              style={{
-                backgroundImage: `linear-gradient(135deg, #f4f79d, #81b2f7)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
             >
               <h1 className={styles.heading}>Distance</h1>
               <h2 className={styles.address}>{student.distance} km - {student.address}</h2>

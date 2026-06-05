@@ -1,136 +1,63 @@
 import styles from "./RandomAd.module.css";
 import WelcomeAd from "../WelcomeModal/WelcomeAd";
-import { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import { FaStar, FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const RandomAd = () => {
-  const [videos, setVideos] = useState([]);
-
-  const playerRef = useRef(null);
-  const playerInstance = useRef(null);
-
-  // Track current video index
-  const currentIndexRef = useRef(0);
-
-  // Extract YouTube Video ID
-  const getVideoId = (url) => {
-    if (!url) return "";
-
-    // Shorts
-    if (url.includes("shorts/")) {
-      return url.split("shorts/")[1]?.split("?")[0];
-    }
-
-    // Normal videos
-    if (url.includes("v=")) {
-      return url.split("v=")[1]?.split("&")[0];
-    }
-
-    return "";
-  };
-
-  // Fetch videos
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const API = import.meta.env.VITE_API_URL;
-
-        const res = await axios.get(`${API}/api/video`);
-
-        const validVideos = Array.isArray(res.data)
-          ? res.data.filter((v) => v?.youtubeUrl)
-          : [];
-
-        setVideos(validVideos);
-      } catch (err) {
-        console.error("Video fetch error:", err);
-      }
-    };
-
-    fetchVideos();
-  }, []);
-
-  // Initialize YouTube Player
-  useEffect(() => {
-    if (!videos.length) return;
-
-    const initializePlayer = () => {
-      // Prevent duplicate player
-      if (playerInstance.current) return;
-
-      const firstVideoId = getVideoId(
-        videos[0]?.youtubeUrl
-      );
-
-      playerInstance.current = new window.YT.Player(
-        playerRef.current,
-        {
-          videoId: firstVideoId,
-
-          playerVars: {
-            autoplay: 1,
-            rel: 0,
-          },
-
-          events: {
-            onStateChange: (event) => {
-              // Video ended
-              if (
-                event.data ===
-                window.YT.PlayerState.ENDED
-              ) {
-                let nextIndex =
-                  currentIndexRef.current + 1;
-
-                // Loop back to first video
-                if (nextIndex >= videos.length) {
-                  nextIndex = 0;
-                }
-
-                currentIndexRef.current = nextIndex;
-
-                const nextVideoId = getVideoId(
-                  videos[nextIndex]?.youtubeUrl
-                );
-
-                playerInstance.current.loadVideoById(
-                  nextVideoId
-                );
-              }
-            },
-          },
-        }
-      );
-    };
-
-    // Load YouTube API
-    if (!window.YT) {
-      const tag = document.createElement("script");
-
-      tag.src = "https://www.youtube.com/iframe_api";
-
-      document.body.appendChild(tag);
-
-      window.onYouTubeIframeAPIReady = () => {
-        initializePlayer();
-      };
-    } else {
-      initializePlayer();
-    }
-  }, [videos]);
+const RandomAd = ({ onEnquiryClick }) => {
+  const navigate = useNavigate();
 
   return (
     <div className={styles.adBox}>
-      <div className={styles.video}>
-        <div
-          ref={playerRef}
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        />
-      </div>
+      <div className={styles.ratingsContainer}>
+        <p>
+          Best Accounting Institute in Kota with 100% Job Placements. Build a High-Paying Career in Accounting, Finance, Taxation, Banking & Payroll — with Dhanvii
+        </p>
+        <div className={styles.buttonContainer}>
+          <a href="https://www.google.com/maps?q=Dhanvii+Accounting+System+Kota"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ratingButton}
+          >
+            <FaStar className={styles.starIcon} />
+            <span>5.0</span>
+            <span>Google</span>
+          </a>
 
+          <a href="https://www.facebook.com/profile.php?id=100063563501750"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ratingButton}
+          >
+            <FaStar className={styles.starIcon} />
+            <span>4.8</span>
+            <span>Facebook</span>
+          </a>
+
+          <a
+            href="https://jsdl.in/DT-9966MAU2QQM"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.ratingButton}
+          >
+            <FaStar className={styles.starIcon} />
+            <span>4.7</span>
+            <span>Just Dial</span>
+          </a>
+        </div>
+        <div className={styles.buttonLink}>
+          <button
+            onClick={() => navigate("/courses")}
+            className={styles.link}>
+            View Courses <FaArrowRight className={styles.arrowIcon} />
+          </button>
+          <button
+            className={styles.link}
+            onClick={onEnquiryClick}
+          >
+            Enquiry Now <FaArrowRight className={styles.arrowIcon} />
+          </button>
+        </div>
+      </div>
       <div className={styles.ad}>
         <WelcomeAd />
       </div>

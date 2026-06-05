@@ -1,75 +1,215 @@
-.footer{
-  position: fixed;
-  bottom: 0;
-  left: 0;
+.footer {
+  background: #4c0803d2;
+  color: white;
+  position: relative;
+  overflow: hidden;
   width: 100%;
 }
 
-.footeArea {
-    background-color: #4c0803;
-}
-
-.footerBottomArea {
+.container {
+  width: min(95%, 2200px);
+  margin: 1rem auto 0;
   display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  padding: 0 20px;
-  background-color: #8977762f;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 4rem);
 }
 
-.footerBottomArea p {
-    color: #4c0803;
-    font-size: 1rem;
+.left,
+.social {
+  flex: 1;
+}
+
+.info {
+  width: 100%;
+  max-width: 25rem;
+}
+
+.info p {
+  color: white;
+  margin-top: 0;
+  line-height: 1.7;
+}
+
+.icon {
+  color: white;
+}
+
+.links {
+  text-align: left;
+  flex: 1.5;
+}
+
+.links h3,
+.social h3,
+.left h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.links h3::after,
+.social h3::after,
+.left h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: clamp(50px, 4vw, 80px);
+  height: 3px;
+  background: #ffcc33;
+}
+
+.links a {
+  color: #ddd;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.links a:hover {
+  color: #ffcc33;
+  transform: translateX(6px);
+}
+
+.linkList {
+  display: flex;
+  gap: 1rem;
+}
+
+.linkSeparatorLeft,
+.linkSeparatorRight {
+  flex: 1;
 }
 
 .socialIcons {
   display: flex;
-  gap: 10px;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 15px;
+  align-items: center;
 }
 
 .socialIcons a {
-  width: 40px;
-  min-height: 40px;
+  width: clamp(45px, 3vw, 65px);
+  height: clamp(45px, 3vw, 65px);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  border-radius: 6px;
-  font-size: 18px;
+  color: #fff;
+  font-size: clamp(16px, 1.2vw, 24px);
   transition: 0.3s;
 }
 
-.footerSocialMedia a:nth-child(1) { background: #1877f2; color: white; } /* FB */
-.footerSocialMedia a:nth-child(2) { background: #0077b5; color: white; } /* LinkedIn */
-.footerSocialMedia a:nth-child(3) { background: #e4405f; color: white; } /* Instagram */
-.footerSocialMedia a:nth-child(4) { background: #1da1f2; color: white; } /* Twitter */
-.footerSocialMedia a:nth-child(5) { background: #ff0000; color: white; } /* YouTube */
-
 .socialIcons a:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
+  transform: translateY(-6px);
+  background: white;
+  color: #4c0803;
+  box-shadow: 0 10px 20px rgba(255, 204, 51, 0.3);
 }
 
-.footerSocialMedia {
-  display: flex;
-  align-items: center;
-  gap: 12px; 
-
+.bottomBar {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 0.8rem 0;
+  text-align: center;
 }
 
-.footerSocialMedia a {
-  width: 35px;
-  min-height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
+.bottomBar p {
+  color: white;
+  font-size: clamp(14px, 1vw, 20px);
+}
+
+.footerCTA {
+  flex: 0 0 260px;
+  max-width: 280px;
+  text-align: center;
+  padding: 0.8rem;
+  background: #fff7f2;
+  border-radius: 1rem;
+}
+
+.footerCTA h2 {
+  color: #4c0803;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.footerCTA button {
+  background: #4c0803;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .footerBottomArea {
+  .container {
     flex-direction: column;
-    gap: 10px;
     text-align: center;
+    width: 95%;
+  }
+
+  .links,
+  .social,
+  .left {
+    width: 100%;
+  }
+
+  .links {
+    text-align: center;
+  }
+
+  .info {
+    max-width: 100%;
+  }
+
+  .socialIcons {
+    justify-content: center;
+  }
+
+  .linkList {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .bottomBar {
+    text-align: center;
+  }
+
+  .footerCTA {
+    flex: none;
+    width: fit-content;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .container {
+    width: min(90%, 2600px);
+  }
+
+  .links a,
+  .info p {
+    font-size: 1.3rem;
+  }
+
+  .links h3,
+  .social h3,
+  .left h3 {
+    font-size: 2rem;
   }
 }

@@ -2,148 +2,54 @@ import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import StudentReview from '../components/StudentReview/StudentReview';
 import styles from '../assets/css/Home.module.css';
-import { useState } from "react";
 import RandomAd from '../components/RandomAd/RandomAd';
 import WelcomeModal from "../components/WelcomeModal/WelcomeModal";
 import FloatingShare from '../components/FloatingShare/FloatingShare';
-import SuccessPopup from "../components/SuccessPopup/SuccessPopup";
+import AboutUsContain from '../components/AboutUsContain/AboutUsContain';
+import StudentPlacementCard from '../components/StudentPlacementCard/StudentPlacementCard';
+import { useState } from "react";
+import EnquiryPopup from "../components/EnquiryPopup/EnquiryPopup";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
+import { useStudents } from "../hooks/useStudents";
+import course1 from "../assets/images/courses1.jpg";
+import course2 from "../assets/images/courses2.png";
+import course3 from "../assets/images/courses3.jpg";
+import course4 from "../assets/images/courses4.jpg";
+
+const API = import.meta.env.VITE_API_URL;
 
 const Home = () => {
+  const students = useStudents();
+  const [showEnquiry, setShowEnquiry] = useState(false);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    altPhone: "",
-    email: "",
-    qualification: "",
-    referCode: "",
-  });
-  const [errors, setErrors] = useState({});
-  const [showSuccess, setShowSuccess] = useState(false);
-
-  const validateForm = () => {
-    let newErrors = {};
-
-    // Required fields
-    if (!formData.name) newErrors.name = "Name is required";
-
-    // Name validation (only letters and spaces)
-    const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
-    if (formData.name && !nameRegex.test(formData.name)) {
-      newErrors.name = "Enter valid full name";
-    }
-
-    if (!formData.phone) newErrors.phone = "Phone number is required";
-
-    // Phone validation (10 digit)
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (formData.phone && !phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Enter valid Indian mobile number";
-    }
-
-    // Indian phone validation (starts with 6-9 and 10 digits)
-    if (formData.phone && !phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Enter valid Indian mobile number";
-    }
-
-    if (formData.altPhone) {
-      const altPhoneRegex = /^[6-9]\d{9}$/;
-
-      if (!altPhoneRegex.test(formData.altPhone)) {
-        newErrors.altPhone = "Enter valid 10-digit alternate number";
-      }
-    }
-
-    // Email validation
-    if (formData.email) {
-      const emailRegex =
-        /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-      if (!emailRegex.test(formData.email)) {
-        newErrors.email = "Enter valid email address";
-      }
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "phone" || name === "altPhone") {
-      const numericValue = value.replace(/\D/g, "").slice(0, 10);
-
-      setFormData((prev) => ({
-        ...prev,
-        [name]: numericValue,
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      alert("Please fix errors");
-      return;
-    }
-
-    try {
-      const API = import.meta.env.VITE_API_URL;
-      console.log("API:", API);
-      console.log("formData:", formData);
-
-      const res = await fetch(`${API}/api/enquiry/send`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          altPhone: formData.altPhone || "",
-          email: formData.email || "",
-          qualification: formData.qualification,
-          referCode: formData.referCode || "",
-        }),
-      });
-
-      const text = await res.text();
-
-      let data;
-
-      try {
-        data = JSON.parse(text);
-      } catch {
-        console.error("Invalid JSON response:", text);
-        throw new Error("Server returned invalid response");
-      }
-
-      if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
-      }
-
-      setShowSuccess(true);
-
-    } catch (err) {
-      console.error("ERROR:", err);
-      alert(err.message);
-    }
-  };
-
-  const handlePopupClose = () => {
-    setShowSuccess(false);
-
-    window.location.href = "/courses";
-  };
+  const courses = [
+    {
+      title: "Tally Prime",
+      duration: "3 Months",
+      image: course1,
+      description: "."
+    },
+    {
+      title: "Beginner Accounting",
+      duration: "6 Months",
+      image: course2,
+      description: "Banking & Accounting in MS Excel."
+    },
+    {
+      title: "Achiever's Accounting",
+      duration: "8 Months",
+      image: course3,
+      description: "Banking & Accounting in MS Excel."
+    },
+    {
+      title: "Advance Accounting",
+      duration: "12 Months",
+      image: course4,
+      description: "Banking,MS Word & Excel & Online Application & Forms."
+    },
+  ];
 
   return (
     <div className={styles.root}>
@@ -152,7 +58,46 @@ const Home = () => {
         <h1>Best Accounting Institute in Kota</h1>
       </header>
       <WelcomeModal />
-      <RandomAd />
+      <RandomAd onEnquiryClick={() => setShowEnquiry(true)} />
+      <AboutUsContain showVideo={true} />
+      {/* cources list */}
+      <section className={styles.section}>
+        <h2 className={styles.title}>Build a Successful Career with Our Professional Coursess</h2>
+
+        <div className={styles.grid}>
+          {courses.map((course, index) => (
+            <div key={index} className={styles.card}>
+              <div className={styles.imageWrapper}>
+                <img src={course.image} alt={course.title} />
+                <span className={styles.duration}>
+                  ⏱ {course.duration}
+                </span>
+              </div>
+
+              <div className={styles.content}>
+                <h3>{course.title}</h3>
+
+                <p>{course.description}</p>
+
+                <ul>
+                  <li>Flexible Timings</li>
+                  <li>Expert Trainers</li>
+                </ul>
+
+                <div className={styles.buttons}>
+                  <button className={styles.outlineBtn} onClick={() => window.location.href = "/courses"}>
+                    Know More
+                  </button>
+
+                  {/*<button className={styles.fillBtn}>
+                  Download Brochure
+                </button>*/}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
       <div className={styles.enquiryForm}>
         <div className={styles.premiumCard}>
           <h2>Who Should Join?</h2>
@@ -179,81 +124,57 @@ const Home = () => {
             <li>Management Accounting</li>
           </ul>
         </div>
-        <div className={styles.contactFormContainer}>
-          <h2>Enquiry Form For Demo Classes</h2>
-          <form id="contactForm" onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
-              <input type="text" id="name" name="name" placeholder="Your Name"
-                onChange={handleChange} required />
-              {errors.name && <p className={styles.error}>{errors.name}</p>}
-            </div>
-            <div className={styles.formGroup}>
-              <input type="tel" id="phone" name="phone" placeholder="Your Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-                maxLength={10} required />
-              {errors.phone && <p className={styles.error}>{errors.phone}</p>}
-            </div>
-            <div className={styles.formGroup}>
-              <input type="tel" id="altPhone" name="altPhone" placeholder="Your Alternate Phone Number (Optional)"
-                value={formData.altPhone || ""}
-                onChange={handleChange}
-                maxLength={10} />
-              {errors.altPhone && <p className={styles.error}>{errors.altPhone}</p>}
-            </div>
-            <div className={styles.formGroup}>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Your Email Address (Optional)"
-                value={formData.email}
-                onChange={handleChange}
-              />
-
-              {errors.email && (
-                <p className={styles.error}>{errors.email}</p>
-              )}
-            </div>
-            <div className={styles.formGroup}>
-              <select
-                id="qualification"
-                name="qualification"
-                onChange={handleChange}
-                required
-                className={styles.selectInput}
-              >
-                <option value="">Select Qualification</option>
-                <option value="12th">12th pass</option>
-                <option value="Diploma">Diploma</option>
-                <option value="Undergraduate">Undergraduate</option>
-                <option value="Graduate">Graduate</option>
-                <option value="Postgraduate">Postgraduate</option>
-              </select>
-              <span className={styles.errorMessage} id="qualificationError"></span>
-            </div><div className={styles.formGroup}>
-              <input
-                type="text"
-                id="referCode"
-                name="referCode"
-                placeholder="Refer Code (Optional)"
-                value={formData.referCode}
-                onChange={handleChange}
-              />
-            </div>
-            <button type="submit" className={styles.submitButton}>
-              Send Message
-            </button>
-          </form>
-        </div>
       </div>
+      {/* placements slider */}
+      <section className={styles.sectionPlacement}>
+        <p className={styles.subHeading}>A Decade of Excellence</p>
+        <h2 className={styles.heading}>
+          Our <span>Students</span>, Now Industry Professionals
+        </h2>
+        {students.length > 0 && (
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={5}
+            spaceBetween={25}
+            loop={true}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            speed={3000}
+            allowTouchMove={true}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            {students.map((student) => (
+              <SwiperSlide key={student._id}>
+                <StudentPlacementCard
+                  student={student}
+                apiUrl={API}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </section>
       <StudentReview />
       <FloatingShare />
       <Footer />
-      <SuccessPopup
-        isOpen={showSuccess}
-        onClose={handlePopupClose}
-      />
+      {showEnquiry && (
+        <EnquiryPopup
+          onClose={() => setShowEnquiry(false)}
+        />
+      )}
     </div>
 
   );

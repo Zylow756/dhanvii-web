@@ -5,7 +5,8 @@ html {
 /* Ultra HD / 4K Screens */
 @media (min-width: 2560px) {
   html {
-    font-size: 20px; /* increases all rem-based sizes */
+    font-size: 20px;
+    /* increases all rem-based sizes */
   }
 }
 
@@ -24,30 +25,31 @@ p {
 }
 
 a {
-    color: #4c0803;
-    font-weight: bold;
-    text-decoration: none;
+  color: #4c0803;
+  font-weight: bold;
+  text-decoration: none;
   font-size: 1rem;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+  background-color: #4c0803;
 }
 
 .enquiryForm {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
   padding: 2rem;
   gap: 1rem;
   justify-content: center;
 }
 
 .premiumCard {
-  max-width: 600px; /* increased for 4K */
+  max-width: 600px;
+  /* increased for 4K */
   padding: 1.7rem;
   border-radius: 1rem;
   background: #f7f2ec67;
@@ -69,14 +71,14 @@ input[type=submit]:hover {
   margin: 0;
 }
 
-.premiumCard h2{
+.premiumCard h2 {
   color: #4c0803;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
 .premiumCard li {
-  position: relative; 
+  position: relative;
   padding-left: 2rem;
   margin-bottom: 0.8rem;
   color: #4c0803df;
@@ -91,97 +93,159 @@ input[type=submit]:hover {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: #22c55e;
+  color: #4c0803;
   font-weight: bold;
 }
 
-.contactFormContainer {
-  background: #fefbfb;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
-  border: 1px solid #eee;
-  max-width: 600px;   /* ✅ same as side cards */
-  width: 100%;
-  flex: 1;
-  transition: 0.3s ease;
-}
-
-.contactFormContainer:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
-}
-
-h2 {
-  margin: 0.8rem 0;
-  color: #a31515;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.formGroup {
-    margin-bottom: 1rem;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #ddd;
-  border-radius: 0.4rem;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
- .error {
-  color: red;
-  font-size: 1rem;
-  margin-top: 2px;
-}
-
-.submitButton {
-    background-color: #4c0803;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
-  padding: 1rem;
-  font-size: 1.1rem;
-  border-radius: 0.4rem;
-}
-
-.submitButton:hover {
-    background-color: #88212659;
-}
-
-.contactFormContainer:hover {
-    transform: translateY(-5px);
-}
-
-/* qualification dropdown*/
-.selectInput {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  padding: 0.8rem;
-  font-size: 1rem;
-    background-color: white;
-    cursor: pointer;
-}
 .boxContain {
-    text-align: center;
+  text-align: center;
   margin-bottom: 3rem;
 }
 
 .boxContain h1 {
   font-size: 2.5rem;
-    color: #a31515;
+  color: #a31515;
 }
 
 .boxContain p {
   font-size: 1.2rem;
-    color: #a31515ad;
+  color: #a31515ad;
+}
+
+.section {
+  background: #f7f2ec67;
+}
+
+.sectionPlacement {
+  background: #eceaea;
+}
+
+.section,
+.sectionPlacement {
+  padding: 1rem 4rem;
+  text-align: center;
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #a31515;
+  margin-bottom: 2rem;
+}
+
+.heading span {
+  font-weight: bold;
+}
+
+.subHeading {
+  font-size: 1.1rem;
+  color: #a31515ad;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 5vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 200px;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.duration {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #4c0803;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.content {
+  padding: 10px;
+  text-align: left;
+}
+
+.content h3 {
+  font-size: 25px;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.content p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.content ul {
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.content li {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: row;
+}
+
+.outlineBtn {
+  border: 2px solid #4c0803;
+  background: transparent;
+  color: #4c0803;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fillBtn {
+  border: none;
+  background: #4c0803;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fillBtn:hover,
+.outlineBtn:hover {
+  opacity: 0.9;
 }
 
 /* 🔥 4K specific layout improvements */
@@ -203,5 +267,26 @@ textarea {
 @media (max-width: 768px) {
   .enquiryForm {
     flex-direction: column;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boxContain {
+    margin-bottom: 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .section,
+  .sectionPlacement {
+    padding: 1rem 1rem;
+  }
+
+  .heading {
+    font-size: 2rem;
   }
 }
