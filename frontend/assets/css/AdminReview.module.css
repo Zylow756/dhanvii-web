@@ -1,0 +1,112 @@
+.container {
+    padding: 10px;
+    background-color: #f5f7fb;
+    min-height: 100vh;
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+    color: #8B0000;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.form {
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-height: 80px;
+}
+
+.button {
+    background-color: #8B0000;
+    color: #fff;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.th {
+    text-align: center;
+    padding: 12px;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #ddd;
+    border-left: 2px solid #ddd;
+}
+
+.td {
+    padding: 12px;
+    border-bottom: 3px solid #ddd;
+    border-left: 2px solid #ddd;
+    text-align: center;
+}
+
+.image {
+    width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.editBtn {
+    background-color: #51e760;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deleteBtn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}

@@ -25,10 +25,11 @@ const AdminVideo = () => {
           type="text"
           placeholder="Paste YouTube URL"
           value={url}
+          className={styles.input}
           onChange={(e) => setUrl(e.target.value)}
         />
 
-        <button className={styles.exportBtn} onClick={handleSubmit}>Add Video</button>
+        <button className={styles.button} onClick={handleSubmit}>Add Video</button>
       </div>
     </div>
   );

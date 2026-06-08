@@ -197,6 +197,7 @@ const AdminGallery = () => {
         </div>
 
         {/* Tabs */}
+        <h2>Select the tab your want to see</h2>
         <div className={styles.tabs}>
           <button
             className={`${styles.tab} ${activeTab === "all" ? styles.active : ""}`}

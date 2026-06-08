@@ -17,6 +17,8 @@ import course1 from "../assets/images/courses1.jpg";
 import course2 from "../assets/images/courses2.png";
 import course3 from "../assets/images/courses3.jpg";
 import course4 from "../assets/images/courses4.jpg";
+import WhoCanJoin from '../components/WhoCanJoin/WhoCanJoin';
+import JobOpportunities from '../components/JobOpportunities/JobOpportunities';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -29,25 +31,25 @@ const Home = () => {
       title: "Tally Prime",
       duration: "3 Months",
       image: course1,
-      description: "."
+      description: "Your first step to an Accounting Career."
     },
     {
-      title: "Beginner Accounting",
+      title: "Accounting Foundation Program",
       duration: "6 Months",
       image: course2,
-      description: "Banking & Accounting in MS Excel."
+      description: "Build a Strong Foundation for a Successful Accounting Career."
     },
     {
-      title: "Achiever's Accounting",
+      title: "Professional Accounting Program",
       duration: "8 Months",
       image: course3,
-      description: "Banking & Accounting in MS Excel."
+      description: "Gain Industry-Ready Skills in Accounting,GST & Taxation."
     },
     {
-      title: "Advance Accounting",
+      title: "Master Accounting, Finance & Audit Program",
       duration: "12 Months",
       image: course4,
-      description: "Banking,MS Word & Excel & Online Application & Forms."
+      description: "Master Advanced Accounting, Finance & Auditing for Leadrship Roles."
     },
   ];
 
@@ -60,6 +62,7 @@ const Home = () => {
       <WelcomeModal />
       <RandomAd onEnquiryClick={() => setShowEnquiry(true)} />
       <AboutUsContain showVideo={true} />
+
       {/* cources list */}
       <section className={styles.section}>
         <h2 className={styles.title}>Build a Successful Career with Our Professional Coursess</h2>
@@ -78,12 +81,6 @@ const Home = () => {
                 <h3>{course.title}</h3>
 
                 <p>{course.description}</p>
-
-                <ul>
-                  <li>Flexible Timings</li>
-                  <li>Expert Trainers</li>
-                </ul>
-
                 <div className={styles.buttons}>
                   <button className={styles.outlineBtn} onClick={() => window.location.href = "/courses"}>
                     Know More
@@ -98,33 +95,9 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <div className={styles.enquiryForm}>
-        <div className={styles.premiumCard}>
-          <h2>Who Should Join?</h2>
-          <ul>
-            <li>12th Commerce & Non-Commerce Students</li>
-            <li>Graduation: Arts, Commerce,Science</li>
-            <li>Job Seekers in Accounting & Finance</li>
-            <li>Business Owners managing their accounts</li>
-            <li>Anyone wanting to master Tally & GST</li>
-            <li>Technical: ITI, B.Tech, others</li>
-          </ul>
-        </div>
-        <div className={styles.premiumCard}>
-          <h2>Job Opportunities</h2>
-          <ul>
-            <li>Accounting Clerks</li>
-            <li>Book Keeping</li>
-            <li>Bank Worker</li>
-            <li>Payroll Clerks</li>
-            <li>Financial Dealers</li>
-            <li>Tax Manager</li>
-            <li>Godown Operation</li>
-            <li>Internal Auditors</li>
-            <li>Management Accounting</li>
-          </ul>
-        </div>
-      </div>
+      <WhoCanJoin />
+      <JobOpportunities />
+      
       {/* placements slider */}
       <section className={styles.sectionPlacement}>
         <p className={styles.subHeading}>A Decade of Excellence</p>
@@ -160,7 +133,7 @@ const Home = () => {
               <SwiperSlide key={student._id}>
                 <StudentPlacementCard
                   student={student}
-                apiUrl={API}
+                  apiUrl={API}
                 />
               </SwiperSlide>
             ))}

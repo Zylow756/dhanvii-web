@@ -13,44 +13,44 @@ const AdminDistanceGallery = () => {
     image: "",
     isTop: false,
   });
-    const API = import.meta.env.VITE_API_URL;
+  const API = import.meta.env.VITE_API_URL;
 
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-      const [currentPage, setCurrentPage] = useState(1);
-      const itemsPerPage = 10;
-  
-      const totalPages = Math.ceil(data.length / itemsPerPage);
-  
-  
-      const indexOfLastItem = currentPage * itemsPerPage;
-      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  
-      const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const currentData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const fetchStudents = useCallback(async () => {
-  const res = await axios.get(`${API}/api/far-students`);
+    const res = await axios.get(`${API}/api/far-students`);
 
-  // Sort by distance in decreasing order
-  const sortedData = res.data.sort(
-    (a, b) => Number(b.distance) - Number(a.distance)
-  );
+    // Sort by distance in decreasing order
+    const sortedData = res.data.sort(
+      (a, b) => Number(b.distance) - Number(a.distance)
+    );
 
-  setData(sortedData);
-}, [API]);
+    setData(sortedData);
+  }, [API]);
 
-      useEffect(() => {
-          const loadData = async () => {
-              try {
-                  await fetchStudents();
-              } catch (err) {
-                  console.error("Error fetching reviews:", err);
-              }
-          };
-  
-          loadData();
-      }, [fetchStudents]);
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        await fetchStudents();
+      } catch (err) {
+        console.error("Error fetching reviews:", err);
+      }
+    };
+
+    loadData();
+  }, [fetchStudents]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -112,19 +112,19 @@ const AdminDistanceGallery = () => {
     <div className={styles.root}>
       <AdminNav />
       <h2>Far Students Panel</h2>
-
-      {/* FORM */}
-      <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Name" value={form.name} onChange={handleChange} className={styles.input}  required />
-        <input name="address" placeholder="Area" value={form.address} onChange={handleChange} className={styles.input}  required />
-        <input name="distance" placeholder="Distance (e.g. 80)" value={form.distance} onChange={handleChange} className={styles.input}  />
-        <input name="city" placeholder="City (e.g. Kota, Bundi)" value={form.city} onChange={handleChange} className={styles.input}  />
-        <input type="file" name="image" onChange={handleFileChange} />
-
-        <button type="submit" className={styles.button}>
+      <div className={styles.mainContainer}>
+        {/* FORM */}
+        <form onSubmit={handleSubmit} className={styles.formContainer} id="studentForm">
+          <input name="name" placeholder="Name" value={form.name} onChange={handleChange} className={styles.input} required />
+          <input name="address" placeholder="Area" value={form.address} onChange={handleChange} className={styles.input} required />
+          <input name="distance" placeholder="Distance (e.g. 80)" value={form.distance} onChange={handleChange} className={styles.input} />
+          <input name="city" placeholder="City (e.g. Kota, Bundi)" value={form.city} onChange={handleChange} className={styles.input} />
+          <input type="file" name="image" onChange={handleFileChange} />
+        </form>
+        <button type="submit" className={styles.button} form="studentForm">
           {editId ? "Update" : "Add"} Student
         </button>
-      </form>
+      </div>
 
       {/* LIST */}
       <table className={styles.tableContainer}>
@@ -149,8 +149,8 @@ const AdminDistanceGallery = () => {
               <td className={styles.tdStyle}>{s.address}</td>
 
               <td className={styles.tdStyle}>
-                <button className={styles.editBtn} onClick={() => handleEdit(s)}>✏️ Edit</button>
-                <button className={styles.deleteBtn} onClick={() => handleDelete(s._id)}> 🗑 Delete</button>
+                <button type="button" className={styles.editBtn} onClick={() => handleEdit(s)}>✏️ Edit</button>
+                <button type="button" className={styles.deleteBtn} onClick={() => handleDelete(s._id)}> 🗑 Delete</button>
               </td>
             </tr>
           ))}
@@ -168,7 +168,7 @@ const AdminDistanceGallery = () => {
           <button
             key={i}
             onClick={() => setCurrentPage(i + 1)}
-            style={currentPage === i + 1 ? styles.active : null}
+            className={currentPage === i + 1 ? styles.active : ""}
           >
             {i + 1}
           </button>

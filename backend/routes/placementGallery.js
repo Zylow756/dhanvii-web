@@ -3,6 +3,8 @@ import PlacementGallery from "../models/placementGallery.js";
 import multer from "multer";
 
 const router = express.Router();
+console.log("PLACEMENT GALLERY ROUTE LOADED");
+console.log("ROUTE FILE:", import.meta.url);
 
 //  STORAGE CONFIG
 const storage = multer.diskStorage({
@@ -29,30 +31,43 @@ router.get("/", async (req, res) => {
 });
 
 //  ADD DATA (ADMIN)
-router.post("/", upload.fields([
-  { name: "photo", maxCount: 1 },
-  { name: "background", maxCount: 1 }
-]), async (req, res) => {
-  try {
+router.post(
+  "/",
+  upload.fields([
+    { name: "photo", maxCount: 1 }
+  ]),
+  async (req, res) => {
+
+    try {
+     console.log("BODY:", req.body);
+      console.log("FILES:", req.files);
+
     const newStudent = new PlacementGallery({
       name: req.body.name,
       qualification: req.body.qualification,
       company: req.body.company,
-  salary: Number(req.body.salary),
-      background: req.files["background"]?.[0]?.path.replace(/\\/g, "/")
+      salary: Number(req.body.salary),
+
+      workingAs: req.body.workingAs,
+
+      photo: req.files?.photo?.[0]?.path.replace(/\\/g, "/"),
     });
 
-    await newStudent.save();
-    res.json(newStudent);
 
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+      console.log("SAVING:", newStudent);
+    await newStudent.save();
+
+    res.json(newStudent);
+      } catch (err) {
+      console.error("POST ERROR:", err);
+      res.status(500).json({ error: err.message });
+    }
   }
-});
+);
 
 //  UPDATE student
 router.put("/:id", upload.fields([
-  { name: "background", maxCount: 1 }
+  { name: "photo", maxCount: 1 }
 ]), async (req, res) => {
   try {
     const updateData = {
@@ -60,21 +75,32 @@ router.put("/:id", upload.fields([
       qualification: req.body.qualification,
       company: req.body.company,
       salary: Number(req.body.salary),
+      workingAs: req.body.workingAs,
     };
 
-    // optional update for images
-    if (req.files["background"]) {
-      updateData.background = req.files["background"][0].path.replace(/\\/g, "/");
+    switch (req.body.workingAs) {
+      case "accountant":
+        updateData.background =
+          "backgrounds/accountantBg.jpg";
+        break;
+
+      case "businessman":
+        updateData.background =
+          "backgrounds/businessmanBg.jpg";
+        break;
+    }
+    if (req.files?.photo) {
+      updateData.photo =
+        req.files.photo[0].path.replace(/\\/g, "/");
     }
 
     const updated = await PlacementGallery.findByIdAndUpdate(
-      req.params.id,
-      updateData,
-      { new: true }
-    );
+  req.params.id,
+  updateData,
+  { new: true }
+);
 
-    res.json(updated);
-
+res.json(updated);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

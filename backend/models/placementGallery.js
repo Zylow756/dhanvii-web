@@ -5,9 +5,16 @@ const placementGallerySchema = new mongoose.Schema({
   qualification: String,
   company: String,
   salary: Number,
-  background: {
-  type: String
-}
+
+  workingAs: {
+    type: String,
+    enum: ["accountant", "businessman"],
+    default: "accountant",
+  },
+
+  photo: String,
+
+  background: String,
 });
 
 export default mongoose.model("PlacementGallery", placementGallerySchema);

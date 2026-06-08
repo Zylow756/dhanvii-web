@@ -1,118 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
-
-const styles = {
-    container: {
-        padding: "10px",
-        backgroundColor: "#f5f7fb",
-        minHeight: "100vh",
-    },
-
-    title: {
-        textAlign: "center",
-        marginTop: "20px",
-        color: "#8B0000",
-        marginBottom: "20px",
-    },
-
-    card: {
-        background: "#fff",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-        marginBottom: "20px",
-    },
-
-    form: {
-        display: "flex",
-        flexDirection: "column",
-        gap: "10px",
-    },
-
-    input: {
-        padding: "10px",
-        borderRadius: "6px",
-        border: "1px solid #ccc",
-    },
-
-    textarea: {
-        padding: "10px",
-        borderRadius: "6px",
-        border: "1px solid #ccc",
-        minHeight: "80px",
-    },
-
-    button: {
-        backgroundColor: "#8B0000",
-        color: "#fff",
-        padding: "10px",
-        border: "none",
-        borderRadius: "6px",
-        cursor: "pointer",
-        fontWeight: "bold",
-    },
-
-    table: {
-        width: "100%",
-        borderCollapse: "collapse",
-        marginTop: "10px",
-    },
-
-    th: {
-        textAlign: "center",
-        padding: "12px",
-        backgroundColor: "#f1f1f1",
-        borderBottom: "2px solid #ddd",
-        borderLeft: "2px solid #ddd",
-    },
-
-    td: {
-        padding: "12px",
-        borderBottom: "3px solid #ddd",
-        borderLeft: "2px solid #ddd",
-        textAlign: "center",
-    },
-
-    image: {
-        width: "50px",
-        minHeight: "50px",
-        borderRadius: "50%",
-        objectFit: "cover",
-    },
-
-    status: {
-        padding: "5px 12px",
-        borderRadius: "20px",
-        color: "#fff",
-        fontSize: "12px",
-    },
-    editBtn: {
-        backgroundColor: "#51e760",
-        color: "#fff",
-        border: "none",
-        padding: "6px 10px",
-        marginRight: "5px",
-        borderRadius: "5px",
-        cursor: "pointer",
-    },
-
-    deleteBtn: {
-        backgroundColor: "#dc3545",
-        color: "#fff",
-        border: "none",
-        padding: "6px 10px",
-        borderRadius: "5px",
-        cursor: "pointer",
-    },
-
-    pagination: {
-        display: "flex",
-        justifyContent: "center",
-        marginTop: "20px",
-        gap: "10px",
-    },
-};
+import  styles from '../../assets/css/AdminReview.module.css'
 
 const AdminReview = () => {
     const [reviews, setReviews] = useState([]);
@@ -218,15 +107,15 @@ const AdminReview = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div className={styles.container}>
             <AdminNav />
-            <h2 style={styles.title}>Admin Review Panel</h2>
+            <h2 className={styles.title}>Admin Review Panel</h2>
 
             {/* FORM CARD */}
-            <div style={styles.card}>
+            <div className={styles.card}>
                 <h3>Add New Review</h3>
 
-                <form onSubmit={handleSubmit} style={styles.form}>
+                <form id="studentForm" onSubmit={handleSubmit} className={styles.form}>
                     <input
                         type="text"
                         placeholder="Student Name"
@@ -234,7 +123,7 @@ const AdminReview = () => {
                         onChange={(e) =>
                             setForm({ ...form, name: e.target.value })
                         }
-                        style={styles.input}
+                        className={styles.input}
                     />
 
                     <textarea
@@ -243,7 +132,7 @@ const AdminReview = () => {
                         onChange={(e) =>
                             setForm({ ...form, message: e.target.value })
                         }
-                        style={styles.textarea}
+                        className={styles.textarea}
                     />
 
                     <input
@@ -253,7 +142,7 @@ const AdminReview = () => {
                         onChange={(e) =>
                             setForm({ ...form, path: e.target.value })
                         }
-                        style={styles.path}
+                        className={styles.input}
                     />
 
                     <input
@@ -263,7 +152,7 @@ const AdminReview = () => {
                         onChange={(e) =>
                             setForm({ ...form, qualification: e.target.value })
                         }
-                        style={styles.input}
+                        className={styles.input}
                     />
 
                     <input
@@ -272,25 +161,25 @@ const AdminReview = () => {
                             setForm({ ...form, image: e.target.files[0] })
                         }
                     />
-                    <button type="submit" style={styles.button}>
+                </form>
+                    <button form="studentForm" type="submit" className={styles.button}>
                         {editId ? "Update Review" : "Upload Review"}
                     </button>
-                </form>
             </div>
 
             {/* TABLE CARD */}
-            <div style={styles.card}>
+            <div className={styles.card}>
                 <h3>All Reviews</h3>
 
-                <table style={styles.table}>
+                <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th style={styles.th}>S.No.</th>
-                            <th style={styles.th}>Image</th>
-                            <th style={styles.th}>Name</th>
-                            <th style={styles.th}>Message</th>
-                            <th style={styles.th}>Qualification</th>
-                            <th style={styles.th}>Actions</th>
+                            <th className={styles.th}>S.No.</th>
+                            <th className={styles.th}>Image</th>
+                            <th className={styles.th}>Name</th>
+                            <th className={styles.th}>Message</th>
+                            <th className={styles.th}>Qualification</th>
+                            <th className={styles.th}>Actions</th>
                         </tr>
                     </thead>
 
@@ -298,28 +187,28 @@ const AdminReview = () => {
                         {Array.isArray(currentData) && currentData.map((item, index) => (
                             <tr key={item._id}>
                                 <td>{indexOfFirstItem + index + 1}</td>
-                                <td style={styles.td}>
+                                <td className={styles.td}>
                                     <img
                                         src={`${API}/uploads/${item.image}`}
                                         alt=""
-                                        style={styles.image}
+                                        className={styles.image}
                                     />
                                 </td>
 
-                                <td style={styles.td}>{item.name}</td>
-                                <td style={styles.td}>{item.message}</td>
-                                <td style={styles.td}>{item.qualification}</td>
-                                <td style={styles.td}>
+                                <td className={styles.td}>{item.name}</td>
+                                <td className={styles.td}>{item.message}</td>
+                                <td className={styles.td}>{item.qualification}</td>
+                                <td className={styles.td}>
                                     <button
                                         onClick={() => handleEdit(item)}
-                                        style={styles.editBtn}
+                                        className={styles.editBtn}
                                     >
                                         ✏️ Edit
                                     </button>
 
                                     <button
                                         onClick={() => handleDelete(item._id)}
-                                        style={styles.deleteBtn}
+                                        className={styles.deleteBtn}
                                     >
                                         🗑 Delete
                                     </button>
@@ -329,9 +218,9 @@ const AdminReview = () => {
                     </tbody>
                 </table>
             </div>
-            <div style={styles.pagination}>
+            <div className={styles.pagination}>
                 <button
-                style={styles.button}
+                className={styles.button}
                     onClick={() => setCurrentPage(prev => prev - 1)}
                     disabled={currentPage === 1}
                 >
@@ -340,17 +229,16 @@ const AdminReview = () => {
 
                 {[...Array(totalPages)].map((_, i) => (
                     <button
-                style={styles.button}
                         key={i}
                         onClick={() => setCurrentPage(i + 1)}
-                        className={`${styles.pageBtn} ${currentPage === i + 1 ? styles.active : ""}`}
+                        style={currentPage === i + 1 ? styles.active : null}
                     >
                         {i + 1}
                     </button>
                 ))}
 
                 <button
-                style={styles.button}
+                className={styles.button}
                     onClick={() => setCurrentPage(prev => prev + 1)}
                     disabled={currentPage === totalPages}
                 >

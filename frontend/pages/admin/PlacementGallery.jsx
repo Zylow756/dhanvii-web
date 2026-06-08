@@ -3,7 +3,6 @@ import axios from "axios";
 import AdminNav from '../../components/AdminNav/AdminNav';
 import styles from '../../assets/css/AdminDistanceGallery.module.css';
 
-
 const PlacementGallery = () => {
   const [students, setStudents] = useState([]);
   const [formData, setFormData] = useState({
@@ -11,7 +10,8 @@ const PlacementGallery = () => {
     qualification: "",
     company: "",
     salary: "",
-    background: null,
+    workingAs: "accountant",
+    photo: null,
   });
   const [editId, setEditId] = useState(null);
   const [bgPreview, setBgPreview] = useState(null);
@@ -42,30 +42,36 @@ const PlacementGallery = () => {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-    if (name === "background") {
-      const file = files[0];
-      setFormData(prev => ({ ...prev, background: file }));
-      setBgPreview(URL.createObjectURL(file));
-    }
-    else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === "photo") {
+      setFormData((prev) => ({
+        ...prev,
+        photo: files[0],
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
   };
 
   //  SUBMIT (ADD / UPDATE)
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const data = new FormData();
 
     data.append("name", formData.name);
     data.append("qualification", formData.qualification);
     data.append("company", formData.company);
     data.append("salary", formData.salary);
+    data.append("workingAs", formData.workingAs);
 
-    // ONLY append if it's FILE
-    if (formData.background instanceof File) {
-      data.append("background", formData.background);
+    if (formData.photo) {
+      data.append("photo", formData.photo);
+    }
+
+    for (let pair of data.entries()) {
+      console.log(pair[0], pair[1]);
     }
 
     try {
@@ -80,9 +86,7 @@ const PlacementGallery = () => {
         //  ADD
         await axios.post(
           `${API}/api/placementGallery`,
-          data, {
-          headers: { "Content-Type": "multipart/form-data" }
-        }
+          data,
         );
         alert("Added");
       }
@@ -102,7 +106,8 @@ const PlacementGallery = () => {
       qualification: student.qualification,
       company: student.company,
       salary: student.salary || "",
-      background: null
+      workingAs: student.workingAs || "accountant",
+      photo: null,
     });
     setBgPreview(null);
     setEditId(student._id);
@@ -115,8 +120,6 @@ const PlacementGallery = () => {
     fetchData();
   };
 
-  
-
   return (
     <div>
       <AdminNav />
@@ -125,22 +128,40 @@ const PlacementGallery = () => {
       <div className={styles.card}>
         <h3>Add New Placement</h3>
         {/* FORM */}
-        <form onSubmit={handleSubmit}>
+        <form id="studentForm" onSubmit={handleSubmit} className={styles.form}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Name" className={styles.input} />
           <input name="qualification" value={formData.qualification} onChange={handleChange} placeholder="Qualification" className={styles.input} />
           <textarea name="company" value={formData.company} onChange={handleChange} placeholder="Company name" className={styles.textarea} maxLength={50} />
           <p className={styles.p}>{formData.company.length}/50</p>
           <input name="salary" value={formData.salary} onChange={handleChange} placeholder="Salary per year" className={styles.input} />
-          
-          <label>Background Image
-            <input type="file" name="background" onChange={handleChange} />
+
+          <select
+            name="workingAs"
+            value={formData.workingAs}
+            onChange={handleChange}
+            className={styles.formSelect}
+          >
+            <option value="accountant">Accountant</option>
+            <option value="businessman">Businessman</option>
+          </select>
+
+          <label className={styles.fileInput}>Select Image
+            <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={handleChange}
+            />
           </label>
 
           {/*  IMAGE PREVIEW */}
-          {bgPreview && <img src={bgPreview} width="100"  loading="lazy"/>}
+          {bgPreview && <img src={bgPreview}
+            alt="Preview"
+            className={styles.preview}
+            loading="lazy" />}
 
-          <button type="submit" className={styles.button}>{editId ? "Update" : "Add"}</button>
         </form>
+        <button type="submit" form="studentForm" className={styles.button}>{editId ? "Update" : "Add"}</button>
       </div>
 
       {/* TABLE CARD */}

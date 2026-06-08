@@ -39,64 +39,6 @@ input[type=submit]:hover {
   background-color: #4c0803;
 }
 
-.enquiryForm {
-  display: flex;
-  flex-direction: row;
-  padding: 2rem;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.premiumCard {
-  max-width: 600px;
-  /* increased for 4K */
-  padding: 1.7rem;
-  border-radius: 1rem;
-  background: #f7f2ec67;
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
-  border: 1px solid #eee;
-  flex: 1;
-}
-
-.premiumCard:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.15);
-}
-
-/* List Styling */
-.premiumCard ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.premiumCard h2 {
-  color: #4c0803;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.premiumCard li {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 0.8rem;
-  color: #4c0803df;
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* Check Icon */
-.premiumCard li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #4c0803;
-  font-weight: bold;
-}
-
 .boxContain {
   text-align: center;
   margin-bottom: 3rem;
@@ -114,15 +56,16 @@ input[type=submit]:hover {
 
 .section {
   background: #f7f2ec67;
+  padding: 1rem 1.7rem;
 }
 
 .sectionPlacement {
   background: #eceaea;
+  padding: 1rem 4rem;
 }
 
 .section,
 .sectionPlacement {
-  padding: 1rem 4rem;
   text-align: center;
 }
 
@@ -196,23 +139,14 @@ input[type=submit]:hover {
 
 .content h3 {
   font-size: 25px;
-  margin-bottom: 15px;
-  color: #111;
+  color: #a31515;
 }
 
 .content p {
-  color: #555;
+  color: #a31515;
   line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-.content ul {
-  margin-bottom: 25px;
-  padding-left: 20px;
-}
-
-.content li {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+  margin-top: 0.4rem;
 }
 
 .buttons {
@@ -250,14 +184,6 @@ input[type=submit]:hover {
 
 /* 🔥 4K specific layout improvements */
 @media (min-width: 2560px) {
-  .enquiryForm {
-    gap: 3rem;
-  }
-
-  .premiumCard {
-    max-width: 800px;
-  }
-
   .contactFormContainer {
     max-width: 900px;
   }
@@ -265,10 +191,6 @@ input[type=submit]:hover {
 
 /* Mobile */
 @media (max-width: 768px) {
-  .enquiryForm {
-    flex-direction: column;
-  }
-
   .grid {
     grid-template-columns: 1fr;
   }
