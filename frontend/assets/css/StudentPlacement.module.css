@@ -5,9 +5,9 @@
 
 /* CONTENT WRAPPER */
 .content {
-  max-width: 1800px;   /* 🔥 increased */
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 2rem;
 }
 
 /* HEADING */
@@ -15,15 +15,23 @@
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
-  margin: 2.5rem 0;
+  margin: 1.5rem 0;
   color: #8b0000;
+}
+
+.congHeading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
 }
 
 /*  GRID (AUTO PERFECT FOR 4K) */
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-content: center; 
+  gap: 1rem;
 }
 
 .certificate {

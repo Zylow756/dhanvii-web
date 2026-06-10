@@ -1,8 +1,8 @@
 import styles from "./StudentPlacementCard.module.css";
 
-const StudentPlacementCard = ({ student, apiUrl  }) => {
+const StudentPlacementCard = ({ student, apiUrl }) => {
      if (!student) return null;
-     
+
   const formatCompany = (text) => {
     if (!text) return "";
 
@@ -16,33 +16,67 @@ const StudentPlacementCard = ({ student, apiUrl  }) => {
     return result;
   };
 
-  return (
-    <div className={styles.cardContainer}>
-      <img
-         src={`${apiUrl}/${student.background}`}
-        alt={student.name}
-        className={styles.image}
-      />
-      <div className={styles.card}>
-        <div className={styles.topContent}>
-          <h2 className={styles.name}>{student.name}</h2>
+ const getHeadingText = () => {
+  switch (student.workingAs?.toLowerCase()) {
+    case "accountant":
+      return (
+        <>
+          Placed As
+          <br />
+          Accountant
+        </>
+      );
 
-          <p className={styles.qual}>
-            {student.qualification}
-          </p>
+    case "businessman":
+      return (
+        <>
+          Managing Own
+          <br />
+          Business
+        </>
+      );
 
-          <p className={styles.middleContent}>
-            {formatCompany(student.company)}
-          </p>
+    default:
+      return student.workingAs;
+  }
+};
 
-          <p className={styles.bottomContent}>
-            Salary Package:
-            <strong> {student.salary}</strong> LPA
-          </p>
-        </div>
+ return (
+  <div
+     className={`${styles.cardContainer} ${
+      styles[student.workingAs?.toLowerCase()]
+    }`}
+  >
+    <p className={styles.headingType}>
+      {getHeadingText()}
+    </p>
+
+    <img
+      src={`${apiUrl}/${student.photo}`}
+      alt={student.name}
+      className={styles.photo}
+    />
+
+    <div className={styles.card}>
+      <div className={styles.topContent}>
+        <h2 className={styles.name}>{student.name}</h2>
+
+        <p className={styles.qual}>
+          {student.qualification}
+        </p>
+
+        <p className={styles.middleContent}>
+          {formatCompany(student.company)}
+        </p>
+
+        <p className={styles.bottomContent}>
+          Salary Package:
+          <strong> {student.salary}</strong> LPA
+        </p>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default StudentPlacementCard;

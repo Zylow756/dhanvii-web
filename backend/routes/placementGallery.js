@@ -3,8 +3,6 @@ import PlacementGallery from "../models/placementGallery.js";
 import multer from "multer";
 
 const router = express.Router();
-console.log("PLACEMENT GALLERY ROUTE LOADED");
-console.log("ROUTE FILE:", import.meta.url);
 
 //  STORAGE CONFIG
 const storage = multer.diskStorage({
@@ -78,17 +76,6 @@ router.put("/:id", upload.fields([
       workingAs: req.body.workingAs,
     };
 
-    switch (req.body.workingAs) {
-      case "accountant":
-        updateData.background =
-          "backgrounds/accountantBg.jpg";
-        break;
-
-      case "businessman":
-        updateData.background =
-          "backgrounds/businessmanBg.jpg";
-        break;
-    }
     if (req.files?.photo) {
       updateData.photo =
         req.files.photo[0].path.replace(/\\/g, "/");

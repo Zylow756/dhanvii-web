@@ -1,38 +1,69 @@
 .cardContainer {
-  position: relative;  
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #a31515;
-  /*height: 54vh;*/
-  height: 75vh;
-  /*width:35vh;*/
+  aspect-ratio: 3 / 4;
   width: 100%;
-  max-width: 320px;
-  margin: auto;
-}
-
-.image {
-  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
   height: 100%;
-  object-fit: cover;
-  object-position: top center;
 }
 
-/* CARD OVERLAY */
+.headingType {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  min-height: 3rem; /* reserves space for 2 lines */
+  padding: 0.5rem;
+}
+
+.businessman {
+  background-color: #a39fe9;
+}
+
+.accountant {
+  background-color: #c7bec1;
+}
+
+.businessmanHeading {
+  color: white;
+}
+
+.accountantHeading {
+  color: #a31515;
+}
+
+
+/* Student Photo */
+.photo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #a31515;
+  background: #fff;
+  z-index: 5;
+}
+
+/* Info Card */
 .card {
   position: absolute;
-  transform: translateX(-50%);
-  /*width: 87%;
-  left: 50%; */
   left: 50%;
-  width: 85%;
-  background: rgba(240, 237, 237, 0.7);
+  top: 58%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: 88%;
+  background: rgba(255,255,255,.85);
   backdrop-filter: blur(10px);
-  border-radius: 0.8rem;
+  border-radius: 14px;
+  padding: 12px;
   text-align: center;
-  padding: 0.6rem;
-  box-sizing: border-box;
-  bottom: 0.5rem;;
+  z-index: 3;
 }
 
 .topContent {
@@ -138,11 +169,16 @@
 
   .cardContainer {
     /*height: 50vh;*/
-    height: 62vh;
+    height: 40vh;
   }
 
   .card {
     width: 75%;
     left: 50%;
+    top: 60%;
+  }
+
+  .photo {
+    top: 38%;
   }
 }

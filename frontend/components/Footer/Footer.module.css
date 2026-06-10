@@ -24,10 +24,34 @@
   max-width: 25rem;
 }
 
-.info p {
-  color: white;
-  margin-top: 0;
-  line-height: 1.7;
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.contactIcon {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.contactText {
+  color: #fff;
+  line-height: 1.6;
+}
+
+.contactText strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.contactText p {
+  margin: 0;
+  color: #ddd;
 }
 
 .icon {
@@ -124,6 +148,7 @@
 .footerCTA {
   flex: 0 0 260px;
   max-width: 280px;
+  max-height: 180px;
   text-align: center;
   padding: 0.8rem;
   background: #fff7f2;
@@ -173,6 +198,14 @@
 
   .info {
     max-width: 100%;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .contactItem {
+    justify-content: flex-start;
   }
 
   .socialIcons {

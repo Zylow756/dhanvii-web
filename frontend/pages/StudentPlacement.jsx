@@ -23,15 +23,14 @@ const StudentPlacement = () => {
           <br />
           Par Career Yaha Banta Hai.
         </h2>
+        <h2 className={styles.congHeading}>Congratulation</h2>
           <div className={styles.container}>
             {Array.isArray(sortedStudents) && sortedStudents.map((student) => (
-              <div className={styles.certificate}>
                 <StudentPlacementCard
                  key={student._id}
                   student={student}
                   apiUrl={API}
                 />
-              </div>
             ))}
           </div>
       </div>

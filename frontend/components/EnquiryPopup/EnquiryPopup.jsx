@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "./EnquiryPopup.module.css";
+import enquiryImg from '../../assets/images/enquiryImg.png';
 
 const EnquiryPopup = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -106,97 +107,106 @@ const EnquiryPopup = ({ onClose }) => {
     }
   };
 
- useEffect(() => {
-  const originalStyle = window.getComputedStyle(document.body).overflow;
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
 
-  document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
 
-  return () => {
-    document.body.style.overflow = originalStyle;
-  };
-}, []);
+    return () => {
+      document.body.style.overflow = originalStyle;
+    };
+  }, []);
 
   return (
-    <div className={styles.overlay}  onClick={onClose} >
+    <div className={styles.overlay} onClick={onClose} >
       <div className={styles.popup} onClick={(e) => e.stopPropagation()} >
-        <button
-          className={styles.closeBtn}
-          onClick={onClose}
-        >
-          ×
-        </button>
-
-        <h2>Enquiry Form</h2>
-
-        {showSuccess && (
-          <div className={styles.success}>
-            Enquiry Submitted Successfully!
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          {errors.name && <p>{errors.name}</p>}
-
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-          />
-          {errors.phone && <p>{errors.phone}</p>}
-
-          <input
-            type="tel"
-            name="altPhone"
-            placeholder="Alternate Phone (Optional)"
-            value={formData.altPhone}
-            onChange={handleChange}
-          />
-          {errors.altPhone && <p>{errors.altPhone}</p>}
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email (Optional)"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
-
-          <select
-            name="qualification"
-            value={formData.qualification}
-            onChange={handleChange}
-            required
+        <div className={styles.formSection}>
+          <button
+            className={styles.closeBtn}
+            onClick={onClose}
           >
-            <option value="">Select Qualification</option>
-            <option value="12th">12th Pass</option>
-            <option value="Diploma">Diploma</option>
-            <option value="Undergraduate">Undergraduate</option>
-            <option value="Graduate">Graduate</option>
-            <option value="Postgraduate">Postgraduate</option>
-          </select>
-
-          <input
-            type="text"
-            name="referCode"
-            placeholder="Refer Code (Optional)"
-            value={formData.referCode}
-            onChange={handleChange}
-          />
-
-          <button type="submit">
-            Send Enquiry
+            ×
           </button>
-        </form>
+
+          <h2>Enquiry Form</h2>
+
+          {showSuccess && (
+            <div className={styles.success}>
+              Enquiry Submitted Successfully!
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && <p>{errors.name}</p>}
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+            {errors.phone && <p>{errors.phone}</p>}
+
+            <input
+              type="tel"
+              name="altPhone"
+              placeholder="Alternate Phone (Optional)"
+              value={formData.altPhone}
+              onChange={handleChange}
+            />
+            {errors.altPhone && <p>{errors.altPhone}</p>}
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email (Optional)"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <p>{errors.email}</p>}
+
+            <select
+              name="qualification"
+              value={formData.qualification}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Qualification</option>
+              <option value="12th">12th Pass</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+            </select>
+
+            <input
+              type="text"
+              name="referCode"
+              placeholder="Refer Code (Optional)"
+              value={formData.referCode}
+              onChange={handleChange}
+            />
+
+            <button type="submit">
+              Send Enquiry
+            </button>
+          </form>
+        </div>
+        <div className={styles.imageSection}>
+          <img
+            src={enquiryImg}
+            alt="Enquiry"
+            className={styles.enquiryImage}
+          />
+        </div>
       </div>
     </div>
   );

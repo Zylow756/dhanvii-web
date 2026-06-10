@@ -164,6 +164,7 @@ input[type=submit]:hover {
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .fillBtn {

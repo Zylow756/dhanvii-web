@@ -17,17 +17,27 @@ const Footer = () => {
         <div className={styles.left}>
           <h3>Contact Us</h3>
           <div className={styles.info}>
-            <p>
-              <FaMapMarkerAlt className={styles.icon} />
-              267, Ganesh Nagar,<br />
-              Near Khade Ganesh Ji Temple,<br />
-              Kota [Rajasthan] - 324010
-            </p>
 
-            <p>
-              <FaPhoneAlt className={styles.icon} />
-              +91 9414729662
-            </p>
+            <div className={styles.contactItem}>
+              <FaMapMarkerAlt className={styles.contactIcon} />
+              <div className={styles.contactText}>
+                <strong>Address</strong>
+                <p>
+                  267, Ganesh Nagar,<br />
+                  Near Khade Ganesh Ji Temple,<br />
+                  Kota [Rajasthan] - 324010
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.contactItem}>
+              <FaPhoneAlt className={styles.contactIcon} />
+              <div className={styles.contactText}>
+                <strong>Call Us</strong>
+                <p>+91 9414729662</p>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -51,7 +61,7 @@ const Footer = () => {
         </div>
         <section className={styles.footerCTA}>
           <h2>Ready to Build Your Accounting Career?</h2>
-            <button onClick= {() => setShowEnquiry(true)}>Enroll Now</button>
+          <button onClick={() => setShowEnquiry(true)}>Enroll Now</button>
         </section>
 
         {/* Social */}
@@ -78,11 +88,11 @@ const Footer = () => {
           </div>*/}
       </div>
       {showLogin && <Login onClose={() => setShowLogin(false)} />}
-                   {showEnquiry && (
-              <EnquiryPopup
-                onClose={() => setShowEnquiry(false)}
-              />
-            )}
+      {showEnquiry && (
+        <EnquiryPopup
+          onClose={() => setShowEnquiry(false)}
+        />
+      )}
     </footer>
   );
 };

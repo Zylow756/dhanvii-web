@@ -2,6 +2,12 @@ import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import styles from '../assets/css/Courses.module.css';
 import { useState } from "react";
+import freeCourseImg from '../assets/images/courses.png';
+import tallyImg from '../assets/images/courses1.jpg';
+import beginnerImg from '../assets/images/courses2.png';
+import achieverImg from '../assets/images/courses3.jpg';
+import advanceImg from '../assets/images/courses4.jpg';
+import onlineImg from '../assets/images/courses5.jpg';
 
 const Courses = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -13,7 +19,8 @@ const Courses = () => {
   const courses = [
     {
       title: "Free Course",
-      duration: <strong>Duration: 1 Months</strong>,
+      image: freeCourseImg,
+      duration: "1 Month",
       desc: <br />,
       content: [
         <span><strong>Module 1 :</strong> Microsoft Excel</span>,
@@ -23,7 +30,8 @@ const Courses = () => {
     },
     {
       title: "Tally Prime",
-      duration: <strong>Duration: 3 Months</strong>,
+      image: tallyImg,
+      duration: "3 Months",
       desc: <br />,
       content: [
         <span><strong>Module 1 :</strong> Special Fundamental & Financial Accounting - Introduction</span>,
@@ -35,7 +43,8 @@ const Courses = () => {
     },
     {
       title: "Beginner Accounting",
-      duration: <strong>Duration: 6 Months</strong>,
+      image: beginnerImg,
+      duration: "6 Months",
       desc: <strong>FREE: Banking & Accounting in MS Excel</strong>,
       content: [
         <strong>Part A : Financial Accounting [Manual Accounting]</strong>,
@@ -56,8 +65,9 @@ const Courses = () => {
     },
     {
       title: "Achiever's Accounting",
-      duration: <strong>Duration: 8 Months[7 month course + 1 month job]</strong>,
-      desc: <strong>FREE: Banking & Accounting in MS Excel</strong>,
+      image: achieverImg,
+      duration: "8 Months",
+      desc: <><strong>FREE: Banking & Accounting in MS Excel</strong><br /><br /></>,
       content: [
         <strong>Part A : Financial Accounting [Manual Accounting]</strong>,
         <span><strong>Module A :</strong> Principles & Rules of Accounting</span>,
@@ -80,7 +90,8 @@ const Courses = () => {
     },
     {
       title: "Advance Accounting",
-      duration: <strong>Duration: 12 Months[9 month course + 3 month job]</strong>,
+      image: advanceImg,
+      duration: "12 Months",
       desc: <strong>FREE: Banking,MS Word & Excel & Online Application & Forms</strong>,
       content: [
         <strong>Part A : Financial Accounting [Manual Accounting]</strong>,
@@ -110,8 +121,9 @@ const Courses = () => {
     },
     {
       title: "Online Certificate Course",
-      duration: <strong>Duration: 6 to 12 months</strong>,
-      desc: <br />,
+      image: onlineImg,
+      duration: "6 to 12 months",
+      desc: <><br /><br /></>,
       content: [
         "Advance Diploma in Accounting Management",
         "Certificate in Tally",
@@ -136,9 +148,20 @@ const Courses = () => {
           <div key={index} className={styles.card}>
 
             {/* Card Top */}
+            <div className={styles.imageWrapper}>
+              <img
+                src={course.image}
+                alt={course.title}
+                className={styles.courseImage}
+              />
+
+              <span className={styles.duration}>
+                ⏱ {course.duration}
+              </span>
+            </div>
+
             <div className={styles.cardHeader}>
               <h2>{course.title}</h2>
-              <p>{course.duration}</p>
             </div>
 
             {/* Short Description */}

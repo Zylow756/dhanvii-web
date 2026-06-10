@@ -28,10 +28,10 @@ const Home = () => {
 
   const courses = [
     {
-      title: "Tally Prime",
+      title: <>Tally Prime<br /><br /></>,
       duration: "3 Months",
       image: course1,
-      description: "Your first step to an Accounting Career."
+      description: <>Your first step to an Accounting Career.<br /></>
     },
     {
       title: "Accounting Foundation Program",
@@ -125,7 +125,7 @@ const Home = () => {
                 slidesPerView: 2,
               },
               1024: {
-                slidesPerView: 4,
+                slidesPerView: 4.5,
               },
             }}
           >

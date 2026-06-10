@@ -13,8 +13,6 @@ const placementGallerySchema = new mongoose.Schema({
   },
 
   photo: String,
-
-  background: String,
 });
 
 export default mongoose.model("PlacementGallery", placementGallerySchema);

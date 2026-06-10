@@ -12,7 +12,7 @@ import {
 const candidates = [
   {
     icon: <FaSchool />,
-    title: "A 12th pass Commerce & Non-Commerce Student",
+    title: "A 12th passed Commerce & Non-Commerce Student",
     color: "#4c0803",
   },
   {
