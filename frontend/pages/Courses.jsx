@@ -42,7 +42,7 @@ const Courses = () => {
       ],
     },
     {
-      title: "Beginner Accounting",
+      title: "Accounting Foundation Program",
       image: beginnerImg,
       duration: "6 Months",
       desc: <strong>FREE: Banking & Accounting in MS Excel</strong>,
@@ -64,7 +64,7 @@ const Courses = () => {
       ],
     },
     {
-      title: "Achiever's Accounting",
+      title: "Professional Accounting Program",
       image: achieverImg,
       duration: "8 Months",
       desc: <><strong>FREE: Banking & Accounting in MS Excel</strong><br /><br /></>,
@@ -89,7 +89,7 @@ const Courses = () => {
       ],
     },
     {
-      title: "Advance Accounting",
+      title: "Master Accounting, Finance & Audit Program",
       image: advanceImg,
       duration: "12 Months",
       desc: <strong>FREE: Banking,MS Word & Excel & Online Application & Forms</strong>,
