@@ -12,9 +12,7 @@
 
 .headingType {
   text-align: center;
-  font-size: 1.4rem;
-  line-height: 1.5rem;
-  min-height: 3rem; /* reserves space for 2 lines */
+  font-size: 1rem;
   padding: 0.5rem;
 }
 
@@ -38,7 +36,7 @@
 /* Student Photo */
 .photo {
   position: absolute;
-  top: 40%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 42%;
@@ -54,7 +52,7 @@
 .card {
   position: absolute;
   left: 50%;
-  top: 58%;
+  top: 54%;
   bottom: 10px;
   transform: translateX(-50%);
   width: 88%;
@@ -94,7 +92,7 @@
 }
 
 .qual {
-  font-size: 0.4rem;
+  font-size: 0.8rem;
   margin-top: 0px;
 }
 

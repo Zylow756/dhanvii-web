@@ -21,18 +21,14 @@ const StudentPlacementCard = ({ student, apiUrl }) => {
     case "accountant":
       return (
         <>
-          Placed As
-          <br />
-          Accountant
+          Placed As Accountant
         </>
       );
 
     case "businessman":
       return (
         <>
-          Managing Own
-          <br />
-          Business
+          Managing Own Business
         </>
       );
 

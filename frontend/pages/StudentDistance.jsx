@@ -33,6 +33,7 @@ const StudentDistance = () => {
       <Nav />
       <div className={styles.content}>
         <h1>Distance doesn't Matter when Skill Speaks</h1>
+              <h1 className={styles.heading}>Distance</h1>
 
         <div className={styles.container}>
           {Array.isArray(sortedStudents) && sortedStudents.map((student) => (
@@ -40,7 +41,6 @@ const StudentDistance = () => {
               key={student._id}
               className={styles.card}
             >
-              <h1 className={styles.heading}>Distance</h1>
               <h2 className={styles.address}>{student.distance} km - {student.address}</h2>
               <h2 className={styles.city}>{student.city}</h2>
 
