@@ -102,7 +102,7 @@
 }
 
 .bottomText {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.5rem;
   text-align: left;
 }
@@ -121,8 +121,13 @@
   flex-wrap: wrap;
 }
 
+.bannerItems svg {
+  font-size: 30px;
+  color: white;
+}
+
 .bannerItems span {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 /* Tablet */

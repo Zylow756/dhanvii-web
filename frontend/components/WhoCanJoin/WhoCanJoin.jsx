@@ -15,63 +15,51 @@ import {
 
 const joinData = [
   {
-    id: "01",
     icon: <FaGraduationCap />,
     title: "12th Pass Students",
     desc: "Commerce & Non-Commerce students can join and start a bright career in accounting.",
     bg: "#FFF4E5",
     iconColor: "#F59E0B",
-    numberBg: "#F59E0B",
     textColor: "#92400E",
   },
   {
-    id: "02",
     icon: <FaBookOpen />,
     title: "Graduation Students",
     desc: "Arts, Commerce & Science graduates can upgrade their skills and get better job opportunities.",
     bg: "#EEF2FF",
     iconColor: "#4F46E5",
-    numberBg: "#4F46E5",
     textColor: "#312E81",
   },
   {
-    id: "03",
     icon: <FaSearch />,
     title: <>Job<br />Seekers</>,
     desc: "Learn in-demand accounting skills and increase your chances of getting a good job.",
     bg: "#FEF2F2",
     iconColor: "#DC2626",
-    numberBg: "#DC2626",
     textColor: "#991B1B",
   },
   {
-    id: "04",
     icon: <FaUserTie />,
     title: "Working Professionals",
     desc: "Enhance your knowledge, boost your career growth and get better promotions.",
     bg: "#ECFEFF",
     iconColor: "#0891B2",
-    numberBg: "#0891B2",
     textColor: "#155E75",
   },
   {
-    id: "05",
     icon: <FaStore />,
     title: "Business Owners",
     desc: "Manage your business accounts, GST, and finance with confidence and accuracy.",
     bg: "#FDF4FF",
     iconColor: "#C026D3",
-    numberBg: "#C026D3",
     textColor: "#86198F",
   },
   {
-    id: "06",
     icon: <FaExchangeAlt />,
     title: "Career Switchers",
     desc: "Looking for a new career path? Accounting offers stability and great growth.",
     bg: "#fdeedc",
     iconColor: "#EA580C",
-    numberBg: "#EA580C",
     textColor: "#9A3412",
   },
 ];
@@ -94,8 +82,6 @@ function WhoCanJoin() {
       <div className={styles.joinGrid}>
         {joinData.map((item) => (
           <div className={styles.joinCard} key={item.id} style={{ backgroundColor: item.bg,}}>
-            <span className={styles.cardNumber} style={{ backgroundColor: item.numberBg,}}>{item.id}</span>
-
             <div className={styles.icon} style={{ color: item.iconColor,}}>{item.icon}</div>
 
             <h3 style={{color: item.textColor,}}>{item.title}</h3>
@@ -117,9 +103,9 @@ function WhoCanJoin() {
         </div>
 
         <div className={styles.bannerItems}>
-          <span><FaMedal /> 100% Practical Training</span>
-          <span><FaBriefcase /> Placement Assistance</span>
-          <span><FaCertificate /> Certificate of Completion</span>
+          <FaMedal /><span> 100% Practical Training</span>
+          <FaBriefcase /><span> Placement Assistance</span>
+          <FaCertificate /><span> Certificate of Completion</span>
         </div>
       </div>
     </section>

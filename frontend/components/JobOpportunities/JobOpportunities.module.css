@@ -87,11 +87,22 @@
   padding: 20px 30px;
   border-radius: 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
 }
 
-.ctaBanner span {
+.bannerFirst {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.bannerFirst svg{
+  font-size: 40px;
+  color: white;
+}
+
+.bannerFirst span {
   font-size: 1.4rem;
 }
 
