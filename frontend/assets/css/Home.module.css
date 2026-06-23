@@ -54,17 +54,11 @@ input[type=submit]:hover {
   color: #a31515ad;
 }
 
-.section {
-  background: #f7f2ec67;
-  padding: 1rem 1.7rem;
-}
-
 .sectionPlacement {
   background: #eceaea;
   padding: 1rem 4rem;
 }
 
-.section,
 .sectionPlacement {
   text-align: center;
 }
@@ -85,102 +79,148 @@ input[type=submit]:hover {
   margin-bottom: 1rem;
 }
 
+.section {
+  padding: 20px 10px;
+  background: #f7f2ec67;
+}
+
+.container {
+  max-width: 2200px;
+  /* Perfect for 4K */
+  margin: auto;
+}
+
+.badge {
+  display: absolute;
+  color: #a31515;
+  text-align: center;
+}
+
+.badge span {
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
 .title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 5vh;
+  text-align: center;
+  font-size: clamp(42px, 3vw, 72px);
+  font-weight: 800;
+  color: #a31515;
+}
+
+.subtitle {
+  text-align: center;
+  color: #4c0803;
+  margin-top: 15px;
+  font-size: 22px;
 }
 
 .grid {
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(320px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
 }
 
 .card {
-  background: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.imageWrapper {
+  border-radius: 24px;
+  padding: 30px 20px;
   position: relative;
-  height: 200px;
+  transition: 0.3s ease;
+  margin-bottom: 30px;
 }
 
-.imageWrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.icon {
+  font-size: 60px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.duration {
+.number {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #4c0803;
-  color: white;
-  padding: 8px 15px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.content {
-  padding: 10px;
-  text-align: left;
-}
-
-.content h3 {
-  font-size: 25px;
-  color: #a31515;
-}
-
-.content p {
-  color: #a31515;
-  line-height: 1.7;
-  margin-bottom: 1rem;
-  margin-top: 0.4rem;
-}
-
-.buttons {
+  top: -10px;
+  left: 20px;
+  width: 55px;
+  height: 35px;
   display: flex;
-  gap: 15px;
-  flex-wrap: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
 }
 
-.outlineBtn {
-  border: 2px solid #4c0803;
-  background: transparent;
-  color: #4c0803;
-  padding: 8px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.fillBtn {
+.card button {
+  width: 100%;
+  padding: 12px;
   border: none;
-  background: #4c0803;
-  color: white;
-  padding: 8px 10px;
-  border-radius: 10px;
-  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 15px;
   font-weight: 600;
-  font-size: 14px;
+  cursor: pointer;
 }
 
-.fillBtn:hover,
-.outlineBtn:hover {
-  opacity: 0.9;
+.card h3 {
+  text-align: center;
+  font-size: 28px;
+}
+
+.courseSubtitle {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.courseDesc {
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.card ul {
+  padding-left: 18px;
+  list-style: none;
+}
+
+.card li {
+  margin-bottom: 2px;
+  font-size: 18px;
+}
+
+.card li::before {
+  content: '✓';
+  color: currentColor;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.features {
+  background-color: #4c0803;
+  margin: 20px 20px;
+  padding: 20px 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  border-radius: 15px;
+}
+
+.features div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.features svg {
+  font-size: 40px;
+  color: white;
+}
+
+.featureItems {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 /* 🔥 4K specific layout improvements */
@@ -190,21 +230,39 @@ input[type=submit]:hover {
   }
 }
 
+/* Tablet */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* Mobile */
 @media (max-width: 768px) {
+  .section {
+    padding: 80px 20px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 36px;
   }
 
   .boxContain {
     margin-bottom: 0;
   }
 
-  .title {
-    font-size: 1.8rem;
-  }
-
-  .section,
   .sectionPlacement {
     padding: 1rem 1rem;
   }

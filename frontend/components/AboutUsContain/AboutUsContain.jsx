@@ -1,7 +1,6 @@
 import styles from './AboutUsContain.module.css';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 import Image from '../../assets/images/banner1.jpg';
 import {
     FaHandshake,
