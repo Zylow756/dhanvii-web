@@ -72,16 +72,19 @@ const Home = () => {
 
       {/* cources list */}
       <section className={styles.section}>
-        <h2 className={styles.title}>Build a Successful Career with Our Professional Coursess</h2>
+        <h2 className={styles.title}>Build a Successful Career with Our Professional Courses</h2>
 
         <div className={styles.grid}>
           {courses.map((course, index) => (
             <div key={index} className={styles.card}>
               <div className={styles.imageWrapper}>
                 <img src={course.image} alt={course.title} />
+                <div className={styles.durationContainer}> 
+                  <FaClock /> 
                 <span className={styles.duration}>
-                  ⏱ {course.duration}
+                 {course.duration}
                 </span>
+              </div>
               </div>
 
               <div className={styles.content}>

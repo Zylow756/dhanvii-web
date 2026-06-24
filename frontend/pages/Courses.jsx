@@ -8,6 +8,7 @@ import beginnerImg from '../assets/images/courses2.png';
 import achieverImg from '../assets/images/courses3.jpg';
 import advanceImg from '../assets/images/courses4.jpg';
 import onlineImg from '../assets/images/courses5.jpg';
+import { FaClock, FaAngleDoubleLeft } from 'react-icons/fa';
 
 const Courses = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -155,9 +156,12 @@ const Courses = () => {
                 className={styles.courseImage}
               />
 
-              <span className={styles.duration}>
-                ⏱ {course.duration}
-              </span>
+              <div className={styles.durationContainer}>
+                <FaClock />
+                <span className={styles.duration}>
+                  {course.duration}
+                </span>
+              </div>
             </div>
 
             <div className={styles.cardHeader}>
@@ -225,7 +229,7 @@ const Courses = () => {
                   //  CASE 3: Plain text (last course list)
                   return (
                     <li key={i} className={styles.simpleItem}>
-                      <span className={styles.bullet}>➤</span>
+                      <FaAngleDoubleLeft className={styles.bullet} />
                       <span className={styles.simpleText}>
                         {item.replace("*", "").trim()}
                       </span>

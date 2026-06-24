@@ -64,14 +64,24 @@ html {
   display: block;
 }
 
-.duration {
+.durationContainer {
   position: absolute;
+  display: flex;
+  flex-direction: row;
   top: 15px;
   right: 15px;
   background: #4c0803;
   color: white;
   padding: 8px 14px;
   border-radius: 30px;
+  gap: 5px;
+}
+
+.durationContainer svg {
+  font-size: 1.5rem;
+}
+
+.duration {
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -141,7 +151,7 @@ html {
 
 /* Arrow */
 .bullet {
-  min-width: 20px;   /* 🔥 KEY FIX */
+  min-width: 20px;  
   color: #4c0803;
   font-size: 1rem;
   margin-top: 3px;

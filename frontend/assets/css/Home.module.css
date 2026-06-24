@@ -147,16 +147,26 @@ input[type=submit]:hover {
   object-fit: cover;
 }
 
-.duration {
+.durationContainer {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: #4c0803;
-  color: white;
   padding: 8px 15px;
   border-radius: 30px;
+  background: #4c0803;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  color: white;
+}
+
+.duration {
   font-size: 14px;
   font-weight: 600;
+}
+
+.durationContainer svg {
+  font-size: 1.5rem;
 }
 
 .content {
@@ -237,6 +247,10 @@ input[type=submit]:hover {
   .grid {
     grid-template-columns: 1fr;
   }
+
+  .features {
+  grid-template-columns: 1fr;
+}
 
    .boxContain {
     margin-bottom: 0;

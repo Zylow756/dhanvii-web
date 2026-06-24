@@ -81,31 +81,40 @@ function WhoCanJoin() {
 
       <div className={styles.joinGrid}>
         {joinData.map((item) => (
-          <div className={styles.joinCard} key={item.id} style={{ backgroundColor: item.bg,}}>
-            <div className={styles.icon} style={{ color: item.iconColor,}}>{item.icon}</div>
+          <div className={styles.joinCard} key={item.id} style={{ backgroundColor: item.bg, }}>
+            <div className={styles.icon} style={{ color: item.iconColor, }}>{item.icon}</div>
 
-            <h3 style={{color: item.textColor,}}>{item.title}</h3>
+            <h3 style={{ color: item.textColor, }}>{item.title}</h3>
 
-            <div className={styles.divider} style={{ backgroundColor: item.iconColor,}}></div>
+            <div className={styles.divider} style={{ backgroundColor: item.iconColor, }}></div>
 
-            <p className={styles.textDesc} style={{color: item.textColor,}}>{item.desc}</p>
+            <p className={styles.textDesc} style={{ color: item.textColor, }}>{item.desc}</p>
           </div>
         ))}
       </div>
 
       <div className={styles.bottomBanner}>
         <div className={styles.bottomLeft}>
-        <FaUsers className={styles.bottomIcon} />
-        <div className={styles.bottomText}>
-          <strong>No Prior Accounting Knowledge Required!</strong><br />
-          <span> Learn Practical Skills. Get Certified. Get Placed.</span>
-        </div>
+          <FaUsers className={styles.bottomIcon} />
+          <div className={styles.bottomText}>
+            <strong>No Prior Accounting Knowledge Required!</strong><br />
+            <span> Learn Practical Skills. Get Certified. Get Placed.</span>
+          </div>
         </div>
 
         <div className={styles.bannerItems}>
-          <FaMedal /><span> 100% Practical Training</span>
-          <FaBriefcase /><span> Placement Assistance</span>
-          <FaCertificate /><span> Certificate of Completion</span>
+          <div className={styles.bannerContainer}>
+            <FaMedal />
+            <span> 100% Practical Training</span>
+          </div>
+          <div className={styles.bannerContainer}>
+            <FaBriefcase />
+            <span> Placement Assistance</span>
+          </div>
+          <div className={styles.bannerContainer}>
+            <FaCertificate />
+            <span> Certificate of Completion</span>
+          </div>
         </div>
       </div>
     </section>

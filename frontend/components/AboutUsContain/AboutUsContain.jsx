@@ -139,7 +139,7 @@ const AboutUsContain = ({ showVideo = false }) => {
                     </h2>
 
                     <p className={styles.highlight}>
-                        Earn ₹20,000–₹40,000/month after course complication.
+                        Earn ₹20,000–₹40,000/month after course completion.
                     </p>
                     <p className={styles.description}>
                         Since 2017,Dhanvii Accounting System has been providing practical,industry-oriented training in Accounting,
@@ -173,7 +173,7 @@ const AboutUsContain = ({ showVideo = false }) => {
                         <h3>Industry Connections</h3>
                     </div>
                     <p>
-                        Interships & career opportunities.
+                        Internships & career opportunities.
                     </p>
                 </div>
 
