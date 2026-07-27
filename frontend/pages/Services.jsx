@@ -1,9 +1,17 @@
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import styles from '../assets/css/Services.module.css'; 
+import SEO from '../components/SEO/SEO';
 
 const Contact = () => {
   return (
+    <>
+    <SEO
+  title="Accounting Courses & Professional Training Services"
+  description="Explore accounting courses including Tally Prime, GST, Income Tax, TDS, Payroll, Advanced Excel, MIS Reporting, Banking, and practical finance training with industry experts."
+  keywords="Accounting Courses, Tally Prime Training, GST Training, Payroll Course, Income Tax Course, Advanced Excel Course, Practical Accounting"
+  canonical="https://dhanvii.in/services"
+/>
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
@@ -68,6 +76,7 @@ const Contact = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

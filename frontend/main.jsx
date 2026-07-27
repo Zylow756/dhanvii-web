@@ -1,13 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-    <ScrollToTop />
-      <App />
-    </BrowserRouter>
-)
+  <StrictMode>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </StrictMode>
+);

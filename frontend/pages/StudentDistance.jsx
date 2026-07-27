@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import defaultStudent from '../assets/images/default.png';
-
+import SEO from '../components/SEO/SEO';
 
 const StudentDistance = () => {
   const [students, setStudents] = useState([]);
@@ -29,6 +29,13 @@ const StudentDistance = () => {
   );
 
   return (
+    <>
+   <SEO
+  title="Accounting Courses | Distance Learning"
+  description="Learn accounting from anywhere with learning programs covering Tally Prime, GST, Income Tax, Payroll, Banking, and Advanced Excel with expert faculty."
+  keywords="Accounting Course, GST Training, Tally Course, Finance Classes, Accounting Institute"
+  canonical="https://dhanvii.in/studentDistance"
+/>
     <div className={styles.root}>
       <Nav />
       <div className={styles.content}>
@@ -66,6 +73,7 @@ const StudentDistance = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

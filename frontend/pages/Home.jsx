@@ -19,6 +19,8 @@ import course1 from "../assets/images/courses1.jpg";
 import course2 from "../assets/images/courses2.png";
 import course3 from "../assets/images/courses3.jpg";
 import course4 from "../assets/images/courses4.jpg";
+import SEO from '../components/SEO/SEO';
+import Schema from '../components/SEO/Schema';
 import {
   FaGraduationCap,
   FaUserTie,
@@ -61,6 +63,14 @@ const Home = () => {
   ];
 
   return (
+    <>
+   <SEO
+  title="Accounting Training Institute | Tally, GST, Income Tax & Placement"
+  description="Dhanvii Accounting System is a leading accounting training institute offering Tally Prime, GST, Income Tax, TDS, Payroll, Advanced Excel, SAP FICO basics, and 100% practical training with placement assistance."
+  keywords="Accounting Institute, Tally Prime Course, GST Course, Income Tax Course, Payroll Training, Advanced Excel Course, Accounting Classes, Accounting Institute in India"
+  canonical="https://dhanvii.in/"
+/>
+<Schema />
     <div className={styles.root}>
       <Nav />
       <header className={styles.boxContain}>
@@ -186,7 +196,7 @@ const Home = () => {
         />
       )}
     </div>
-
+</>
   );
 };
 

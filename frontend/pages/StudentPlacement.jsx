@@ -3,6 +3,7 @@ import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
 import StudentPlacementCard from "../components/StudentPlacementCard/StudentPlacementCard";
 import { useStudents } from "../hooks/useStudents";
+import SEO from '../components/SEO/SEO';
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -14,6 +15,13 @@ const StudentPlacement = () => {
   );
 
   return (
+    <>
+    <SEO
+  title="100% Placement Assistance for Accounting Students"
+  description="Dhanvii Accounting System offers placement assistance including resume building, interview preparation, personality development, career guidance, and accounting job opportunities."
+  keywords="Accounting Placement, Finance Jobs, Placement Assistance, Accounting Career, Resume Preparation, Interview Training, Accounting Institute Placement"
+  canonical="https://dhanvii.in/studentPlacement"
+/>
     <div className={styles.root}>
       <Nav />
 
@@ -36,6 +44,7 @@ const StudentPlacement = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

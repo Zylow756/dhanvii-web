@@ -9,6 +9,7 @@ import achieverImg from '../assets/images/courses3.jpg';
 import advanceImg from '../assets/images/courses4.jpg';
 import onlineImg from '../assets/images/courses5.jpg';
 import { FaClock, FaAngleDoubleLeft } from 'react-icons/fa';
+import SEO from '../components/SEO/SEO';
 
 const Courses = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -140,6 +141,13 @@ const Courses = () => {
   ];
 
   return (
+    <>
+    <SEO
+  title="Accounting Courses"
+  description="Explore practical accounting courses including Tally Prime, GST, Income Tax, Payroll and Advanced Excel."
+  keywords="Accounting Course, GST Course, Tally Course"
+  canonical="https://dhanvii.in/courses"
+/>
     <div className={styles.root}>
       <Nav />
       <h1 className={styles.heading}>Our Courses / Training [Medium Hindi / English]</h1>
@@ -243,6 +251,7 @@ const Courses = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

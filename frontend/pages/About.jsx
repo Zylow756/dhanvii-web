@@ -2,9 +2,17 @@ import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import styles from '../assets/css/About.module.css';
 import AboutUsContain from '../components/AboutUsContain/AboutUsContain';
+import SEO from "../components/SEO/SEO";
 
 const About = () => {
   return (
+    <>
+       <SEO
+  title="About Dhanvii Accounting System"
+  description="Established in 2017 with professional accounting expertise since 1996, Dhanvii Accounting System provides industry-oriented accounting education, GST training, taxation, and career-focused placement support."
+  keywords="About Dhanvii Accounting System, Accounting Institute, Finance Training, Practical Accounting, GST Training Institute, Accounting Education"
+  canonical="https://dhanvii.in/about"
+/>
     <div className={styles.container}>
       <Nav />
 
@@ -61,6 +69,7 @@ const About = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

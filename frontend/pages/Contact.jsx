@@ -2,9 +2,17 @@ import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 import styles from '../assets/css/Contact.module.css';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaBuilding } from "react-icons/fa";
+import SEO from '../components/SEO/SEO';
 
 const Contact = () => {
     return (
+        <>
+       <SEO
+  title="Contact Dhanvii Accounting System"
+  description="Contact Dhanvii Accounting System for admissions, accounting courses, GST training, Tally Prime certification, placement assistance, and career guidance."
+  keywords="Contact Accounting Institute, Accounting Admission, GST Training Contact, Tally Course Admission, Dhanvii Contact"
+  canonical="https://dhanvii.in/contact"
+/>
         <div className={styles.root}>
             <Nav />
             <div className={styles.container}>
@@ -57,6 +65,7 @@ const Contact = () => {
 
             <Footer />
         </div>
+        </>
     );
 };
 
